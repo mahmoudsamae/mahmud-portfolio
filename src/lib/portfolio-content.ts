@@ -289,6 +289,16 @@ export const SOCIALS: SocialItem[] = [
   { name: "Email", letter: "@", href: "mailto:mahmoudsamaedbm@gmail.com" },
 ];
 
+export const HERO_SKILLS: string[] = ["Next.js", "Node.js", "TypeScript", "MongoDB"];
+
+export type HeroStat = { value: string; label: Record<PortfolioLang, string> };
+
+export const HERO_STATS: HeroStat[] = [
+  { value: "5+", label: { en: "Live Projects", de: "Live-Projekte" } },
+  { value: "4", label: { en: "Core Services", de: "Kernleistungen" } },
+  { value: "100%", label: { en: "Self-Taught", de: "Autodidakt" } },
+];
+
 export const DEFAULT_CONTACT_EMAIL = "mahmoudsamaedbm@gmail.com";
 export const DEFAULT_CONTACT_PHONE = "0163 148 1230";
 export const DEFAULT_HERO_PHOTO_URL = "/profile.jpg";
@@ -310,6 +320,8 @@ export type PortfolioContentConfig = {
   education: TimelineItem[];
   languages: Record<PortfolioLang, string>[];
   socials: SocialItem[];
+  heroSkills: string[];
+  heroStats: HeroStat[];
 };
 
 export const PORTFOLIO_CONTENT_KEY = "portfolio-content-v1";
@@ -326,6 +338,8 @@ export const defaultPortfolioContent: PortfolioContentConfig = {
   education: EDUCATION,
   languages: LANGUAGES,
   socials: SOCIALS,
+  heroSkills: HERO_SKILLS,
+  heroStats: HERO_STATS,
 };
 
 export function mergePortfolioContent(raw: unknown): PortfolioContentConfig {
@@ -345,5 +359,7 @@ export function mergePortfolioContent(raw: unknown): PortfolioContentConfig {
     education: parsed.education ?? defaultPortfolioContent.education,
     languages: parsed.languages ?? defaultPortfolioContent.languages,
     socials: parsed.socials ?? defaultPortfolioContent.socials,
+    heroSkills: parsed.heroSkills ?? defaultPortfolioContent.heroSkills,
+    heroStats: parsed.heroStats ?? defaultPortfolioContent.heroStats,
   };
 }

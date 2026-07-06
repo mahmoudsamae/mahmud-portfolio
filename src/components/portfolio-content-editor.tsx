@@ -6,6 +6,7 @@ import { usePortfolioContentAdmin } from "@/hooks/use-portfolio-content";
 import { compressImageFile } from "@/lib/image";
 import {
   defaultPortfolioContent,
+  HeroStat,
   PortfolioContentConfig,
   PortfolioLang,
   PortfolioStrings,
@@ -92,6 +93,13 @@ export function PortfolioContentEditor({ initialContent }: { initialContent: Por
   };
 
   const restoreDefault = async () => {
+    const confirmed = window.confirm(
+      "This permanently replaces ALL live site content (hero, projects, services, experience, contact) " +
+        "with the original placeholder defaults. Your current photos, project descriptions, and edits will be lost. " +
+        "This cannot be undone from the dashboard. Continue?",
+    );
+    if (!confirmed) return;
+
     setSaving(true);
     try {
       await reset();
@@ -123,6 +131,18 @@ export function PortfolioContentEditor({ initialContent }: { initialContent: Por
       alert("Couldn't read that image. Try a different file (JPG/PNG/WebP).");
     }
   };
+
+  // Hero skills (floating badges) + stats
+  const updateHeroSkillsText = (text: string) => {
+    setDraft((s) => ({ ...s, heroSkills: text.split(",").map((v) => v.trim()).filter(Boolean) }));
+  };
+  const updateHeroStat = (index: number, patch: Partial<HeroStat>) => {
+    setDraft((s) => ({ ...s, heroStats: s.heroStats.map((stat, i) => (i === index ? { ...stat, ...patch } : stat)) }));
+  };
+  const addHeroStat = () =>
+    setDraft((s) => ({ ...s, heroStats: [...s.heroStats, { value: "", label: { en: "", de: "" } }] }));
+  const removeHeroStat = (index: number) =>
+    setDraft((s) => ({ ...s, heroStats: s.heroStats.filter((_, i) => i !== index) }));
 
   // Works
   const updateWork = (index: number, patch: Partial<WorkItem>) => {
@@ -293,6 +313,43 @@ export function PortfolioContentEditor({ initialContent }: { initialContent: Por
                 onChangeEn={(v) => updateStr("en", { letsTalk: v })}
                 onChangeDe={(v) => updateStr("de", { letsTalk: v })}
               />
+
+              <p className="mt-2 text-xs uppercase tracking-wide text-white/40">
+                Floating skill badges (shown around the hero photo on wide screens, max 4)
+              </p>
+              <input
+                className="studio-input"
+                value={draft.heroSkills.join(", ")}
+                onChange={(e) => updateHeroSkillsText(e.target.value)}
+                placeholder="Next.js, Node.js, TypeScript, MongoDB"
+              />
+
+              <div className="mt-2 flex items-center justify-between">
+                <p className="text-xs uppercase tracking-wide text-white/40">Hero stats (animated numbers)</p>
+                <button onClick={addHeroStat} className="rounded-lg bg-white px-3 py-1.5 text-sm font-semibold text-zinc-900">
+                  + Add
+                </button>
+              </div>
+              {draft.heroStats.map((stat, i) => (
+                <div key={i} className="grid gap-2 rounded-xl border border-white/10 p-3">
+                  <input
+                    className="studio-input"
+                    value={stat.value}
+                    onChange={(e) => updateHeroStat(i, { value: e.target.value })}
+                    placeholder="Value (e.g. 5+, 100%, 4)"
+                  />
+                  <BilingualField
+                    label="Label"
+                    en={stat.label.en}
+                    de={stat.label.de}
+                    onChangeEn={(v) => updateHeroStat(i, { label: { ...stat.label, en: v } })}
+                    onChangeDe={(v) => updateHeroStat(i, { label: { ...stat.label, de: v } })}
+                  />
+                  <button onClick={() => removeHeroStat(i)} className="ml-auto rounded border border-red-300/40 px-3 py-1.5 text-xs text-red-200">
+                    Delete
+                  </button>
+                </div>
+              ))}
             </div>
           )}
 

@@ -62,6 +62,8 @@ type LangContextValue = {
   education: (Omit<TimelineItem, "role" | "date"> & { role: string; date: string })[];
   languages: string[];
   socials: SocialItem[];
+  heroSkills: string[];
+  heroStats: { value: string; label: string }[];
 };
 
 const LangContext = createContext<LangContextValue | null>(null);
@@ -94,6 +96,8 @@ export function LangProvider({
       education: content.education.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
       languages: content.languages.map((l) => l[lang]),
       socials: content.socials,
+      heroSkills: content.heroSkills,
+      heroStats: content.heroStats.map((s) => ({ value: s.value, label: s.label[lang] })),
     };
   }, [lang, setLang, content]);
 

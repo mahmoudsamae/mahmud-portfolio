@@ -150,6 +150,58 @@
   transform: translateY(-6px);
 }
 
+@keyframes pf-border-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.pf-flow-border {
+  background-image: linear-gradient(115deg, #b57cff, #4fd6c6, #7c5cff, #4fd6c6, #b57cff);
+  background-size: 300% 300%;
+  animation: pf-border-flow 7s ease infinite;
+  transition:
+    transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 0.5s ease;
+}
+
+.pf-flow-border:hover {
+  animation-duration: 2.8s;
+  transform: translateY(-6px);
+}
+
+@keyframes pf-badge-float-a {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes pf-badge-float-b {
+  0%,
+  100% {
+    transform: translateY(0) rotate(2deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-2deg);
+  }
+}
+
+.pf-badge-float-a {
+  animation: pf-badge-float-a 5.5s ease-in-out infinite;
+}
+
+.pf-badge-float-b {
+  animation: pf-badge-float-b 6.5s ease-in-out infinite;
+}
+
 .pf-arrowbtn {
   transition:
     transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),

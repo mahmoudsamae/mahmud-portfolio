@@ -4,10 +4,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLink } from "./arrow-link";
+import { FloatingSkillBadge } from "./floating-skill-badge";
+import { HeroStats } from "./hero-stats";
 import { SocialPill } from "./social-pill";
 import { usePortfolioLang } from "./lang-context";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
+
+const BADGE_SLOTS = [
+  { className: "-left-[8%] top-[6%]", floatClass: "pf-badge-float-a", delay: 0.6 },
+  { className: "-right-[6%] top-[24%]", floatClass: "pf-badge-float-b", delay: 0.9 },
+  { className: "-left-[10%] top-[56%]", floatClass: "pf-badge-float-b", delay: 1.2 },
+  { className: "-right-[8%] top-[74%]", floatClass: "pf-badge-float-a", delay: 1.5 },
+];
 
 function HeroNameLine({
   text,
@@ -38,7 +47,7 @@ function HeroNameLine({
 }
 
 export function Hero() {
-  const { t, heroPhotoUrl, socials } = usePortfolioLang();
+  const { t, heroPhotoUrl, socials, heroSkills, heroStats } = usePortfolioLang();
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -84,6 +93,16 @@ export function Hero() {
             className="object-cover object-[50%_8%]"
           />
         </div>
+
+        {heroSkills.slice(0, 4).map((skill, i) => (
+          <FloatingSkillBadge
+            key={skill}
+            label={skill}
+            className={BADGE_SLOTS[i].className}
+            floatClass={BADGE_SLOTS[i].floatClass}
+            delay={BADGE_SLOTS[i].delay}
+          />
+        ))}
       </motion.div>
 
       <motion.div
@@ -101,6 +120,7 @@ export function Hero() {
         >
           {t.letsCollab}
         </ArrowLink>
+        <HeroStats stats={heroStats} />
       </motion.div>
 
       <motion.div
