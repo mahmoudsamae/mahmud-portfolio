@@ -22,13 +22,17 @@ heroStats:
       de: Kernleistungen
       en: Core Services
   - kind: text
-    value: B.Sc.
+    value: Bachelor
     label:
       de: Jahrgangsbester
       en: Top of cohort
 availability:
   de: Offen für IT-Stellen in Regensburg und remote
   en: Open to IT roles in Regensburg and remote
+cv: null
+cvLabel:
+  de: Lebenslauf herunterladen
+  en: Download CV
 contactEmail: mahmoudsamaedbm@gmail.com
 contactPhone: 0163 148 1230
 contactLocation:

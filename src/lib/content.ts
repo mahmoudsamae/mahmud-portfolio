@@ -43,7 +43,7 @@ export type Project = Awaited<ReturnType<typeof getProjects>>[number];
 
 export const getProject = cache(async (slug: string) => (await getProjects()).find((p) => p.slug === slug) ?? null);
 
-const timeline = (e: { co: string; role: Localized; date: Localized; note: Localized }) => ({
+const timeline = (e: { co: Localized; role: Localized; date: Localized; note: Localized }) => ({
   co: e.co,
   role: e.role,
   date: e.date,
@@ -58,14 +58,12 @@ export const getLegalPage = cache(async (name: "impressum" | "datenschutz") => {
 export const getLabels = cache(async () => required("labels", () => reader.singletons.labels.read()));
 
 export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfig> => {
-  const [site, services, resume, labels, projects, about, workingStyle] = await Promise.all([
+  const [site, services, resume, labels, projects] = await Promise.all([
     required("site", () => reader.singletons.site.read()),
     required("services", () => reader.singletons.services.read()),
     required("resume", () => reader.singletons.resume.read()),
     getLabels(),
     getProjects(),
-    required("about", () => reader.singletons.about.read()),
-    required("working-style", () => reader.singletons.workingStyle.read()),
   ]);
 
   const featuredCount = projects.filter((p) => p.featured).length;
@@ -116,27 +114,7 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     socials: [...site.socials],
     heroSkills: [...site.heroSkills],
     heroStats: site.heroStats.map((s) => ({ value: statValue(s), label: s.label as Localized })),
-    about:
-      about.approved || showDrafts
-        ? {
-            draft: !about.approved,
-            title: about.title,
-            text: about.text,
-            degreeLine: about.degreeLine,
-            cvUrl: about.cv,
-            cvLabel: about.cvLabel,
-          }
-        : null,
-    workingStyle:
-      workingStyle.approved || showDrafts
-        ? {
-            draft: !workingStyle.approved,
-            title: workingStyle.title,
-            intro: workingStyle.intro,
-            items: workingStyle.items.map((i) => ({ title: i.title, text: i.text })),
-            exampleLabel: workingStyle.exampleLabel,
-            exampleUrl: workingStyle.exampleUrl,
-          }
-        : null,
+    cvUrl: site.cv,
+    cvLabel: site.cvLabel,
   };
 });

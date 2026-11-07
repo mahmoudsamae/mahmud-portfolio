@@ -33,22 +33,8 @@ type LangContextValue = {
   socials: SocialItem[];
   heroSkills: string[];
   heroStats: { value: string; label: string }[];
-  about: {
-    draft: boolean;
-    title: string;
-    paragraphs: string[];
-    degreeLine: string;
-    cvUrl: string | null;
-    cvLabel: string;
-  } | null;
-  workingStyle: {
-    draft: boolean;
-    title: string;
-    intro: string;
-    items: { title: string; text: string }[];
-    exampleLabel: string;
-    exampleUrl: string | null;
-  } | null;
+  cvUrl: string | null;
+  cvLabel: string;
 };
 
 const LangContext = createContext<LangContextValue | null>(null);
@@ -68,7 +54,7 @@ export function LangProvider({
 }) {
   const value = useMemo<LangContextValue>(() => {
     const localizeTimeline = (e: TimelineItem) => ({
-      co: e.co,
+      co: e.co[lang],
       role: e.role[lang],
       date: e.date[lang],
       note: e.note[lang],
@@ -90,25 +76,8 @@ export function LangProvider({
       socials: content.socials,
       heroSkills: content.heroSkills,
       heroStats: content.heroStats.map((s) => ({ value: s.value, label: s.label[lang] })),
-      about: content.about && {
-        draft: content.about.draft,
-        title: content.about.title[lang],
-        paragraphs: content.about.text[lang]
-          .split(/\n\s*\n/)
-          .map((p) => p.trim())
-          .filter(Boolean),
-        degreeLine: content.about.degreeLine[lang],
-        cvUrl: content.about.cvUrl,
-        cvLabel: content.about.cvLabel[lang],
-      },
-      workingStyle: content.workingStyle && {
-        draft: content.workingStyle.draft,
-        title: content.workingStyle.title[lang],
-        intro: content.workingStyle.intro[lang],
-        items: content.workingStyle.items.map((i) => ({ title: i.title[lang], text: i.text[lang] })),
-        exampleLabel: content.workingStyle.exampleLabel[lang],
-        exampleUrl: content.workingStyle.exampleUrl,
-      },
+      cvUrl: content.cvUrl,
+      cvLabel: content.cvLabel[lang],
     };
   }, [lang, langHrefs, content]);
 

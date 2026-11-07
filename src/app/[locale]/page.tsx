@@ -1,11 +1,9 @@
-import { About } from "@/components/portfolio/about";
 import { Contact } from "@/components/portfolio/contact";
 import { Experience } from "@/components/portfolio/experience";
 import { Hero } from "@/components/portfolio/hero";
 import { SiteShell } from "@/components/portfolio/portfolio-site";
 import { SelectedWork } from "@/components/portfolio/selected-work";
 import { Services } from "@/components/portfolio/services";
-import { WorkingStyle } from "@/components/portfolio/working-style";
 import { getPortfolioContent } from "@/lib/content";
 import { isSiteLocale } from "@/lib/locales";
 import type { Metadata } from "next";
@@ -31,10 +29,8 @@ export default async function LocaleHome({ params }: { params: Promise<{ locale:
   return (
     <SiteShell lang={locale} content={await getPortfolioContent()}>
       <Hero />
-      <About />
       <SelectedWork />
       <Services />
-      <WorkingStyle />
       <Experience />
       <Contact />
     </SiteShell>
