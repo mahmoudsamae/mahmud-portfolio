@@ -16,6 +16,10 @@ const reader = createReader(process.cwd(), keystaticConfig);
 
 const MAX_FEATURED = 3;
 
+// Unapproved CMS drafts are rendered (with a visible badge) in development, and in a
+// production build only when SHOW_DRAFTS=1 is set, e.g. for screenshots before approval.
+export const showDrafts = process.env.NODE_ENV !== "production" || process.env.SHOW_DRAFTS === "1";
+
 async function required<T>(name: string, read: () => Promise<T | null>): Promise<T> {
   const value = await read();
   if (!value) throw new Error(`Keystatic content "${name}" is missing (content/${name}.yaml).`);
@@ -39,15 +43,29 @@ export type Project = Awaited<ReturnType<typeof getProjects>>[number];
 
 export const getProject = cache(async (slug: string) => (await getProjects()).find((p) => p.slug === slug) ?? null);
 
+const timeline = (e: { co: string; role: Localized; date: Localized; note: Localized }) => ({
+  co: e.co,
+  role: e.role,
+  date: e.date,
+  note: e.note,
+});
+
+export const getLegalPage = cache(async (name: "impressum" | "datenschutz") => {
+  const page = await required(`legal/${name}`, () => reader.singletons[name].read());
+  return { title: page.title, body: (await page.body()).node };
+});
+
 export const getLabels = cache(async () => required("labels", () => reader.singletons.labels.read()));
 
 export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfig> => {
-  const [site, services, resume, labels, projects] = await Promise.all([
+  const [site, services, resume, labels, projects, about, workingStyle] = await Promise.all([
     required("site", () => reader.singletons.site.read()),
     required("services", () => reader.singletons.services.read()),
     required("resume", () => reader.singletons.resume.read()),
     getLabels(),
     getProjects(),
+    required("about", () => reader.singletons.about.read()),
+    required("working-style", () => reader.singletons.workingStyle.read()),
   ]);
 
   const featuredCount = projects.filter((p) => p.featured).length;
@@ -91,11 +109,34 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     str: { de: strings("de"), en: strings("en") },
     works,
     services: services.items.map((s) => ({ ...s, title: s.title as Localized, desc: s.desc as Localized })),
-    experiences: resume.experiences.map((e) => ({ ...e, role: e.role as Localized, date: e.date as Localized })),
-    education: resume.education.map((e) => ({ ...e, role: e.role as Localized, date: e.date as Localized })),
+    experiences: resume.experiences.map(timeline),
+    otherExperience: resume.otherExperience.map(timeline),
+    education: resume.education.map(timeline),
     languages: resume.languages as Localized[],
     socials: [...site.socials],
     heroSkills: [...site.heroSkills],
     heroStats: site.heroStats.map((s) => ({ value: statValue(s), label: s.label as Localized })),
+    about:
+      about.approved || showDrafts
+        ? {
+            draft: !about.approved,
+            title: about.title,
+            text: about.text,
+            degreeLine: about.degreeLine,
+            cvUrl: about.cv,
+            cvLabel: about.cvLabel,
+          }
+        : null,
+    workingStyle:
+      workingStyle.approved || showDrafts
+        ? {
+            draft: !workingStyle.approved,
+            title: workingStyle.title,
+            intro: workingStyle.intro,
+            items: workingStyle.items.map((i) => ({ title: i.title, text: i.text })),
+            exampleLabel: workingStyle.exampleLabel,
+            exampleUrl: workingStyle.exampleUrl,
+          }
+        : null,
   };
 });

@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, MapPin, Phone } from "lucide-react";
+import { CvButton } from "./about";
 import { AvailabilityBadge } from "./availability-badge";
 import { ContactForm } from "./contact-form";
 import { Reveal } from "./reveal";
@@ -8,7 +9,7 @@ import { SocialPill } from "./social-pill";
 import { usePortfolioLang } from "./lang-context";
 
 export function Contact() {
-  const { t, socials, contactEmail, contactPhone, contactLocation } = usePortfolioLang();
+  const { t, socials, contactEmail, contactPhone, contactLocation, about } = usePortfolioLang();
 
   return (
     <section
@@ -69,6 +70,12 @@ export function Contact() {
               <SocialPill key={social.name} social={social} />
             ))}
           </Reveal>
+
+          {about?.cvUrl && (
+            <Reveal className="mt-6">
+              <CvButton href={about.cvUrl} label={about.cvLabel} />
+            </Reveal>
+          )}
         </div>
 
         <ContactForm />

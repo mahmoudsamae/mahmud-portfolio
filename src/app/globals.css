@@ -17,10 +17,12 @@
   scroll-behavior: smooth;
 }
 
+/* Intro animations start at opacity 0.01, not 0: Chrome ignores elements first painted
+   at opacity 0 as Largest Contentful Paint candidates, which left the page without LCP. */
 @keyframes pf-card-in {
   from {
     transform: scale(1.07);
-    opacity: 0;
+    opacity: 0.01;
   }
   to {
     transform: none;
@@ -243,6 +245,13 @@
 }
 
 @media (max-width: 820px) {
+  /* Endless decorative motion repaints large areas every frame; on phones the orbs and
+     the card borders keep their colors but stand still (Lighthouse mobile TBT). */
+  .pf-float-a,
+  .pf-float-b,
+  .pf-flow-border {
+    animation: none;
+  }
   .pf-hero-name {
     font-size: 14vw !important;
   }
@@ -370,21 +379,21 @@ body {
 @keyframes pf-rise-in {
   from {
     transform: translateY(40px);
-    opacity: 0;
+    opacity: 0.01;
   }
 }
 
 @keyframes pf-photo-in {
   from {
     transform: translateY(70px) scale(0.93);
-    opacity: 0;
+    opacity: 0.01;
   }
 }
 
 @keyframes pf-pop-in {
   from {
     transform: translateY(16px) scale(0.5);
-    opacity: 0;
+    opacity: 0.01;
   }
 }
 

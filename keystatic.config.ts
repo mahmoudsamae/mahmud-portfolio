@@ -29,6 +29,7 @@ export const LABEL_KEYS = [
   ["viewAll", "Button GitHub"],
   ["serviceTitle", "Überschrift Leistungen"],
   ["expTitle", "Überschrift Erfahrung"],
+  ["otherExpTitle", "Überschrift „Weitere Berufserfahrung“"],
   ["expYears", "Ort unter Erfahrung"],
   ["eduTitle", "Überschrift Ausbildung"],
   ["langTitle", "Überschrift Sprachen"],
@@ -60,6 +61,9 @@ export const LABEL_KEYS = [
   ["projectBack", "Link zurück"],
   ["videoConsent", "Video: Hinweis vor dem Laden", true],
   ["videoLoad", "Video: Button laden"],
+  ["footerImprint", "Footer: Impressum"],
+  ["footerPrivacy", "Footer: Datenschutz"],
+  ["draftBadge", "Hinweis bei nicht freigegebenen Entwürfen (nur lokal sichtbar)"],
 ] as const;
 
 export type LabelKey = (typeof LABEL_KEYS)[number][0];
@@ -76,6 +80,7 @@ const timelineItem = (label: string) =>
       co: fields.text({ label: "Firma / Schule" }),
       role: i18n("Rolle"),
       date: i18n("Zeitraum"),
+      note: i18n("Zusatz (optional)", { multiline: true }),
     }),
     { label, itemLabel: (props) => props.fields.co.value || "Eintrag" },
   );
@@ -87,9 +92,10 @@ export default config({
   ui: {
     brand: { name: "Portfolio CMS" },
     navigation: {
-      Startseite: ["site", "services", "resume"],
+      Startseite: ["site", "about", "workingStyle", "services", "resume"],
       Projekte: ["projects"],
       Texte: ["labels"],
+      Rechtliches: ["impressum", "datenschutz"],
     },
   },
   singletons: {
@@ -163,12 +169,74 @@ export default config({
       path: "content/resume",
       format: { data: "yaml" },
       schema: {
-        experiences: timelineItem("Berufserfahrung"),
+        experiences: timelineItem("Berufserfahrung (IT)"),
+        otherExperience: timelineItem("Weitere Berufserfahrung"),
         education: timelineItem("Ausbildung"),
         languages: fields.array(i18n("Sprache"), {
           label: "Sprachen",
           itemLabel: (props) => props.fields.de.value || "Sprache",
         }),
+      },
+    }),
+    about: singleton({
+      label: "Über mich",
+      path: "content/about",
+      format: { data: "yaml" },
+      schema: {
+        approved: fields.checkbox({
+          label: "Freigegeben",
+          description: "Erst wenn angehakt, erscheint der Abschnitt auf der Live-Seite. Lokal wird ein Entwurf mit Hinweis angezeigt.",
+        }),
+        title: i18n("Überschrift"),
+        text: i18n("Text", { multiline: true, description: "Leerzeile = neuer Absatz." }),
+        degreeLine: i18n("Abschluss-Zeile"),
+        cv: fields.file({
+          label: "Lebenslauf (PDF)",
+          directory: "public/cv",
+          publicPath: "/cv/",
+          description: "Ohne Datei wird kein Download-Button angezeigt. Die Datei wird nicht von Suchmaschinen indexiert.",
+        }),
+        cvLabel: i18n("Button-Text Lebenslauf"),
+      },
+    }),
+    workingStyle: singleton({
+      label: "So arbeite ich",
+      path: "content/working-style",
+      format: { data: "yaml" },
+      schema: {
+        approved: fields.checkbox({
+          label: "Freigegeben",
+          description: "Erst wenn angehakt, erscheint der Abschnitt auf der Live-Seite. Lokal wird ein Entwurf mit Hinweis angezeigt.",
+        }),
+        title: i18n("Überschrift"),
+        intro: i18n("Einleitung", { multiline: true }),
+        items: fields.array(
+          fields.object({
+            title: i18n("Punkt"),
+            text: i18n("Text", { multiline: true }),
+          }),
+          { label: "Punkte", itemLabel: (props) => props.fields.title.fields.de.value || "Punkt" },
+        ),
+        exampleLabel: i18n("Beispiel-Link: Text"),
+        exampleUrl: fields.url({ label: "Beispiel-Link: URL" }),
+      },
+    }),
+    impressum: singleton({
+      label: "Impressum",
+      path: "content/legal/impressum",
+      format: { contentField: "body" },
+      schema: {
+        title: fields.text({ label: "Titel" }),
+        body: fields.markdoc({ label: "Text", description: "Platzhalter in [eckigen Klammern] selbst ausfüllen." }),
+      },
+    }),
+    datenschutz: singleton({
+      label: "Datenschutzerklärung",
+      path: "content/legal/datenschutz",
+      format: { contentField: "body" },
+      schema: {
+        title: fields.text({ label: "Titel" }),
+        body: fields.markdoc({ label: "Text", description: "Platzhalter in [eckigen Klammern] selbst ausfüllen." }),
       },
     }),
     labels: singleton({

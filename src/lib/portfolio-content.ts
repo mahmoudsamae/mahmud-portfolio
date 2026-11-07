@@ -39,6 +39,26 @@ export type TimelineItem = {
   co: string;
   role: Localized;
   date: Localized;
+  note: Localized;
+};
+
+export type AboutContent = {
+  /** false: approved in the CMS; true: unapproved draft, only rendered in local builds */
+  draft: boolean;
+  title: Localized;
+  text: Localized;
+  degreeLine: Localized;
+  cvUrl: string | null;
+  cvLabel: Localized;
+};
+
+export type WorkingStyleContent = {
+  draft: boolean;
+  title: Localized;
+  intro: Localized;
+  items: { title: Localized; text: Localized }[];
+  exampleLabel: Localized;
+  exampleUrl: string | null;
 };
 
 export type SocialItem = { name: string; letter: string; href: string };
@@ -54,11 +74,15 @@ export type PortfolioContentConfig = {
   works: WorkItem[];
   services: ServiceItem[];
   experiences: TimelineItem[];
+  otherExperience: TimelineItem[];
   education: TimelineItem[];
   languages: Localized[];
   socials: SocialItem[];
   heroSkills: string[];
   heroStats: HeroStat[];
+  /** null when not approved and drafts are hidden (production) */
+  about: AboutContent | null;
+  workingStyle: WorkingStyleContent | null;
 };
 
 export const projectsIndexHref = (lang: PortfolioLang) => (lang === "de" ? "/de/projekte" : "/en/projects");

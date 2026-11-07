@@ -18,7 +18,7 @@ export function ServiceRow({
         className="flex w-full items-center justify-between gap-5 bg-transparent px-[22px] py-[26px] text-left font-sans"
       >
         <span className="flex items-baseline gap-4">
-          <span className="font-space text-[13px] text-[#6b6976]">{service.n}</span>
+          <span className="font-space text-[13px] text-[#8a8894]">{service.n}</span>
           <span className="pf-svc-title font-space text-[clamp(24px,3.4vw,38px)] font-semibold tracking-[-0.02em] text-[#d6d4de]">
             {service.title}
           </span>

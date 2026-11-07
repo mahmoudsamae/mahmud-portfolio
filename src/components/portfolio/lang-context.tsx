@@ -6,12 +6,14 @@ import type {
   PortfolioLang,
   PortfolioStrings,
   SocialItem,
+  TimelineItem,
   WorkItem,
 } from "@/lib/portfolio-content";
 
 type Localize<T, K extends keyof T> = Omit<T, K> & Record<K, string>;
 
 export type LocalizedWork = Localize<WorkItem, "title" | "desc">;
+export type LocalizedTimeline = { co: string; role: string; date: string; note: string };
 
 type LangContextValue = {
   lang: PortfolioLang;
@@ -24,12 +26,29 @@ type LangContextValue = {
   contactLocation: string;
   works: LocalizedWork[];
   services: { n: string; title: string; tag: string; desc: string }[];
-  experiences: { co: string; role: string; date: string }[];
-  education: { co: string; role: string; date: string }[];
+  experiences: LocalizedTimeline[];
+  otherExperience: LocalizedTimeline[];
+  education: LocalizedTimeline[];
   languages: string[];
   socials: SocialItem[];
   heroSkills: string[];
   heroStats: { value: string; label: string }[];
+  about: {
+    draft: boolean;
+    title: string;
+    paragraphs: string[];
+    degreeLine: string;
+    cvUrl: string | null;
+    cvLabel: string;
+  } | null;
+  workingStyle: {
+    draft: boolean;
+    title: string;
+    intro: string;
+    items: { title: string; text: string }[];
+    exampleLabel: string;
+    exampleUrl: string | null;
+  } | null;
 };
 
 const LangContext = createContext<LangContextValue | null>(null);
@@ -48,6 +67,12 @@ export function LangProvider({
   children: React.ReactNode;
 }) {
   const value = useMemo<LangContextValue>(() => {
+    const localizeTimeline = (e: TimelineItem) => ({
+      co: e.co,
+      role: e.role[lang],
+      date: e.date[lang],
+      note: e.note[lang],
+    });
     return {
       lang,
       langHrefs,
@@ -58,12 +83,32 @@ export function LangProvider({
       contactLocation: content.contactLocation[lang],
       works: content.works.map((w) => ({ ...w, title: w.title[lang], desc: w.desc[lang] })),
       services: content.services.map((s) => ({ ...s, title: s.title[lang], desc: s.desc[lang] })),
-      experiences: content.experiences.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
-      education: content.education.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
+      experiences: content.experiences.map(localizeTimeline),
+      otherExperience: content.otherExperience.map(localizeTimeline),
+      education: content.education.map(localizeTimeline),
       languages: content.languages.map((l) => l[lang]),
       socials: content.socials,
       heroSkills: content.heroSkills,
       heroStats: content.heroStats.map((s) => ({ value: s.value, label: s.label[lang] })),
+      about: content.about && {
+        draft: content.about.draft,
+        title: content.about.title[lang],
+        paragraphs: content.about.text[lang]
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter(Boolean),
+        degreeLine: content.about.degreeLine[lang],
+        cvUrl: content.about.cvUrl,
+        cvLabel: content.about.cvLabel[lang],
+      },
+      workingStyle: content.workingStyle && {
+        draft: content.workingStyle.draft,
+        title: content.workingStyle.title[lang],
+        intro: content.workingStyle.intro[lang],
+        items: content.workingStyle.items.map((i) => ({ title: i.title[lang], text: i.text[lang] })),
+        exampleLabel: content.workingStyle.exampleLabel[lang],
+        exampleUrl: content.workingStyle.exampleUrl,
+      },
     };
   }, [lang, langHrefs, content]);
 
