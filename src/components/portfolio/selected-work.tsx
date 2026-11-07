@@ -11,7 +11,8 @@ import { usePortfolioLang } from "./lang-context";
 type FilterKey = "all" | "live" | "portfolio";
 
 export function SelectedWork() {
-  const { t, works } = usePortfolioLang();
+  const { t, works, socials } = usePortfolioLang();
+  const githubHref = socials.find((s) => s.name.toLowerCase() === "github")?.href;
   const [filter, setFilter] = useState<FilterKey>("all");
 
   const filters: { key: FilterKey; label: string }[] = [
@@ -54,15 +55,17 @@ export function SelectedWork() {
               </button>
             ))}
           </Reveal>
-          <Reveal>
-            <ArrowLink
-              href="#"
-              className="border border-white/[0.12] bg-white/[0.06] px-[18px] py-[10px] text-sm text-[#f2f0f7]"
-              iconSize={13}
-            >
-              {t.viewAll}
-            </ArrowLink>
-          </Reveal>
+          {githubHref && githubHref !== "#" && (
+            <Reveal>
+              <ArrowLink
+                href={githubHref}
+                className="border border-white/[0.12] bg-white/[0.06] px-[18px] py-[10px] text-sm text-[#f2f0f7]"
+                iconSize={13}
+              >
+                {t.viewAll}
+              </ArrowLink>
+            </Reveal>
+          )}
         </div>
 
         <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">

@@ -16,10 +16,10 @@ export function PortfolioSite({
   locale: string;
   content: PortfolioContentConfig;
 }) {
-  const initialLang: PortfolioLang = locale === "de" ? "de" : "en";
+  const lang: PortfolioLang = locale === "de" ? "de" : "en";
 
   return (
-    <LangProvider initialLang={initialLang} content={content}>
+    <LangProvider lang={lang} content={content}>
       <div
         className="relative min-h-screen font-instrument text-[#f2f0f7] antialiased"
         style={{

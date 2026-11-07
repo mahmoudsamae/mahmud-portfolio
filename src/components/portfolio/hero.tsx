@@ -1,15 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowLink } from "./arrow-link";
 import { FloatingSkillBadge } from "./floating-skill-badge";
 import { HeroStats } from "./hero-stats";
 import { SocialPill } from "./social-pill";
 import { usePortfolioLang } from "./lang-context";
-
-const EASE = [0.19, 1, 0.22, 1] as const;
 
 const BADGE_SLOTS = [
   { className: "-left-[8%] top-[6%]", floatClass: "pf-badge-float-a", delay: 0.6 },
@@ -21,40 +17,25 @@ const BADGE_SLOTS = [
 function HeroNameLine({
   text,
   delay,
-  active,
   className,
   style,
 }: {
   text: string;
   delay: number;
-  active: boolean;
   className?: string;
   style?: React.CSSProperties;
 }) {
   return (
     <span className="pf-nl">
-      <motion.span
-        initial={{ y: "118%" }}
-        animate={{ y: active ? "0%" : "118%" }}
-        transition={{ duration: 1.15, delay, ease: EASE }}
-        className={className}
-        style={style}
-      >
+      <span className={`pf-line-in ${className ?? ""}`} style={{ ...style, animationDelay: `${delay}s` }}>
         {text}
-      </motion.span>
+      </span>
     </span>
   );
 }
 
 export function Hero() {
   const { t, heroPhotoUrl, socials, heroSkills, heroStats } = usePortfolioLang();
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => setActive(true));
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
   return (
     <section
       data-screen-label="Hero"
@@ -64,23 +45,19 @@ export function Hero() {
         <HeroNameLine
           text="MAHMUD"
           delay={0.05}
-          active={active}
           className="block text-transparent [-webkit-text-stroke:2px_rgba(242,240,247,.82)]"
         />
         <HeroNameLine
           text={"AL HUSSEN"}
           delay={0.16}
-          active={active}
           className="block bg-clip-text text-transparent"
           style={{ backgroundImage: "linear-gradient(100deg,#b57cff,#4fd6c6)" }}
         />
       </h1>
 
-      <motion.div
-        initial={{ y: 70, scale: 0.93, opacity: 0 }}
-        animate={active ? { y: 0, scale: 1, opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 0.25, ease: EASE }}
-        className="relative z-[2] mx-auto mt-8 h-[300px] w-[70%] min-[821px]:absolute min-[821px]:bottom-0 min-[821px]:left-1/2 min-[821px]:mt-0 min-[821px]:h-[74%] min-[821px]:w-[min(46%,540px)] min-[821px]:-translate-x-1/2"
+      <div
+        style={{ animationDelay: "0.25s" }}
+        className="pf-photo-in relative z-[2] mx-auto mt-8 h-[300px] w-[70%] min-[821px]:absolute min-[821px]:bottom-0 min-[821px]:left-1/2 min-[821px]:mt-0 min-[821px]:h-[74%] min-[821px]:w-[min(46%,540px)] min-[821px]:-translate-x-1/2"
       >
         <div className="relative block h-full w-full [-webkit-mask-image:radial-gradient(120%_92%_at_50%_30%,#000_58%,transparent_82%)] [mask-image:radial-gradient(120%_92%_at_50%_30%,#000_58%,transparent_82%)]">
           <Image
@@ -103,13 +80,11 @@ export function Hero() {
             delay={BADGE_SLOTS[i].delay}
           />
         ))}
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={active ? { y: 0, opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 0.35, ease: EASE }}
-        className="relative z-[3] mx-auto mt-8 max-w-[290px] text-center min-[821px]:absolute min-[821px]:bottom-0 min-[821px]:left-[44px] min-[821px]:mx-0 min-[821px]:mt-0 min-[821px]:max-w-[290px] min-[821px]:text-left"
+      <div
+        style={{ animationDelay: "0.35s" }}
+        className="pf-rise-in relative z-[3] mx-auto mt-8 max-w-[290px] text-center min-[821px]:absolute min-[821px]:bottom-0 min-[821px]:left-[44px] min-[821px]:mx-0 min-[821px]:mt-0 min-[821px]:max-w-[290px] min-[821px]:text-left"
       >
         <h2 className="m-0 mb-3 font-space text-[26px] font-semibold tracking-[-0.02em]">{t.role}</h2>
         <p className="m-0 mb-[22px] text-[15px] leading-[1.55] text-[#9a98a6]">{t.heroDesc}</p>
@@ -121,18 +96,16 @@ export function Hero() {
           {t.letsCollab}
         </ArrowLink>
         <HeroStats stats={heroStats} />
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={active ? { y: 0, opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 0.45, ease: EASE }}
-        className="pf-hide-sm hidden min-[821px]:absolute min-[821px]:bottom-0 min-[821px]:right-[44px] min-[821px]:z-[3] min-[821px]:flex min-[821px]:flex-col min-[821px]:gap-[10px]"
+      <div
+        style={{ animationDelay: "0.45s" }}
+        className="pf-rise-in pf-hide-sm hidden min-[821px]:absolute min-[821px]:bottom-0 min-[821px]:right-[44px] min-[821px]:z-[3] min-[821px]:flex min-[821px]:flex-col min-[821px]:gap-[10px]"
       >
         {socials.map((social) => (
           <SocialPill key={social.name} social={social} className="min-w-[150px]" />
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

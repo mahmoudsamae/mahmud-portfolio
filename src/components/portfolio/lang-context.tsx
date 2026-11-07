@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useSyncExternalStore } from "react";
+import { createContext, useContext, useMemo } from "react";
 import {
   PortfolioContentConfig,
   PortfolioLang,
@@ -11,46 +11,10 @@ import {
   WorkItem,
 } from "@/lib/portfolio-content";
 
-const LANG_STORAGE_KEY = "port_lang";
-const langListeners = new Set<() => void>();
-
-let cachedLang: PortfolioLang | null = null;
-
-function emitLangChange() {
-  langListeners.forEach((listener) => listener());
-}
-
-function subscribeLang(listener: () => void) {
-  langListeners.add(listener);
-  return () => langListeners.delete(listener);
-}
-
-function getLangSnapshot(): PortfolioLang | null {
-  try {
-    const stored = localStorage.getItem(LANG_STORAGE_KEY);
-    cachedLang = stored === "en" || stored === "de" ? stored : null;
-  } catch {
-    cachedLang = null;
-  }
-  return cachedLang;
-}
-
-function getLangServerSnapshot(): PortfolioLang | null {
-  return null;
-}
-
-function persistLang(lang: PortfolioLang) {
-  try {
-    localStorage.setItem(LANG_STORAGE_KEY, lang);
-  } catch {
-    // localStorage unavailable
-  }
-  emitLangChange();
-}
-
 type LangContextValue = {
   lang: PortfolioLang;
-  setLang: (lang: PortfolioLang) => void;
+  /** URL of the current page in each language; the language switch is a plain link. */
+  langHrefs: Record<PortfolioLang, string>;
   t: PortfolioStrings;
   heroPhotoUrl: string;
   contactEmail: string;
@@ -68,23 +32,23 @@ type LangContextValue = {
 
 const LangContext = createContext<LangContextValue | null>(null);
 
+const HOME_HREFS: Record<PortfolioLang, string> = { de: "/de", en: "/en" };
+
 export function LangProvider({
-  initialLang,
+  lang,
+  langHrefs = HOME_HREFS,
   content,
   children,
 }: {
-  initialLang: PortfolioLang;
+  lang: PortfolioLang;
+  langHrefs?: Record<PortfolioLang, string>;
   content: PortfolioContentConfig;
   children: React.ReactNode;
 }) {
-  const storedLang = useSyncExternalStore(subscribeLang, getLangSnapshot, getLangServerSnapshot);
-  const lang = storedLang ?? initialLang;
-  const setLang = useCallback((next: PortfolioLang) => persistLang(next), []);
-
   const value = useMemo<LangContextValue>(() => {
     return {
       lang,
-      setLang,
+      langHrefs,
       t: content.str[lang],
       heroPhotoUrl: content.heroPhotoUrl,
       contactEmail: content.contactEmail,
@@ -99,7 +63,7 @@ export function LangProvider({
       heroSkills: content.heroSkills,
       heroStats: content.heroStats.map((s) => ({ value: s.value, label: s.label[lang] })),
     };
-  }, [lang, setLang, content]);
+  }, [lang, langHrefs, content]);
 
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
 }
