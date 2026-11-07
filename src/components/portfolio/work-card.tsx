@@ -26,6 +26,7 @@ export function WorkCard({
   visible: boolean;
 }) {
   const [symbol, ...rest] = work.badge.split(" ");
+  const hasLink = Boolean(work.href) && work.href !== "#";
   const badgeLabel = rest.join(" ") || work.badge;
 
   return (
@@ -41,15 +42,17 @@ export function WorkCard({
               <StatusDot symbol={symbol} />
               {badgeLabel}
             </span>
-            <a
-              href={work.href}
-              target={work.href.startsWith("http") ? "_blank" : undefined}
-              rel={work.href.startsWith("http") ? "noreferrer" : undefined}
-              aria-label={`Open ${work.title}`}
-              className="absolute right-3 top-3 z-[2] inline-flex h-8 w-8 -translate-y-2 items-center justify-center rounded-full bg-[#f2f0f7] text-[#0c0c11] opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100"
-            >
-              <ArrowUpRight size={15} strokeWidth={2.4} />
-            </a>
+            {hasLink && (
+              <a
+                href={work.href}
+                target={work.href.startsWith("http") ? "_blank" : undefined}
+                rel={work.href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={`Open ${work.title}`}
+                className="absolute right-3 top-3 z-[2] inline-flex h-8 w-8 -translate-y-2 items-center justify-center rounded-full bg-[#f2f0f7] text-[#0c0c11] opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100"
+              >
+                <ArrowUpRight size={15} strokeWidth={2.4} />
+              </a>
+            )}
             <div className="relative block aspect-[16/11] w-full overflow-hidden">
               <div className="relative h-full w-full transition-transform duration-700 ease-out group-hover:scale-110">
                 {work.imageUrl ? (

@@ -63,9 +63,10 @@ export const STR: Record<PortfolioLang, PortfolioStrings> = {
     fMsg: "Tell me about your project…",
     fSend: "Send message",
     fSending: "Sending…",
-    fSent: "Message sent!",
-    fSentSub: "Thanks — your mail client is opening. I'll reply within a day.",
-    fAgain: "Send another",
+    fSent: "Your mail app should open now",
+    fSentSub:
+      "The message is prefilled there and is only sent once you send it from your mail app. Nothing opened? Write directly to",
+    fAgain: "Back to the form",
     fErr: "Please fill in name, email and message.",
   },
   de: {
@@ -97,9 +98,10 @@ export const STR: Record<PortfolioLang, PortfolioStrings> = {
     fMsg: "Erzähl mir von deinem Projekt…",
     fSend: "Nachricht senden",
     fSending: "Senden…",
-    fSent: "Nachricht gesendet!",
-    fSentSub: "Danke — dein Mail-Programm öffnet sich. Ich antworte innerhalb eines Tages.",
-    fAgain: "Weitere senden",
+    fSent: "Dein Mail-Programm sollte sich jetzt öffnen",
+    fSentSub:
+      "Die Nachricht ist dort vorausgefüllt und wird erst verschickt, wenn du sie im Mail-Programm absendest. Nichts geöffnet? Schreib direkt an",
+    fAgain: "Zurück zum Formular",
     fErr: "Bitte Name, E-Mail und Nachricht ausfüllen.",
   },
 };

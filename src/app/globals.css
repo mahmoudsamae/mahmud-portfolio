@@ -491,3 +491,58 @@ body {
 .template-h .section-title {
   @apply text-amber-200 italic;
 }
+
+/* Hero intro: plain CSS so it also plays without JavaScript ("both" keeps the start
+   state only during the delay; the end state is the normal, visible layout). */
+@keyframes pf-line-in {
+  from {
+    transform: translateY(118%);
+  }
+}
+
+@keyframes pf-rise-in {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes pf-photo-in {
+  from {
+    transform: translateY(70px) scale(0.93);
+    opacity: 0;
+  }
+}
+
+@keyframes pf-pop-in {
+  from {
+    transform: translateY(16px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.pf-line-in {
+  animation: pf-line-in 1.15s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.pf-rise-in {
+  animation: pf-rise-in 1s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.pf-photo-in {
+  animation: pf-photo-in 1s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+.pf-pop-in {
+  animation: pf-pop-in 0.8s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

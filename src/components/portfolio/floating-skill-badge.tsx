@@ -1,9 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const EASE = [0.19, 1, 0.22, 1] as const;
 
 export function FloatingSkillBadge({
   label,
@@ -17,11 +12,9 @@ export function FloatingSkillBadge({
   delay: number;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5, y: 16 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, delay, ease: EASE }}
-      className={cn("pf-hide-sm absolute z-[3] hidden min-[1100px]:block", className)}
+    <div
+      className={cn("pf-pop-in pf-hide-sm absolute z-[3] hidden min-[1100px]:block", className)}
+      style={{ animationDelay: `${delay}s` }}
     >
       <div
         className={cn(
@@ -31,6 +24,6 @@ export function FloatingSkillBadge({
       >
         {label}
       </div>
-    </motion.div>
+    </div>
   );
 }
