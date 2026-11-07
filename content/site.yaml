@@ -2,8 +2,8 @@ role:
   de: Full-Stack Developer · Automation
   en: Full-Stack Developer · Automation
 heroDesc:
-  de: Entwickler, der produktionsreife Systeme baut, die bereits von echten Unternehmen genutzt werden — Next.js- & Node.js-Web-Apps, SaaS-MVPs und Prozessautomatisierung.
-  en: Developer building production systems already used by real businesses — Next.js & Node.js web apps, SaaS MVPs, and business automation.
+  de: Entwickler, der produktionsreife Systeme baut, die bereits im täglichen Betrieb eines Unternehmens laufen — Next.js- & Node.js-Web-Apps, SaaS-MVPs und Prozessautomatisierung.
+  en: Developer building production systems already in daily use at a real business — Next.js & Node.js web apps, SaaS MVPs, and business automation.
 heroPhoto: /images/site/heroPhoto.png
 heroSkills:
   - Next.js
