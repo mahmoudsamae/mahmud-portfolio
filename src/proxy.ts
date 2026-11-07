@@ -1,16 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const locales = ["en", "ar", "de"];
-const defaultLocale = "en";
+import { defaultSiteLocale, siteLocales } from "@/lib/locales";
 
 function getLocale(request: NextRequest) {
-  const cookieLocale = request.cookies.get("preferred-locale")?.value;
-  if (cookieLocale && locales.includes(cookieLocale)) return cookieLocale;
-
   const languageHeader = request.headers.get("accept-language")?.toLowerCase() ?? "";
-  if (languageHeader.includes("ar")) return "ar";
   if (languageHeader.includes("de")) return "de";
-  return defaultLocale;
+  return defaultSiteLocale;
 }
 
 export function proxy(request: NextRequest) {
@@ -20,7 +14,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const hasLocale = locales.some(
+  const hasLocale = siteLocales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
 
@@ -34,5 +28,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api).*)"],
+  matcher: ["/((?!api|keystatic).*)"],
 };

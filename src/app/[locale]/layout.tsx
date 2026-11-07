@@ -1,7 +1,23 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ConditionalSiteHeader } from "@/components/conditional-site-header";
-import { ThemeProvider } from "@/components/theme-provider";
-import { dictionaries, locales, type Locale } from "@/lib/dictionary";
+import "../globals.css";
+import { fontVariables } from "@/lib/fonts";
+import { isSiteLocale, siteLocales } from "@/lib/locales";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
+
+// This is the root layout: it sits under [locale] so <html lang> always matches the URL.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return siteLocales.map((locale) => ({ locale }));
+}
+
+// Shared by every page; title, description, canonical and hreflang are set per page.
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: SITE_NAME,
+  twitter: { card: "summary_large_image" },
+};
 
 export default async function LocaleLayout({
   children,
@@ -11,24 +27,11 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!locales.includes(locale as Locale)) notFound();
-
-  const t = dictionaries[locale as Locale];
+  if (!isSiteLocale(locale)) notFound();
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen">
-        <ConditionalSiteHeader
-          locale={locale}
-          labels={{
-            about: t.nav.about,
-            projects: t.nav.projects,
-            thinking: t.nav.thinking,
-            contact: t.nav.contact,
-          }}
-        />
-        {children}
-      </div>
-    </ThemeProvider>
+    <html lang={locale} className={fontVariables}>
+      <body>{children}</body>
+    </html>
   );
 }

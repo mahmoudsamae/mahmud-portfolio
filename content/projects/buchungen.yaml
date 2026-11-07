@@ -1,0 +1,38 @@
+slug: buchungen
+title:
+  de: Buchungen
+  en: Buchungen
+category: web
+featured: false
+order: 5
+badge: ◐ LIVE DEMO
+studio: Booking System
+tag: Next.js · Node · MongoDB
+summary:
+  en: Online appointment booking with automatic time-slot management.
+  de: Online-Terminbuchung mit automatischer Slot-Verwaltung.
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack:
+  - Next.js
+  - Node
+  - MongoDB
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

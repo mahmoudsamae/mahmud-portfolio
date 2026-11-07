@@ -1,105 +1,116 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useSyncExternalStore } from "react";
-import {
+import { createContext, useContext, useMemo } from "react";
+import type {
   PortfolioContentConfig,
   PortfolioLang,
   PortfolioStrings,
-  ServiceItem,
   SocialItem,
   TimelineItem,
   WorkItem,
 } from "@/lib/portfolio-content";
 
-const LANG_STORAGE_KEY = "port_lang";
-const langListeners = new Set<() => void>();
+type Localize<T, K extends keyof T> = Omit<T, K> & Record<K, string>;
 
-let cachedLang: PortfolioLang | null = null;
-
-function emitLangChange() {
-  langListeners.forEach((listener) => listener());
-}
-
-function subscribeLang(listener: () => void) {
-  langListeners.add(listener);
-  return () => langListeners.delete(listener);
-}
-
-function getLangSnapshot(): PortfolioLang | null {
-  try {
-    const stored = localStorage.getItem(LANG_STORAGE_KEY);
-    cachedLang = stored === "en" || stored === "de" ? stored : null;
-  } catch {
-    cachedLang = null;
-  }
-  return cachedLang;
-}
-
-function getLangServerSnapshot(): PortfolioLang | null {
-  return null;
-}
-
-function persistLang(lang: PortfolioLang) {
-  try {
-    localStorage.setItem(LANG_STORAGE_KEY, lang);
-  } catch {
-    // localStorage unavailable
-  }
-  emitLangChange();
-}
+export type LocalizedWork = Localize<WorkItem, "title" | "desc">;
+export type LocalizedTimeline = { co: string; role: string; date: string; note: string };
 
 type LangContextValue = {
   lang: PortfolioLang;
-  setLang: (lang: PortfolioLang) => void;
+  /** URL of the current page in each language; the language switch is a plain link. */
+  langHrefs: Record<PortfolioLang, string>;
   t: PortfolioStrings;
   heroPhotoUrl: string;
   contactEmail: string;
   contactPhone: string;
   contactLocation: string;
-  works: (Omit<WorkItem, "desc"> & { desc: string })[];
-  services: (Omit<ServiceItem, "desc"> & { desc: string })[];
-  experiences: (Omit<TimelineItem, "role" | "date"> & { role: string; date: string })[];
-  education: (Omit<TimelineItem, "role" | "date"> & { role: string; date: string })[];
+  works: LocalizedWork[];
+  services: { n: string; title: string; tag: string; desc: string }[];
+  experiences: LocalizedTimeline[];
+  otherExperience: LocalizedTimeline[];
+  education: LocalizedTimeline[];
   languages: string[];
   socials: SocialItem[];
   heroSkills: string[];
   heroStats: { value: string; label: string }[];
+  about: {
+    draft: boolean;
+    title: string;
+    paragraphs: string[];
+    degreeLine: string;
+    cvUrl: string | null;
+    cvLabel: string;
+  } | null;
+  workingStyle: {
+    draft: boolean;
+    title: string;
+    intro: string;
+    items: { title: string; text: string }[];
+    exampleLabel: string;
+    exampleUrl: string | null;
+  } | null;
 };
 
 const LangContext = createContext<LangContextValue | null>(null);
 
+const HOME_HREFS: Record<PortfolioLang, string> = { de: "/de", en: "/en" };
+
 export function LangProvider({
-  initialLang,
+  lang,
+  langHrefs = HOME_HREFS,
   content,
   children,
 }: {
-  initialLang: PortfolioLang;
+  lang: PortfolioLang;
+  langHrefs?: Record<PortfolioLang, string>;
   content: PortfolioContentConfig;
   children: React.ReactNode;
 }) {
-  const storedLang = useSyncExternalStore(subscribeLang, getLangSnapshot, getLangServerSnapshot);
-  const lang = storedLang ?? initialLang;
-  const setLang = useCallback((next: PortfolioLang) => persistLang(next), []);
-
   const value = useMemo<LangContextValue>(() => {
+    const localizeTimeline = (e: TimelineItem) => ({
+      co: e.co,
+      role: e.role[lang],
+      date: e.date[lang],
+      note: e.note[lang],
+    });
     return {
       lang,
-      setLang,
+      langHrefs,
       t: content.str[lang],
       heroPhotoUrl: content.heroPhotoUrl,
       contactEmail: content.contactEmail,
       contactPhone: content.contactPhone,
       contactLocation: content.contactLocation[lang],
-      works: content.works.map((w) => ({ ...w, desc: w.desc[lang] })),
-      services: content.services.map((s) => ({ ...s, desc: s.desc[lang] })),
-      experiences: content.experiences.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
-      education: content.education.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
+      works: content.works.map((w) => ({ ...w, title: w.title[lang], desc: w.desc[lang] })),
+      services: content.services.map((s) => ({ ...s, title: s.title[lang], desc: s.desc[lang] })),
+      experiences: content.experiences.map(localizeTimeline),
+      otherExperience: content.otherExperience.map(localizeTimeline),
+      education: content.education.map(localizeTimeline),
       languages: content.languages.map((l) => l[lang]),
       socials: content.socials,
       heroSkills: content.heroSkills,
       heroStats: content.heroStats.map((s) => ({ value: s.value, label: s.label[lang] })),
+      about: content.about && {
+        draft: content.about.draft,
+        title: content.about.title[lang],
+        paragraphs: content.about.text[lang]
+          .split(/\n\s*\n/)
+          .map((p) => p.trim())
+          .filter(Boolean),
+        degreeLine: content.about.degreeLine[lang],
+        cvUrl: content.about.cvUrl,
+        cvLabel: content.about.cvLabel[lang],
+      },
+      workingStyle: content.workingStyle && {
+        draft: content.workingStyle.draft,
+        title: content.workingStyle.title[lang],
+        intro: content.workingStyle.intro[lang],
+        items: content.workingStyle.items.map((i) => ({ title: i.title[lang], text: i.text[lang] })),
+        exampleLabel: content.workingStyle.exampleLabel[lang],
+        exampleUrl: content.workingStyle.exampleUrl,
+      },
     };
-  }, [lang, setLang, content]);
+  }, [lang, langHrefs, content]);
 
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
 }
