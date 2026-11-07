@@ -1,11 +1,25 @@
 experiences:
   - co: AZUR Camping Regensburg
     role:
+      de: Interne Software (eigeninitiativ)
+      en: Internal software (self-initiated)
+    date:
+      de: 03.2026 – heute
+      en: 03.2026 – present
+    note:
+      de: Gäste-Frühstücksbestellung und Smart-Feedback-Plattform, beide täglich an der Rezeption im Einsatz.
+      en: Guest breakfast ordering and the Smart Feedback platform, both in daily use at the reception.
+otherExperience:
+  - co: AZUR Camping Regensburg
+    role:
       en: Receptionist / Front Office
       de: Rezeptionist / Front Office
     date:
       en: 03.2026 – Present
       de: 03.2026 – Heute
+    note:
+      de: ''
+      en: ''
   - co: McDonald's
     role:
       en: Allround-Mitarbeiter (Drive-In)
@@ -13,6 +27,9 @@ experiences:
     date:
       en: 08.2025 – 03.2026
       de: 08.2025 – 03.2026
+    note:
+      de: ''
+      en: ''
   - co: Golden Beach Hotel
     role:
       en: Front Office Assistant
@@ -20,6 +37,9 @@ experiences:
     date:
       en: 01.2023 – 09.2024
       de: 01.2023 – 09.2024
+    note:
+      de: ''
+      en: ''
 education:
   - co: Tishreen University
     role:
@@ -28,6 +48,9 @@ education:
     date:
       en: 2020 – 2024
       de: 2020 – 2024
+    note:
+      de: 'Abschluss anerkannt: anabin H+ (entspricht Bachelor)'
+      en: 'Degree recognised: anabin H+ (equivalent to a Bachelor''s)'
   - co: VHS Regensburg
     role:
       en: German course · B2
@@ -35,6 +58,9 @@ education:
     date:
       en: 2025 – Present
       de: 2025 – Heute
+    note:
+      de: ''
+      en: ''
   - co: IFP Regensburg
     role:
       en: German course · B1
@@ -42,6 +68,9 @@ education:
     date:
       en: '2025'
       de: '2025'
+    note:
+      de: ''
+      en: ''
 languages:
   - en: Arabic · Native
     de: Arabisch · Muttersprache

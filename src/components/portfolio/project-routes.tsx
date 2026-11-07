@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPortfolioContent, getProject, getProjects } from "@/lib/content";
 import { projectHref, projectsIndexHref, type PortfolioLang } from "@/lib/portfolio-content";
+import { pageMetadata } from "@/lib/seo";
 import { ProjectDetail } from "./project-detail";
 import { SiteShell } from "./portfolio-site";
 import { SelectedWork } from "./selected-work";
@@ -25,16 +26,24 @@ export function projectRoutes(routeLang: PortfolioLang) {
 
     listMetadata: async (): Promise<Metadata> => {
       const t = (await getPortfolioContent()).str[routeLang];
-      return { title: `${t.projectsPageTitle} | Mahmud Al Hussen` };
+      return pageMetadata({
+        lang: routeLang,
+        paths: bothLangs(projectsIndexHref),
+        title: `${t.projectsPageTitle} | Mahmud Al Hussen`,
+        description: t.heroDesc,
+      });
     },
 
     detailMetadata: async ({ params }: SlugParams): Promise<Metadata> => {
-      const project = await getProject((await params).slug);
+      const { slug } = await params;
+      const project = await getProject(slug);
       if (!project) return {};
-      return {
+      return pageMetadata({
+        lang: routeLang,
+        paths: bothLangs((lang) => projectHref(lang, slug)),
         title: `${project.title[routeLang]} | Mahmud Al Hussen`,
         description: project.summary[routeLang],
-      };
+      });
     },
 
     ListPage: async function ProjectsListPage({ params }: LocaleParams) {

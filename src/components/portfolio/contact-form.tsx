@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { CircleAlert, Mail } from "lucide-react";
 import { Reveal } from "./reveal";
 import { usePortfolioLang } from "./lang-context";
@@ -14,29 +14,42 @@ const emptyForm: FormState = { name: "", email: "", subject: "", message: "" };
 
 function Field({
   type,
+  name,
+  autoComplete,
   label,
   value,
   onChange,
   multiline,
 }: {
   type?: string;
+  name: string;
+  autoComplete?: string;
   label: string;
   value: string;
   onChange: (v: string) => void;
   multiline?: boolean;
 }) {
+  const id = useId();
   if (multiline) {
     return (
       <div className="pf-fld">
-        <textarea rows={4} placeholder=" " value={value} onChange={(e) => onChange(e.target.value)} />
-        <label>{label}</label>
+        <textarea id={id} name={name} rows={4} placeholder=" " value={value} onChange={(e) => onChange(e.target.value)} />
+        <label htmlFor={id}>{label}</label>
       </div>
     );
   }
   return (
     <div className="pf-fld">
-      <input type={type ?? "text"} placeholder=" " value={value} onChange={(e) => onChange(e.target.value)} />
-      <label>{label}</label>
+      <input
+        id={id}
+        name={name}
+        type={type ?? "text"}
+        autoComplete={autoComplete}
+        placeholder=" "
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }
@@ -78,10 +91,10 @@ export function ContactForm() {
       {status === "idle" && (
         <form onSubmit={submit} className="relative z-[1] flex flex-col gap-[14px]">
           <h3 className="m-0 mb-1 font-space text-[22px] font-semibold tracking-[-0.01em]">{t.formTitle}</h3>
-          <Field label={t.fName} value={form.name} onChange={updateField("name")} />
-          <Field type="email" label={t.fEmail} value={form.email} onChange={updateField("email")} />
-          <Field label={t.fSubject} value={form.subject} onChange={updateField("subject")} />
-          <Field label={t.fMsg} value={form.message} onChange={updateField("message")} multiline />
+          <Field name="name" autoComplete="name" label={t.fName} value={form.name} onChange={updateField("name")} />
+          <Field type="email" name="email" autoComplete="email" label={t.fEmail} value={form.email} onChange={updateField("email")} />
+          <Field name="subject" label={t.fSubject} value={form.subject} onChange={updateField("subject")} />
+          <Field name="message" label={t.fMsg} value={form.message} onChange={updateField("message")} multiline />
           {err && (
             <div className="flex items-center gap-[7px] text-[13.5px] text-[#ff9b8a]">
               <CircleAlert size={15} />

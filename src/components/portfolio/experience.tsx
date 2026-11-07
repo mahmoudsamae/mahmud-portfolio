@@ -5,7 +5,7 @@ import { Reveal } from "./reveal";
 import { usePortfolioLang } from "./lang-context";
 
 export function Experience() {
-  const { t, experiences, education, languages } = usePortfolioLang();
+  const { t, experiences, otherExperience, education, languages } = usePortfolioLang();
 
   return (
     <section id="experience" data-screen-label="Experience" className="px-6 py-11 sm:px-[44px]">
@@ -33,11 +33,29 @@ export function Experience() {
                 >
                   <div>
                     <div className="font-space text-lg font-semibold tracking-[-0.01em]">{ex.co}</div>
-                    <div className="mt-1 text-sm text-[#8a8894]">{ex.role}</div>
+                    <div className="mt-1 text-sm text-[#c9c7d2]">{ex.role}</div>
+                    {ex.note && <div className="mt-2 text-[13.5px] leading-[1.5] text-[#8a8894]">{ex.note}</div>}
                   </div>
-                  <div className="whitespace-nowrap text-[13px] text-[#8a8894]">{ex.date}</div>
+                  {ex.date && <div className="whitespace-nowrap text-[13px] text-[#8a8894]">{ex.date}</div>}
                 </div>
               ))}
+
+              {otherExperience.length > 0 && (
+                <>
+                  <h3 className="m-0 border-t border-white/[0.07] px-1 pb-[6px] pt-5 font-space text-xs font-normal uppercase tracking-[0.14em] text-[#b57cff]">
+                    {t.otherExpTitle}
+                  </h3>
+                  {otherExperience.map((ex, i) => (
+                    <div key={`${ex.co}-${i}`} className="flex items-center justify-between gap-4 px-1 py-[10px]">
+                      <div>
+                        <div className="text-[15px] font-semibold text-[#d6d4de]">{ex.co}</div>
+                        <div className="mt-[2px] text-[13px] text-[#8a8894]">{ex.role}</div>
+                      </div>
+                      <div className="whitespace-nowrap text-[12.5px] text-[#8a8894]">{ex.date}</div>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
             <div>
               <div className="border-t border-white/[0.07] px-1 pb-[6px] pt-5 font-space text-xs uppercase tracking-[0.14em] text-[#4fd6c6]">
@@ -48,6 +66,7 @@ export function Experience() {
                   <div>
                     <div className="font-space text-[17px] font-semibold tracking-[-0.01em]">{ed.co}</div>
                     <div className="mt-[3px] text-[13.5px] text-[#8a8894]">{ed.role}</div>
+                    {ed.note && <div className="mt-[3px] text-[13px] text-[#4fd6c6]">{ed.note}</div>}
                   </div>
                   <div className="whitespace-nowrap text-[13px] text-[#8a8894]">{ed.date}</div>
                 </div>

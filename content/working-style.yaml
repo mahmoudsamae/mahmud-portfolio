@@ -1,0 +1,42 @@
+approved: false
+title:
+  de: SO ARBEITE ICH
+  en: HOW I WORK
+intro:
+  de: Jeder Punkt ist im Rechnungsprojekt belegt; die Nachweise stehen im Repository.
+  en: Every point is backed by the invoice project; the evidence is in its repository.
+items:
+  - title:
+      de: Planung
+      en: Planning
+    text:
+      de: Vor jedem Meilenstein schreibe ich Akzeptanzkriterien und gebe sie frei, bevor gebaut wird. Kriterien und Ergebnisse stehen pro Meilenstein in PLAN.md.
+      en: Before each milestone I write acceptance criteria and approve them before anything is built. Criteria and results per milestone are in PLAN.md.
+  - title:
+      de: Tests, die nachweislich scheitern können
+      en: Tests that are proven to fail
+    text:
+      de: Eine Prüfung zählt nur, wenn sie scheitern kann. Nach Meilenstein M5 habe ich jede neue Prüfung absichtlich zum Scheitern gebracht; drei davon hätten nie scheitern können. 54 End-to-End-Prüfungen laufen nach jeder Änderung (von Hand, es gibt kein CI).
+      en: A check only counts if it can fail. After milestone M5 I made every new check fail on purpose; three of them could never have failed. 54 end-to-end checks run after every change (by hand; there is no CI).
+  - title:
+      de: Dokumentation
+      en: Documentation
+    text:
+      de: Ein Runbook für den Betrieb, zu jeder Behauptung die aufgezeichnete Ausgabe als Beleg und eine eigene Liste dessen, was nicht bewiesen ist.
+      en: A runbook for operating it, the recorded output as evidence for every claim, and a separate list of what is not proven.
+  - title:
+      de: Code-Review
+      en: Code review
+    text:
+      de: Ich prüfe und korrigiere die Pläne und den Code der KI-Werkzeuge (Claude Code, Codex). Beispiele aus dem Projekt – CASCADE auf einer Finanztabelle wurde zu RESTRICT, eine Fallback-E-Mail-Adresse habe ich abgelehnt. Jede Datenbank-Migration habe ich selbst geprüft und ausgeführt.
+      en: I review and correct the plans and code of the AI tools (Claude Code, Codex). Examples from the project – CASCADE on a financial table became RESTRICT, and I rejected a fallback email address. I reviewed and ran every database migration myself.
+  - title:
+      de: Sicherheit zuerst
+      en: Security first
+    text:
+      de: Die Webhook-Signatur wird vor allem anderen geprüft (HMAC-SHA256, zeitkonstanter Vergleich), zu alte Zeitstempel werden abgelehnt. Secrets bleiben aus dem Repository und aus jeder Ausgabe; ein Hook blockiert unsichere Befehle, und Secret-Scans gehören zu den Schutzmaßnahmen.
+      en: The webhook signature is checked before anything else (HMAC-SHA256, constant-time compare), and stale timestamps are rejected. Secrets stay out of the repository and out of all output; a hook blocks unsafe commands, and secret scans are part of the guardrails.
+exampleLabel:
+  de: Beispiel ansehen – das Rechnungsprojekt auf GitHub
+  en: See the example – the invoice project on GitHub
+exampleUrl: https://github.com/mahmoudsamae/n8n-automation-platform

@@ -46,6 +46,9 @@ serviceTitle:
 expTitle:
   de: ERFAHRUNG
   en: EXPERIENCE
+otherExpTitle:
+  de: Weitere Berufserfahrung
+  en: Other work experience
 expYears:
   de: Regensburg, Deutschland
   en: Regensburg, Germany
@@ -139,3 +142,12 @@ videoConsent:
 videoLoad:
   de: Video laden
   en: Load video
+footerImprint:
+  de: Impressum
+  en: Legal notice (German)
+footerPrivacy:
+  de: Datenschutz
+  en: Privacy policy (German)
+draftBadge:
+  de: Entwurf – noch nicht freigegeben, nur lokal sichtbar
+  en: Draft – not approved yet, only visible locally

@@ -17,10 +17,10 @@ export function Nav() {
 
       <div className="pf-hide-sm hidden items-center gap-[30px] text-[14.5px] font-medium text-[#a5a3b0] min-[821px]:flex">
         <a href={`${home}#work`} className="pf-navlink text-inherit no-underline">
-          {t.navWork} <span className="text-[11px] text-[#6b6976]">[{pad(works.length)}]</span>
+          {t.navWork} <span className="text-[11px] text-[#8a8894]">[{pad(works.length)}]</span>
         </a>
         <a href={`${home}#service`} className="pf-navlink text-inherit no-underline">
-          {t.navService} <span className="text-[11px] text-[#6b6976]">[{pad(services.length)}]</span>
+          {t.navService} <span className="text-[11px] text-[#8a8894]">[{pad(services.length)}]</span>
         </a>
         <a href={`${home}#experience`} className="pf-navlink text-inherit no-underline">
           {t.navExperience}
