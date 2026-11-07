@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ export function GhostText({ children, className }: { children: React.ReactNode; 
   const x = useTransform(scrollYProgress, (p) => `calc(-50% + ${(p - 0.5) * -140}px)`);
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ x }}
       className={cn(
@@ -22,6 +22,6 @@ export function GhostText({ children, className }: { children: React.ReactNode; 
       )}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
