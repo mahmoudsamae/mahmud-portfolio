@@ -29,7 +29,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal>
-            <p className="m-0 mb-[22px] max-w-[440px] text-base leading-[1.6] text-[#9a98a6]">{t.contactDesc}</p>
+            <p className="m-0 mb-[22px] max-w-[440px] text-base leading-[1.6] text-[#9a98a6]">{`${t.avail}. ${t.contactNote}`}</p>
           </Reveal>
 
           <Reveal className="mb-[26px] flex flex-col gap-[11px]">

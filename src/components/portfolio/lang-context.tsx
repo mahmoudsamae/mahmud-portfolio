@@ -1,15 +1,17 @@
 "use client";
 
 import { createContext, useContext, useMemo } from "react";
-import {
+import type {
   PortfolioContentConfig,
   PortfolioLang,
   PortfolioStrings,
-  ServiceItem,
   SocialItem,
-  TimelineItem,
   WorkItem,
 } from "@/lib/portfolio-content";
+
+type Localize<T, K extends keyof T> = Omit<T, K> & Record<K, string>;
+
+export type LocalizedWork = Localize<WorkItem, "title" | "desc">;
 
 type LangContextValue = {
   lang: PortfolioLang;
@@ -20,10 +22,10 @@ type LangContextValue = {
   contactEmail: string;
   contactPhone: string;
   contactLocation: string;
-  works: (Omit<WorkItem, "desc"> & { desc: string })[];
-  services: (Omit<ServiceItem, "desc"> & { desc: string })[];
-  experiences: (Omit<TimelineItem, "role" | "date"> & { role: string; date: string })[];
-  education: (Omit<TimelineItem, "role" | "date"> & { role: string; date: string })[];
+  works: LocalizedWork[];
+  services: { n: string; title: string; tag: string; desc: string }[];
+  experiences: { co: string; role: string; date: string }[];
+  education: { co: string; role: string; date: string }[];
   languages: string[];
   socials: SocialItem[];
   heroSkills: string[];
@@ -54,8 +56,8 @@ export function LangProvider({
       contactEmail: content.contactEmail,
       contactPhone: content.contactPhone,
       contactLocation: content.contactLocation[lang],
-      works: content.works.map((w) => ({ ...w, desc: w.desc[lang] })),
-      services: content.services.map((s) => ({ ...s, desc: s.desc[lang] })),
+      works: content.works.map((w) => ({ ...w, title: w.title[lang], desc: w.desc[lang] })),
+      services: content.services.map((s) => ({ ...s, title: s.title[lang], desc: s.desc[lang] })),
       experiences: content.experiences.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
       education: content.education.map((e) => ({ ...e, role: e.role[lang], date: e.date[lang] })),
       languages: content.languages.map((l) => l[lang]),

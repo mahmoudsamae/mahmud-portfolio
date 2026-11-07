@@ -65,7 +65,6 @@ export function Hero() {
             alt="Mahmud Al Hussen"
             fill
             priority
-            unoptimized={heroPhotoUrl.startsWith("data:") || heroPhotoUrl.startsWith("http")}
             sizes="(max-width: 820px) 60vw, 540px"
             className="object-cover object-[50%_8%]"
           />

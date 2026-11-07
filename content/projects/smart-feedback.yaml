@@ -1,0 +1,36 @@
+slug: smart-feedback
+title:
+  de: Smart Feedback
+  en: Smart Feedback
+category: im-einsatz
+featured: false
+order: 4
+badge: ● LIVE · IN USE
+studio: Guest Platform
+tag: Next.js
+summary:
+  en: Guest info & feedback platform improving communication with reception.
+  de: Gäste-Info- & Feedback-Plattform für bessere Kommunikation mit der Rezeption.
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack:
+  - Next.js
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

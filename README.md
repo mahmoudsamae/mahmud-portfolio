@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio: Mahmud Al Hussen
 
-## Getting Started
+Next.js 16 site in German and English (`/de`, `/en`). All content is edited through [Keystatic](https://keystatic.com), a git-based CMS: the content lives as YAML files in this repository, with no database.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Site: http://localhost:3000/de
+- CMS: http://localhost:3000/keystatic
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Every save in the CMS writes files in the working tree; commit and push them like code.
 
-## Learn More
+| What | CMS section | Files |
+|---|---|---|
+| Title, hero text, stats, availability, contact, links | Hero, Verfügbarkeit & Kontakt | `content/site.yaml` |
+| "Was ich mache" | Leistungen | `content/services.yaml` |
+| Experience, education, languages | Erfahrung, Ausbildung & Sprachen | `content/resume.yaml` |
+| Projects (one file each) | Projekte | `content/projects/*.yaml` |
+| Buttons, headings, form texts | Oberflächen-Texte | `content/labels.yaml` |
 
-To learn more about Next.js, take a look at the following resources:
+Uploaded images go to `public/images/`. Videos are YouTube links only; they load after a click.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Project rules:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Category is one of Automation, Im Einsatz, Web.
+- At most 3 projects marked "Auf der Startseite zeigen"; with more, the homepage shows the first 3 by order and the build prints a warning.
+- A text field that starts with `TODO` is treated as empty and not shown on the site.
+- Results: only real, verifiable numbers.
 
-## Deploy on Vercel
+The schema is in `keystatic.config.ts`; the site reads the content in `src/lib/content.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The CMS runs in local mode only. In a production build `/keystatic` and `/api/keystatic` answer 404 (`src/lib/keystatic-enabled.ts`) until GitHub mode is set up.

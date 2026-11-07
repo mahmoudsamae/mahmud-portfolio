@@ -1,25 +1,23 @@
 import { BackgroundOrbs } from "./background-orbs";
-import { Contact } from "./contact";
-import { Experience } from "./experience";
-import { Hero } from "./hero";
 import { LangProvider } from "./lang-context";
 import { Nav } from "./nav";
-import { SelectedWork } from "./selected-work";
-import { Services } from "./services";
 import { SiteFooter } from "./site-footer";
 import type { PortfolioContentConfig, PortfolioLang } from "@/lib/portfolio-content";
 
-export function PortfolioSite({
-  locale,
+// The framed card with nav and footer that every public page sits in.
+export function SiteShell({
+  lang,
+  langHrefs,
   content,
+  children,
 }: {
-  locale: string;
+  lang: PortfolioLang;
+  langHrefs?: Record<PortfolioLang, string>;
   content: PortfolioContentConfig;
+  children: React.ReactNode;
 }) {
-  const lang: PortfolioLang = locale === "de" ? "de" : "en";
-
   return (
-    <LangProvider lang={lang} content={content}>
+    <LangProvider lang={lang} langHrefs={langHrefs} content={content}>
       <div
         className="relative min-h-screen font-instrument text-[#f2f0f7] antialiased"
         style={{
@@ -37,12 +35,8 @@ export function PortfolioSite({
 
         <main className="pf-card-in relative z-[1] mx-auto my-[26px] max-w-[1440px] overflow-hidden rounded-[30px] border border-white/[0.06] bg-[rgba(19,19,24,.92)] shadow-[0_50px_140px_rgba(0,0,0,.6)] backdrop-blur-[2px]">
           <Nav />
-          <Hero />
-          <SelectedWork />
-          <Services />
-          <Experience />
-          <Contact />
-          <SiteFooter locale={locale} />
+          {children}
+          <SiteFooter />
         </main>
       </div>
     </LangProvider>

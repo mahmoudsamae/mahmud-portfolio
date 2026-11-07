@@ -1,0 +1,33 @@
+items:
+  - 'n': '01'
+    title:
+      de: Full-Stack Web Apps
+      en: Full-Stack Web Apps
+    desc:
+      en: Production-ready web applications from database to UI, built with Next.js and Node.js.
+      de: Produktionsreife Web-Apps von der Datenbank bis zur UI — mit Next.js und Node.js.
+    tag: NEXT.JS · NODE · MONGODB
+  - 'n': '02'
+    title:
+      de: SaaS MVPs
+      en: SaaS MVPs
+    desc:
+      en: End-to-end SaaS builds with authentication, payments, and subscriptions.
+      de: End-to-End-SaaS mit Authentifizierung, Zahlungen und Abos.
+    tag: STRIPE · CLERK · AUTH
+  - 'n': '03'
+    title:
+      de: Business Automation
+      en: Business Automation
+    desc:
+      en: Internal tools that replace manual workflows — ordering, booking, and feedback systems.
+      de: Interne Tools, die manuelle Abläufe ersetzen — Bestell-, Buchungs- und Feedback-Systeme.
+    tag: INTERNAL TOOLS
+  - 'n': '04'
+    title:
+      de: Frontend Engineering
+      en: Frontend Engineering
+    desc:
+      en: Responsive, animated interfaces with React, TypeScript, Tailwind and Framer Motion.
+      de: Responsive, animierte Interfaces mit React, TypeScript, Tailwind und Framer Motion.
+    tag: REACT · TS · TAILWIND

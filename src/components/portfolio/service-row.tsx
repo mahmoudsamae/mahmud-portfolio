@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import type { ServiceItem } from "@/lib/portfolio-content";
 import { Reveal } from "./reveal";
 
 export function ServiceRow({
@@ -7,7 +6,7 @@ export function ServiceRow({
   open,
   onToggle,
 }: {
-  service: Omit<ServiceItem, "desc"> & { desc: string };
+  service: { n: string; title: string; tag: string; desc: string };
   open: boolean;
   onToggle: () => void;
 }) {

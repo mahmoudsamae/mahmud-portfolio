@@ -1,0 +1,43 @@
+role:
+  de: Full-Stack Developer · Automation
+  en: Full-Stack Developer · Automation
+heroDesc:
+  de: Entwickler, der produktionsreife Systeme baut, die bereits von echten Unternehmen genutzt werden — Next.js- & Node.js-Web-Apps, SaaS-MVPs und Prozessautomatisierung.
+  en: Developer building production systems already used by real businesses — Next.js & Node.js web apps, SaaS MVPs, and business automation.
+heroPhoto: /images/site/heroPhoto.png
+heroSkills:
+  - Next.js
+  - Node.js
+  - TypeScript
+  - MongoDB
+heroStats:
+  - kind: projectsInUse
+    value: ''
+    label:
+      de: Im täglichen Einsatz
+      en: In daily use
+  - kind: services
+    value: ''
+    label:
+      de: Kernleistungen
+      en: Core Services
+  - kind: text
+    value: B.Sc.
+    label:
+      de: Jahrgangsbester
+      en: Top of cohort
+availability:
+  de: Offen für IT-Stellen in Regensburg und remote
+  en: Open to IT roles in Regensburg and remote
+contactEmail: mahmoudsamaedbm@gmail.com
+contactPhone: 0163 148 1230
+contactLocation:
+  en: Regensburg, Germany
+  de: Regensburg, Deutschland
+socials:
+  - name: GitHub
+    letter: Gh
+    href: https://github.com/mahmoudsamae
+  - name: Email
+    letter: '@'
+    href: mailto:mahmoudsamaedbm@gmail.com

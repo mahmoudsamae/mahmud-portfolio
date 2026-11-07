@@ -1,0 +1,38 @@
+slug: textflow
+title:
+  de: TextFlow
+  en: TextFlow
+category: web
+featured: true
+order: 3
+badge: ● LIVE SAAS
+studio: AI SaaS
+tag: Next.js · Stripe · Clerk
+summary:
+  en: German AI SaaS for SMBs — automated text generation with Du/Sie logic.
+  de: Deutsches KI-SaaS für KMU — automatische Textgenerierung mit Du/Sie-Logik.
+coverImage: /images/projects/textflow/coverImage.png
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack:
+  - Next.js
+  - Stripe
+  - Clerk
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

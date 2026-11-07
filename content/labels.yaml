@@ -1,0 +1,141 @@
+navWork:
+  de: Projekte
+  en: Projects
+navService:
+  de: Leistungen
+  en: Services
+navExperience:
+  de: Erfahrung
+  en: Experience
+navContact:
+  de: Kontakt
+  en: Contact
+letsTalk:
+  de: Kontakt
+  en: Let's Talk
+letsCollab:
+  de: Kontakt aufnehmen
+  en: Get in touch
+workTitle:
+  de: AUSGEWÄHLTE PROJEKTE
+  en: SELECTED PROJECTS
+allProjects:
+  de: Alle Projekte
+  en: All projects
+projectsPageTitle:
+  de: PROJEKTE
+  en: PROJECTS
+filterAll:
+  de: Alle
+  en: All
+catAutomation:
+  de: Automation
+  en: Automation
+catInUse:
+  de: Im Einsatz
+  en: In use
+catWeb:
+  de: Web
+  en: Web
+viewAll:
+  de: Auf GitHub ansehen
+  en: View on GitHub
+serviceTitle:
+  de: WAS ICH MACHE
+  en: WHAT I DO
+expTitle:
+  de: ERFAHRUNG
+  en: EXPERIENCE
+expYears:
+  de: Regensburg, Deutschland
+  en: Regensburg, Germany
+eduTitle:
+  de: Ausbildung
+  en: Education
+langTitle:
+  de: Sprachen
+  en: Languages
+contactTitle:
+  de: LASS UNS ETWAS BAUEN.
+  en: LET'S BUILD SOMETHING.
+contactNote:
+  de: Melde dich gern — ich antworte meist innerhalb eines Tages.
+  en: Feel free to reach out — I usually reply within a day.
+formTitle:
+  de: Nachricht senden
+  en: Send a message
+fName:
+  de: Dein Name
+  en: Your name
+fEmail:
+  de: E-Mail-Adresse
+  en: Email address
+fSubject:
+  de: Betreff
+  en: Subject
+fMsg:
+  de: Erzähl mir von deinem Projekt…
+  en: Tell me about your project…
+fSend:
+  de: Nachricht senden
+  en: Send message
+fSent:
+  de: Dein Mail-Programm sollte sich jetzt öffnen
+  en: Your mail app should open now
+fSentSub:
+  de: Die Nachricht ist dort vorausgefüllt und wird erst verschickt, wenn du sie im Mail-Programm absendest. Nichts geöffnet? Schreib direkt an
+  en: The message is prefilled there and is only sent once you send it from your mail app. Nothing opened? Write directly to
+fAgain:
+  de: Zurück zum Formular
+  en: Back to the form
+fErr:
+  de: Bitte Name, E-Mail und Nachricht ausfüllen.
+  en: Please fill in name, email and message.
+projectProblem:
+  de: Problem
+  en: Problem
+projectSolution:
+  de: Lösung
+  en: Solution
+projectArchitecture:
+  de: Architektur
+  en: Architecture
+projectResults:
+  de: Ergebnisse
+  en: Results
+projectEvidence:
+  de: Beleg
+  en: Evidence
+projectStack:
+  de: Tech-Stack
+  en: Tech stack
+projectScreenshots:
+  de: Screenshots
+  en: Screenshots
+projectVideo:
+  de: Video
+  en: Video
+projectLive:
+  de: Live testen
+  en: Try it live
+projectGithub:
+  de: GitHub
+  en: GitHub
+projectDocs:
+  de: Dokumentation
+  en: Documentation
+projectOffline:
+  de: Demo vorübergehend offline
+  en: Demo temporarily offline
+projectComingSoon:
+  de: Live-Demo folgt
+  en: Live demo coming soon
+projectBack:
+  de: Alle Projekte
+  en: All projects
+videoConsent:
+  de: Beim Laden wird eine Verbindung zu YouTube (Google) hergestellt und Daten wie deine IP-Adresse werden übertragen.
+  en: Loading the video connects to YouTube (Google) and transfers data such as your IP address.
+videoLoad:
+  de: Video laden
+  en: Load video

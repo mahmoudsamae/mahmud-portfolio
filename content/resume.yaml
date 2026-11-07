@@ -1,0 +1,53 @@
+experiences:
+  - co: AZUR Camping Regensburg
+    role:
+      en: Receptionist / Front Office
+      de: Rezeptionist / Front Office
+    date:
+      en: 03.2026 – Present
+      de: 03.2026 – Heute
+  - co: McDonald's
+    role:
+      en: Allround-Mitarbeiter (Drive-In)
+      de: Allround-Mitarbeiter (Drive-In)
+    date:
+      en: 08.2025 – 03.2026
+      de: 08.2025 – 03.2026
+  - co: Golden Beach Hotel
+    role:
+      en: Front Office Assistant
+      de: Front Office Assistant (Teilzeit)
+    date:
+      en: 01.2023 – 09.2024
+      de: 01.2023 – 09.2024
+education:
+  - co: Tishreen University
+    role:
+      en: B.Sc. Computer Engineering — top of cohort
+      de: B.Sc. Computertechnik — Jahrgangsbester
+    date:
+      en: 2020 – 2024
+      de: 2020 – 2024
+  - co: VHS Regensburg
+    role:
+      en: German course · B2
+      de: Deutschkurs · B2
+    date:
+      en: 2025 – Present
+      de: 2025 – Heute
+  - co: IFP Regensburg
+    role:
+      en: German course · B1
+      de: Deutschkurs · B1
+    date:
+      en: '2025'
+      de: '2025'
+languages:
+  - en: Arabic · Native
+    de: Arabisch · Muttersprache
+  - en: Kurdish · Native
+    de: Kurdisch · Muttersprache
+  - en: German · B2
+    de: Deutsch · B2
+  - en: English · B2
+    de: Englisch · B2
