@@ -1,17 +1,24 @@
 "use client";
 
-import { HiddenAdminTrigger } from "@/components/hidden-admin-trigger";
+import Link from "next/link";
 import { usePortfolioLang } from "./lang-context";
 
-export function SiteFooter({ locale }: { locale: string }) {
+// The legal pages exist in German only; English pages link to them with hrefLang="de".
+export function SiteFooter() {
   const { t } = usePortfolioLang();
 
   return (
-    <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 px-6 py-[26px] text-[13px] text-[#6b6976] sm:px-[44px]">
-      <HiddenAdminTrigger locale={locale}>
-        <span className="font-space text-sm font-semibold text-[#9a98a6]">MAHMUD AL HUSSEN</span>
-      </HiddenAdminTrigger>
-      <span>© 2026 — {t.role}</span>
+    <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 px-6 py-[26px] text-[13px] text-[#8a8894] sm:px-[44px]">
+      <span className="font-space text-sm font-semibold text-[#9a98a6]">MAHMUD AL HUSSEN</span>
+      <nav className="flex flex-wrap items-center gap-5" aria-label={`${t.footerImprint} / ${t.footerPrivacy}`}>
+        <Link href="/de/impressum" hrefLang="de" className="text-[#9a98a6] no-underline hover:text-[#f2f0f7]">
+          {t.footerImprint}
+        </Link>
+        <Link href="/de/datenschutz" hrefLang="de" className="text-[#9a98a6] no-underline hover:text-[#f2f0f7]">
+          {t.footerPrivacy}
+        </Link>
+        <span>© 2026 — {t.role}</span>
+      </nav>
     </footer>
   );
 }

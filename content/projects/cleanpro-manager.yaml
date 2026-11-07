@@ -1,0 +1,37 @@
+slug: cleanpro-manager
+title:
+  de: CleanPro Manager
+  en: CleanPro Manager
+category: web
+featured: false
+order: 6
+badge: ○ PORTFOLIO
+studio: Admin Dashboard
+tag: React · Tailwind
+summary:
+  en: Dark-theme admin dashboard with six modules for a cleaning business.
+  de: Dark-Theme-Admin-Dashboard mit sechs Modulen für einen Reinigungsbetrieb.
+coverImage: /images/projects/cleanpro-manager/coverImage.png
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack:
+  - React
+  - Tailwind
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

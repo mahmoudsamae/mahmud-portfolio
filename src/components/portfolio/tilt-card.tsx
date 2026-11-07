@@ -1,40 +1,32 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { cn } from "@/lib/utils";
+import { lazy, Suspense, useSyncExternalStore } from "react";
 
+const TiltCardMotion = lazy(() => import("./tilt-card-motion"));
+
+// Tilt only makes sense with a mouse, and not for visitors who asked for less motion.
+const TILT_QUERY = "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)";
+
+function subscribe(onChange: () => void) {
+  const mql = window.matchMedia(TILT_QUERY);
+  mql.addEventListener("change", onChange);
+  return () => mql.removeEventListener("change", onChange);
+}
+
+// Server and phones render a plain div; on desktop the spring version is loaded after
+// hydration, so its code is not part of the initial JavaScript.
 export function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 220, damping: 22, mass: 0.6 });
-  const springY = useSpring(y, { stiffness: 220, damping: 22, mass: 0.6 });
-  const rotateX = useTransform(springY, [-0.5, 0.5], [7, -7]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-7, 7]);
+  const canTilt = useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(TILT_QUERY).matches,
+    () => false,
+  );
+  const plain = <div className={className}>{children}</div>;
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect || reduceMotion) return;
-    x.set((event.clientX - rect.left) / rect.width - 0.5);
-    y.set((event.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
+  if (!canTilt) return plain;
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
-      className={cn(className)}
-    >
-      {children}
-    </motion.div>
+    <Suspense fallback={plain}>
+      <TiltCardMotion className={className}>{children}</TiltCardMotion>
+    </Suspense>
   );
 }

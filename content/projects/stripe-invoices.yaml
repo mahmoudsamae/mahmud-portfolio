@@ -1,0 +1,156 @@
+slug: stripe-invoices
+title:
+  de: Stripe-Zahlungen zu Rechnungen
+  en: Stripe payments to invoices
+category: automation
+featured: true
+order: 1
+badge: ◐ SANDBOX
+studio: n8n · PostgreSQL
+tag: n8n · PostgreSQL · Stripe
+summary:
+  de: >-
+    Sieben n8n-Workflows machen aus Stripe-Zahlungen deutsche Rechnungen (E-Mail
+    mit PDF) und eine Telegram-Nachricht. Keine doppelte Rechnung, kein
+    verlorenes Ereignis.
+  en: >-
+    Seven n8n workflows turn Stripe payments into German invoices (email with
+    PDF) and a Telegram message. No double invoice, no lost event.
+coverImage: /images/projects/stripe-invoices/coverImage.png
+problem:
+  de: >-
+    Stripe sendet Zahlungsereignisse per Webhook, auch doppelt, und erwartet
+    eine schnelle Antwort. Bestätigt ein Webhook ein Ereignis, bevor es
+    gespeichert ist, geht es bei einem Datenbankausfall verloren. Verarbeitet er
+    dasselbe Ereignis zweimal, entstehen doppelte Rechnungen und Nachrichten.
+    Und Fehler bleiben unbemerkt, wenn niemand alarmiert wird.
+  en: >-
+    Stripe delivers payment events by webhook, sometimes more than once, and
+    expects a quick answer. A webhook that acknowledges an event before storing
+    it loses that event when the database is down. Processing the same event
+    twice creates duplicate invoices and messages. And failures go unnoticed
+    when nobody is alerted.
+solution:
+  de: >-
+    Der Intake prüft die Stripe-Signatur (HMAC-SHA256) und lehnt Zeitstempel ab,
+    die älter als 5 Minuten sind. Er antwortet erst, nachdem das Ereignis
+    gespeichert ist; schlägt das Speichern fehl, antwortet er mit 500, sodass
+    Stripe es erneut zustellt.
+
+    Ein Processor holt jede Minute bis zu 10 Ereignisse atomar ab (FOR UPDATE
+    SKIP LOCKED). Pro bezahltem Ereignis entsteht genau eine Rechnung,
+    abgesichert durch UNIQUE-Constraints in PostgreSQL. E-Mail, PDF und
+    Telegram-Nachricht werden nur aus der gespeicherten Rechnungszeile erzeugt,
+    sodass jeder Wiederholungsversuch dasselbe Dokument liefert.
+
+    Ein Monitor-Workflow meldet tote oder hängende Ereignisse per Telegram und
+    E-Mail; ein fehlgeschlagenes Ereignis lässt sich mit Begründung und
+    Protokolleintrag erneut verarbeiten. Ein externer Heartbeat meldet, wenn das
+    System etwa 15 Minuten lang schweigt.
+  en: >-
+    Intake checks the Stripe signature (HMAC-SHA256) and rejects timestamps
+    older than 5 minutes. It answers only after the event is stored; if the
+    insert fails it answers 500, so Stripe retries.
+
+    Every minute a Processor claims up to 10 events atomically (FOR UPDATE SKIP
+    LOCKED). Each paid event gets exactly one invoice, enforced by UNIQUE
+    constraints in PostgreSQL. The email, the PDF and the Telegram message are
+    built from the stored invoice row only, so every retry produces the same
+    document.
+
+    A Monitor workflow reports dead or stuck events by Telegram and email; a
+    failed event can be replayed with a reason and an audit row. An outside
+    heartbeat reports when the system has been silent for about 15 minutes.
+note:
+  de: >-
+    Läuft nur in der Stripe-Sandbox auf meinem eigenen Rechner. Die Rechnungen
+    sind eine technische Demo und beanspruchen keine Konformität mit § 14 UStG
+    oder GoBD. Das Repository lässt sich noch nicht frisch klonen und starten;
+    das ist der nächste Schritt.
+  en: >-
+    Runs only in Stripe's sandbox on my own machine. The invoices are a
+    technical demo and do not claim compliance with German invoicing rules (§ 14
+    UStG, GoBD). The repository cannot be cloned and run yet; that is the next
+    step.
+architectureImage: /images/projects/stripe-invoices/architectureImage.svg
+architectureAlt:
+  de: >-
+    Ablaufdiagramm: Stripe sendet an den Intake, der signiert prüft und in
+    stripe_events speichert (400 bei falscher Signatur, 200 bei Erfolg oder
+    Duplikat, 500 wenn das Speichern fehlschlägt). Der Processor erstellt jede
+    Minute die Rechnung, daraus entstehen E-Mail mit PDF und Telegram-Nachricht.
+  en: >-
+    Flow diagram: Stripe sends to Intake, which verifies the signature and
+    stores in stripe_events (400 on a bad signature, 200 when stored or
+    duplicate, 500 when the insert fails). Every minute the Processor creates
+    the invoice, which is rendered into an email with PDF and a Telegram
+    message.
+results:
+  - value: '54'
+    label:
+      de: End-to-End-Prüfungen in einem Skript, nach jeder Änderung ausgeführt
+      en: end-to-end checks in one script, run after every change
+    source: >-
+      https://github.com/mahmoudsamae/n8n-automation-platform/blob/main/scripts/e2e.ps1
+  - value: '384'
+    label:
+      de: Fälle am echten Processor-Graphen geprüft
+      en: cases checked on the real Processor graph
+    source: >-
+      https://github.com/mahmoudsamae/n8n-automation-platform/blob/main/docs/evidence.md#the-processors-telegram-wiring-all-384-cases
+  - value: '1'
+    label:
+      de: >-
+        Rechnung, E-Mail und Telegram-Nachricht pro Zahlung, auch wenn Stripe
+        das Ereignis erneut sendet
+      en: >-
+        invoice, email and Telegram message per payment, even when Stripe
+        resends the event
+    source: >-
+      https://github.com/mahmoudsamae/n8n-automation-platform/blob/main/docs/evidence.md#duplicate-event-200-duplicate-1-row
+  - value: '7'
+    label:
+      de: n8n-Workflows, als TypeScript-Quelldateien versioniert
+      en: n8n workflows, versioned as TypeScript source files
+    source: >-
+      https://github.com/mahmoudsamae/n8n-automation-platform#where-to-start-reading
+techStack:
+  - n8n
+  - PostgreSQL
+  - TypeScript (n8n Workflow SDK)
+  - Docker Compose (WSL)
+  - Gotenberg
+  - Mailpit
+  - Telegram Bot API
+  - Healthchecks.io
+  - Stripe
+  - PowerShell
+demoStatus: comingSoon
+githubUrl: https://github.com/mahmoudsamae/n8n-automation-platform
+docsUrl: >-
+  https://github.com/mahmoudsamae/n8n-automation-platform/blob/main/docs/runbook.md
+screenshots:
+  - image: /images/projects/stripe-invoices/screenshots/0/image.png
+    caption:
+      de: >-
+        Die Rechnungs-E-Mail einer Demo-Zahlung mit PDF-Anhang (Mailpit, das
+        lokale Postfach).
+      en: >-
+        The invoice email for a demo payment, with the PDF attached (Mailpit,
+        the local inbox).
+  - image: /images/projects/stripe-invoices/screenshots/1/image.png
+    caption:
+      de: >-
+        Das angehängte PDF: ein fiktiver Shop, 30,00 EUR aufgeteilt in Netto und
+        19 % USt., als bezahlt markiert, mit Demo-Hinweis in der Fußzeile.
+      en: >-
+        The attached PDF: a fictional shop, 30,00 EUR split into net and 19 %
+        VAT, marked as paid, with the demo disclaimer in the footer.
+  - image: /images/projects/stripe-invoices/screenshots/2/image.png
+    caption:
+      de: >-
+        Der Telegram-Chat des Betreibers nach einer Demo-Zahlung: die Nachricht
+        mit Kunde, Zahlungsart und Rechnungsnummer, danach das PDF als Dokument.
+      en: >-
+        The owner's Telegram chat after a demo payment: the message with the
+        customer, payment method and invoice number, then the PDF as a document.
