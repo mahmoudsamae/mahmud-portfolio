@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { CircleAlert, Mail } from "lucide-react";
+import { LottieIcon } from "./lottie-icon";
 import { Reveal } from "./reveal";
 import { usePortfolioLang } from "./lang-context";
 
@@ -79,7 +80,8 @@ export function ContactForm() {
 
   return (
     <Reveal
-      delay={0.15}
+      from="right"
+      delay={0.1}
       className="relative overflow-hidden rounded-3xl border border-white/[0.09] p-[34px] shadow-[0_40px_90px_rgba(0,0,0,.45)]"
       style={{ background: "linear-gradient(165deg,rgba(28,26,38,.9),rgba(16,16,22,.9))" }}
     >
@@ -90,6 +92,9 @@ export function ContactForm() {
 
       {status === "idle" && (
         <form onSubmit={submit} className="relative z-[1] flex flex-col gap-[14px]">
+          <span className="mb-1 flex h-[58px] w-[58px] items-center justify-center rounded-2xl border border-[#b57cff]/30 bg-[linear-gradient(135deg,rgba(181,124,255,.18),rgba(79,214,198,.08))]">
+            <LottieIcon name="contact" className="h-10 w-10" />
+          </span>
           <h3 className="m-0 mb-1 font-space text-[22px] font-semibold tracking-[-0.01em]">{t.formTitle}</h3>
           <Field name="name" autoComplete="name" label={t.fName} value={form.name} onChange={updateField("name")} />
           <Field type="email" name="email" autoComplete="email" label={t.fEmail} value={form.email} onChange={updateField("email")} />

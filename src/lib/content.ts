@@ -9,6 +9,8 @@ import type {
   PortfolioLang,
   PortfolioStrings,
   ProjectCategory,
+  ServiceIcon,
+  TimelineIcon,
   WorkItem,
 } from "./portfolio-content";
 
@@ -29,6 +31,7 @@ async function required<T>(name: string, read: () => Promise<T | null>): Promise
 export const getProjects = cache(async () => {
   const entries = await reader.collections.projects.all();
   return entries
+    .filter(({ entry }) => !entry.draft || showDrafts)
     .map(({ slug, entry }) => ({
       ...entry,
       slug,
@@ -43,8 +46,12 @@ export type Project = Awaited<ReturnType<typeof getProjects>>[number];
 
 export const getProject = cache(async (slug: string) => (await getProjects()).find((p) => p.slug === slug) ?? null);
 
-const timeline = (e: { co: string; role: Localized; date: Localized; note: Localized }) => ({
+const cardTags = (techStack: readonly string[], tag: string) =>
+  [...new Set((techStack.length ? techStack : tag.split("·")).map((s) => s.trim()).filter(Boolean))].slice(0, 3);
+
+const timeline = (e: { co: Localized; icon: string; role: Localized; date: Localized; note: Localized }) => ({
   co: e.co,
+  icon: e.icon as TimelineIcon,
   role: e.role,
   date: e.date,
   note: e.note,
@@ -58,14 +65,12 @@ export const getLegalPage = cache(async (name: "impressum" | "datenschutz") => {
 export const getLabels = cache(async () => required("labels", () => reader.singletons.labels.read()));
 
 export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfig> => {
-  const [site, services, resume, labels, projects, about, workingStyle] = await Promise.all([
+  const [site, services, resume, labels, projects] = await Promise.all([
     required("site", () => reader.singletons.site.read()),
     required("services", () => reader.singletons.services.read()),
     required("resume", () => reader.singletons.resume.read()),
     getLabels(),
     getProjects(),
-    required("about", () => reader.singletons.about.read()),
-    required("working-style", () => reader.singletons.workingStyle.read()),
   ]);
 
   const featuredCount = projects.filter((p) => p.featured).length;
@@ -92,11 +97,13 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     slug: p.slug,
     category: p.category,
     featured: p.featured,
+    draft: p.draft,
     order: p.order,
     badge: p.badge,
     studio: p.studio,
     title: p.title,
     tag: p.tag,
+    tags: cardTags(p.techStack, p.tag),
     desc: p.summary,
     imageUrl: p.coverImage,
   }));
@@ -108,7 +115,22 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     contactLocation: site.contactLocation as Localized,
     str: { de: strings("de"), en: strings("en") },
     works,
-    services: services.items.map((s) => ({ ...s, title: s.title as Localized, desc: s.desc as Localized })),
+    services: services.items.map((s) => {
+      const project = s.project ? projects.find((p) => p.slug === s.project) : undefined;
+      return {
+        n: s.n,
+        title: s.title as Localized,
+        desc: s.desc as Localized,
+        icon: s.icon as ServiceIcon,
+        tools: [...s.tools],
+        link: project
+          ? { kind: "project" as const, slug: project.slug, title: project.title as Localized }
+          : s.linkUrl
+            ? { kind: "url" as const, href: s.linkUrl, title: s.linkTitle }
+            : null,
+      };
+    }),
+    otherTools: [...services.otherTools],
     experiences: resume.experiences.map(timeline),
     otherExperience: resume.otherExperience.map(timeline),
     education: resume.education.map(timeline),
@@ -116,27 +138,7 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     socials: [...site.socials],
     heroSkills: [...site.heroSkills],
     heroStats: site.heroStats.map((s) => ({ value: statValue(s), label: s.label as Localized })),
-    about:
-      about.approved || showDrafts
-        ? {
-            draft: !about.approved,
-            title: about.title,
-            text: about.text,
-            degreeLine: about.degreeLine,
-            cvUrl: about.cv,
-            cvLabel: about.cvLabel,
-          }
-        : null,
-    workingStyle:
-      workingStyle.approved || showDrafts
-        ? {
-            draft: !workingStyle.approved,
-            title: workingStyle.title,
-            intro: workingStyle.intro,
-            items: workingStyle.items.map((i) => ({ title: i.title, text: i.text })),
-            exampleLabel: workingStyle.exampleLabel,
-            exampleUrl: workingStyle.exampleUrl,
-          }
-        : null,
+    cvUrl: site.cv,
+    cvLabel: site.cvLabel,
   };
 });

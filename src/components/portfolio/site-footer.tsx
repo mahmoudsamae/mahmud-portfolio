@@ -8,7 +8,7 @@ export function SiteFooter() {
   const { t } = usePortfolioLang();
 
   return (
-    <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 px-6 py-[26px] text-[13px] text-[#8a8894] sm:px-[44px]">
+    <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 py-[26px] pl-6 pr-20 text-[13px] text-[#8a8894] sm:pl-[44px] sm:pr-[104px]">
       <span className="font-space text-sm font-semibold text-[#9a98a6]">MAHMUD AL HUSSEN</span>
       <nav className="flex flex-wrap items-center gap-5" aria-label={`${t.footerImprint} / ${t.footerPrivacy}`}>
         <Link href="/de/impressum" hrefLang="de" className="text-[#9a98a6] no-underline hover:text-[#f2f0f7]">

@@ -1,33 +1,97 @@
 items:
   - 'n': '01'
     title:
-      de: Full-Stack Web Apps
-      en: Full-Stack Web Apps
+      de: Web-Apps & Websites
+      en: Web apps & websites
     desc:
-      en: Production-ready web applications from database to UI, built with Next.js and Node.js.
-      de: Produktionsreife Web-Apps von der Datenbank bis zur UI — mit Next.js und Node.js.
-    tag: NEXT.JS · NODE · MONGODB
+      de: Web-Apps von der Datenbank bis zur Oberfläche. Zum Beispiel TextFlow, ein KI-SaaS mit Nutzer-Dashboard, Nutzungslimits und Verlauf.
+      en: Web apps from the database to the interface. For example TextFlow, an AI SaaS with a user dashboard, usage limits and history.
+    icon: web
+    tools:
+      - Next.js
+      - React
+      - Node.js
+      - TypeScript
+      - Tailwind CSS
+      - Supabase
+      - MongoDB
+    project: textflow
+    linkUrl: null
+    linkTitle: ''
   - 'n': '02'
     title:
-      de: SaaS MVPs
-      en: SaaS MVPs
+      de: Automatisierung & Integrationen
+      en: Automation & integrations
     desc:
-      en: End-to-end SaaS builds with authentication, payments, and subscriptions.
-      de: End-to-End-SaaS mit Authentifizierung, Zahlungen und Abos.
-    tag: STRIPE · CLERK · AUTH
+      de: Abläufe automatisieren und Dienste über APIs und Webhooks verbinden. Zum Beispiel sieben n8n-Workflows, die aus Stripe-Zahlungen Rechnungen machen, ohne doppelte Rechnung und ohne verlorenes Ereignis.
+      en: Automating workflows and connecting services through APIs and webhooks. For example seven n8n workflows that turn Stripe payments into invoices, with no double invoice and no lost event.
+    icon: automation
+    tools:
+      - n8n
+      - Make
+      - Zapier
+      - Stripe
+      - PostgreSQL
+    project: stripe-invoices
+    linkUrl: null
+    linkTitle: ''
   - 'n': '03'
     title:
-      de: Business Automation
-      en: Business Automation
+      de: Interne Tools & Digitalisierung
+      en: Internal tools & digitisation
     desc:
-      en: Internal tools that replace manual workflows — ordering, booking, and feedback systems.
-      de: Interne Tools, die manuelle Abläufe ersetzen — Bestell-, Buchungs- und Feedback-Systeme.
-    tag: INTERNAL TOOLS
+      de: Interne Tools, die manuelle Abläufe ersetzen. Die Frühstücksbestellung und die Smart-Feedback-Plattform laufen täglich an der Rezeption von AZUR Camping; dazu Buchungs- und Verwaltungssysteme.
+      en: Internal tools that replace manual work. The breakfast ordering system and the Smart Feedback platform run daily at the AZUR Camping reception; plus booking and management systems.
+    icon: tools
+    tools:
+      - Next.js
+      - Node.js
+      - MongoDB
+    project: gaeste-bestellsystem
+    linkUrl: null
+    linkTitle: ''
   - 'n': '04'
     title:
-      de: Frontend Engineering
-      en: Frontend Engineering
+      de: Server, Betrieb & Sicherheit
+      en: Servers, operations & security
     desc:
-      en: Responsive, animated interfaces with React, TypeScript, Tailwind and Framer Motion.
-      de: Responsive, animierte Interfaces mit React, TypeScript, Tailwind und Framer Motion.
-    tag: REACT · TS · TAILWIND
+      de: Ein Linux-Server in der Oracle Cloud mit Docker. Kein Container veröffentlicht einen Port, SSH nur über Tailscale. Nächtliche, mit age verschlüsselte Offsite-Backups melden sich erst nach erfolgreichem Upload bei Healthchecks.io; der Neuaufbau wurde in rund 38 Minuten geprobt. Der externe Port-Scan steht noch aus.
+      en: A Linux server on Oracle Cloud with Docker. No container publishes a port, SSH only over Tailscale. Nightly offsite backups, encrypted with age, ping Healthchecks.io only after a successful upload; a full rebuild was rehearsed in about 38 minutes. The external port scan is still pending.
+    icon: server
+    tools:
+      - Linux
+      - Docker
+      - Tailscale
+      - PostgreSQL
+      - Oracle Cloud
+      - Healthchecks.io
+    project: null
+    linkUrl: https://github.com/mahmoudsamae/n8n-automation-platform
+    linkTitle: n8n-automation-platform (GitHub)
+  - 'n': '05'
+    title:
+      de: KI im Arbeitsalltag
+      en: AI in daily work
+    desc:
+      de: KI-Werkzeuge für Entwicklung, Dokumentation und Problemlösung, Codex täglich. Pläne und Code der KI prüfe und korrigiere ich selbst; im Rechnungsprojekt sind Beispiele dafür dokumentiert.
+      en: AI tools for development, documentation and problem solving, Codex every day. I review and correct the AI's plans and code myself; the invoice project documents examples of this.
+    icon: ai
+    tools:
+      - Codex
+      - Claude
+      - ChatGPT
+      - Cursor
+    project: null
+    linkUrl: https://github.com/mahmoudsamae/n8n-automation-platform#how-it-was-built
+    linkTitle: How it was built (GitHub)
+otherTools:
+  - GSAP
+  - React Three Fiber
+  - Material UI
+  - Framer Motion
+  - Express
+  - Clerk
+  - GitHub
+  - Vercel
+  - Notion
+  - Microsoft Office

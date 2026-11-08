@@ -19,46 +19,39 @@ export type WorkItem = {
   slug: string;
   category: ProjectCategory;
   featured: boolean;
+  /** Unpublished CMS draft; only present when drafts are shown (local builds). */
+  draft: boolean;
   order: number;
   badge: string;
   studio: string;
   title: Localized;
   tag: string;
+  /** Up to 3 unique technologies for the card (tech stack, else the short tech line). */
+  tags: string[];
   desc: Localized;
   imageUrl: string | null;
 };
 
+export type ServiceIcon = "web" | "automation" | "tools" | "server" | "ai";
+
 export type ServiceItem = {
   n: string;
   title: Localized;
-  tag: string;
   desc: Localized;
+  icon: ServiceIcon;
+  tools: string[];
+  /** A project page (slug and title) or an external link; null when neither is set. */
+  link: { kind: "project"; slug: string; title: Localized } | { kind: "url"; href: string; title: string } | null;
 };
 
+export type TimelineIcon = "code" | "work" | "study" | "language";
+
 export type TimelineItem = {
-  co: string;
+  co: Localized;
+  icon: TimelineIcon;
   role: Localized;
   date: Localized;
   note: Localized;
-};
-
-export type AboutContent = {
-  /** false: approved in the CMS; true: unapproved draft, only rendered in local builds */
-  draft: boolean;
-  title: Localized;
-  text: Localized;
-  degreeLine: Localized;
-  cvUrl: string | null;
-  cvLabel: Localized;
-};
-
-export type WorkingStyleContent = {
-  draft: boolean;
-  title: Localized;
-  intro: Localized;
-  items: { title: Localized; text: Localized }[];
-  exampleLabel: Localized;
-  exampleUrl: string | null;
 };
 
 export type SocialItem = { name: string; letter: string; href: string };
@@ -73,6 +66,7 @@ export type PortfolioContentConfig = {
   str: Record<PortfolioLang, PortfolioStrings>;
   works: WorkItem[];
   services: ServiceItem[];
+  otherTools: string[];
   experiences: TimelineItem[];
   otherExperience: TimelineItem[];
   education: TimelineItem[];
@@ -80,9 +74,9 @@ export type PortfolioContentConfig = {
   socials: SocialItem[];
   heroSkills: string[];
   heroStats: HeroStat[];
-  /** null when not approved and drafts are hidden (production) */
-  about: AboutContent | null;
-  workingStyle: WorkingStyleContent | null;
+  /** null until a PDF is uploaded in the CMS: the download button stays hidden */
+  cvUrl: string | null;
+  cvLabel: Localized;
 };
 
 export const projectsIndexHref = (lang: PortfolioLang) => (lang === "de" ? "/de/projekte" : "/en/projects");

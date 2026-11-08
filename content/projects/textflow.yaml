@@ -30,8 +30,8 @@ techStack:
   - Next.js
   - Stripe
   - Clerk
-liveUrl: null
-demoStatus: none
+liveUrl: https://textflow-teal.vercel.app
+demoStatus: live
 githubUrl: null
 docsUrl: null
 screenshots: []

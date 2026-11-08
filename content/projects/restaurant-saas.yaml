@@ -1,0 +1,36 @@
+slug: restaurant-saas
+title:
+  de: Restaurant-SaaS
+  en: Restaurant SaaS
+draft: true
+category: web
+featured: false
+order: 22
+badge: ○ TODO
+studio: ''
+tag: ''
+summary:
+  de: 'Bestell- und Betriebsmanagement: Bestellungen, Küche, Lieferfahrer, Gutscheine und Admin-Dashboard.'
+  en: 'Ordering and operations management: orders, kitchen, delivery drivers, vouchers and an admin dashboard.'
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack: []
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

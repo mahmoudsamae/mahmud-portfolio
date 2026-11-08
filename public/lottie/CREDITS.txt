@@ -1,0 +1,37 @@
+Animated icons in this folder (*.lottie)
+=======================================
+
+Source: LottieFiles (lottiefiles.com), free animations under the Lottie Simple License (FL 9.13.21).
+Each license was checked on the animation page on 2026-11-08 ("Free to use under the Lottie Simple License").
+Modified: recolored to the site palette and repackaged by scripts/build-lottie.mjs; the originals are in lottie/source/.
+The modified files are distributed under the same license, reproduced below.
+
+projects.lottie    "Layers Icon Animation" by Diego Franzese
+                   https://lottiefiles.com/free-animation/layers-icon-animation-0elry2KOUT
+whatido.lottie     "blue light bulb" by Yakout
+                   https://lottiefiles.com/free-animation/blue-light-bulb-5VOSLlTIwM
+web.lottie         "rb-media development icon" by rb-media
+                   https://lottiefiles.com/free-animation/rb-media-development-icon-LI2TZEyoc1
+automation.lottie  "Sync icon 24" by Jihye Amelie Lee
+                   https://lottiefiles.com/free-animation/sync-icon-24-Q4pvl7FNOz
+tools.lottie       "Clipboard Copy Paste" by Hamidreza
+                   https://lottiefiles.com/free-animation/clipboard-copy-paste-m0Ciw1ZQ2y
+server.lottie      "shield account" by Iva Sutlovic
+                   https://lottiefiles.com/free-animation/shield-account-quQAN0aR2t
+ai.lottie          "Spark Icon" by Long
+                   https://lottiefiles.com/free-animation/spark-icon-MklRT0fhfk
+experience.lottie  "breifcase" by Christophe Kolbeck
+                   https://lottiefiles.com/free-animation/breifcase-PCk1eRXV7w
+contact.lottie     "message icon" by Atish Kumar
+                   https://lottiefiles.com/free-animation/message-icon-ErsD2XbCEj
+
+dotlottie-player.wasm: renderer from @lottiefiles/dotlottie-web (MIT), copied at build time by scripts/copy-lottie-wasm.mjs.
+
+Lottie Simple License (FL 9.13.21)
+Copyright © 2021 Design Barn Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of the public animation files available for download at the LottieFiles site (“Files”) to download, reproduce, modify, publish, distribute, publicly display, and publicly digitally perform such Files, including for commercial purposes, provided that any display, publication, performance, or distribution of Files must contain (and be subject to) the same terms and conditions of this license. Modifications to Files are deemed derivative works and must also be expressly distributed under the same terms and conditions of this license. You may not purport to impose any additional or different terms or conditions on, or apply any technical measures that restrict exercise of, the rights granted under this license. This license does not include the right to collect or compile Files from LottieFiles to replicate or develop a similar or competing service.
+
+Use of Files without attributing the creator(s) of the Files is permitted under this license, though attribution is strongly encouraged. If attributions are included, such attributions should be visible to the end user.
+
+FILES ARE PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE LAW, IN NO EVENT WILL THE CREATOR(S) OF FILES OR DESIGN BARN, INC. BE LIABLE ON ANY LEGAL THEORY FOR ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES ARISING OUT OF THIS LICENSE OR THE USE OF SUCH FILES.

@@ -1,8 +1,11 @@
 experiences:
-  - co: AZUR Camping Regensburg
+  - co:
+      de: AZUR Camping Regensburg
+      en: AZUR Camping Regensburg
+    icon: code
     role:
-      de: Interne Software (eigeninitiativ)
-      en: Internal software (self-initiated)
+      de: Digitalisierung interner Abläufe durch eigene Softwarelösungen
+      en: Digitising internal processes with self-built software
     date:
       de: 03.2026 – heute
       en: 03.2026 – present
@@ -10,73 +13,104 @@ experiences:
       de: Gäste-Frühstücksbestellung und Smart-Feedback-Plattform, beide täglich an der Rezeption im Einsatz.
       en: Guest breakfast ordering and the Smart Feedback platform, both in daily use at the reception.
 otherExperience:
-  - co: AZUR Camping Regensburg
+  - co:
+      de: AZUR Camping Regensburg
+      en: AZUR Camping Regensburg
+    icon: work
     role:
-      en: Receptionist / Front Office
       de: Rezeptionist / Front Office
+      en: Receptionist / Front Office
     date:
-      en: 03.2026 – Present
-      de: 03.2026 – Heute
+      de: 03.2026 – heute
+      en: 03.2026 – present
     note:
-      de: ''
-      en: ''
-  - co: McDonald's
+      de: Empfang und Betreuung internationaler Gäste; Check-in, Check-out, Reservierungen, Zahlungsabwicklung und Tagesabschluss.
+      en: Welcoming and looking after international guests; check-in, check-out, reservations, payments and end-of-day closing.
+  - co:
+      de: McDonald's
+      en: McDonald's
+    icon: work
     role:
-      en: Allround-Mitarbeiter (Drive-In)
-      de: Allround-Mitarbeiter (Drive-In)
+      de: Mitarbeiter im Drive-In / Allround-Mitarbeiter
+      en: Drive-in / all-round crew member
     date:
-      en: 08.2025 – 03.2026
-      de: 08.2025 – 03.2026
+      de: 07.2025 – 03.2026
+      en: 07.2025 – 03.2026
     note:
-      de: ''
-      en: ''
-  - co: Golden Beach Hotel
+      de: Kundenservice im Drive-In und an der Kasse; Bestellungen im Team unter Zeitdruck.
+      en: Customer service at the drive-in and the till; handling orders as a team under time pressure.
+  - co:
+      de: Golden Beach Hotel, Lattakia
+      en: Golden Beach Hotel, Lattakia
+    icon: work
     role:
-      en: Front Office Assistant
       de: Front Office Assistant (Teilzeit)
+      en: Front Office Assistant (part-time)
     date:
-      en: 01.2023 – 09.2024
       de: 01.2023 – 09.2024
+      en: 01.2023 – 09.2024
     note:
-      de: ''
-      en: ''
+      de: Check-in und Check-out sowie Betreuung internationaler Gäste; Verwaltung von Reservierungen und Gästedaten.
+      en: Check-in and check-out, looking after international guests; managing reservations and guest data.
 education:
-  - co: Tishreen University
+  - co:
+      de: Tishreen-Universität
+      en: Tishreen University
+    icon: study
     role:
-      en: B.Sc. Computer Engineering — top of cohort
-      de: B.Sc. Computertechnik — Jahrgangsbester
+      de: Bachelor in Angewandter Ingenieurwissenschaft (Computertechnik) · Jahrgangsbester
+      en: Bachelor of Applied Engineering (Computer Engineering) · top of cohort
     date:
-      en: 2020 – 2024
-      de: 2020 – 2024
+      de: 10.2020 – 10.2024
+      en: 10.2020 – 10.2024
     note:
       de: 'Abschluss anerkannt: anabin H+ (entspricht Bachelor)'
       en: 'Degree recognised: anabin H+ (equivalent to a Bachelor''s)'
-  - co: VHS Regensburg
+  - co:
+      de: Universität Regensburg
+      en: University of Regensburg
+    icon: language
     role:
-      en: German course · B2
-      de: Deutschkurs · B2
+      de: Deutschprüfung C1 (in Vorbereitung)
+      en: German C1 exam (in preparation)
     date:
-      en: 2025 – Present
-      de: 2025 – Heute
+      de: 07.2026 – heute
+      en: 07.2026 – present
     note:
       de: ''
       en: ''
-  - co: IFP Regensburg
+  - co:
+      de: VHS Regensburg
+      en: VHS Regensburg
+    icon: language
     role:
-      en: German course · B1
-      de: Deutschkurs · B1
+      de: Deutschsprachkurs B2
+      en: German course · B2
     date:
-      en: '2025'
-      de: '2025'
+      de: 11.2025 – 07.2026
+      en: 11.2025 – 07.2026
+    note:
+      de: ''
+      en: ''
+  - co:
+      de: IFP Regensburg
+      en: IFP Regensburg
+    icon: language
+    role:
+      de: Deutschsprachkurs B1
+      en: German course · B1
+    date:
+      de: 04.2025 – 10.2025
+      en: 04.2025 – 10.2025
     note:
       de: ''
       en: ''
 languages:
-  - en: Arabic · Native
-    de: Arabisch · Muttersprache
-  - en: Kurdish · Native
-    de: Kurdisch · Muttersprache
-  - en: German · B2
-    de: Deutsch · B2
-  - en: English · B2
-    de: Englisch · B2
+  - de: Arabisch · Muttersprache
+    en: Arabic · Native
+  - de: Kurdisch · Muttersprache
+    en: Kurdish · Native
+  - de: Deutsch · B2 (C1-Prüfung in Vorbereitung)
+    en: German · B2 (C1 exam in preparation)
+  - de: Englisch · B2 (ETC British Institute, 2023)
+    en: English · B2 (ETC British Institute, 2023)

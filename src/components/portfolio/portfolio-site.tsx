@@ -1,3 +1,4 @@
+import { BackToTop } from "./back-to-top";
 import { BackgroundOrbs } from "./background-orbs";
 import { LangProvider } from "./lang-context";
 import { MotionProvider } from "./motion-provider";
@@ -37,11 +38,12 @@ export function SiteShell({
           />
           <BackgroundOrbs />
 
-          <main className="pf-card-in relative z-[1] mx-auto my-[26px] max-w-[1440px] overflow-hidden rounded-[30px] border border-white/[0.06] bg-[rgba(19,19,24,.92)] shadow-[0_50px_140px_rgba(0,0,0,.6)]">
+          <main className="pf-card-in pf-shell relative z-[1] mx-auto my-[26px] max-w-[1440px] overflow-hidden rounded-[30px] border border-white/[0.06] bg-[rgba(19,19,24,.92)] shadow-[0_50px_140px_rgba(0,0,0,.6)]">
             <Nav />
             {children}
             <SiteFooter />
           </main>
+          <BackToTop />
         </div>
       </MotionProvider>
     </LangProvider>

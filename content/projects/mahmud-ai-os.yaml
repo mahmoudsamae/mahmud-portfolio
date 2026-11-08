@@ -1,0 +1,36 @@
+slug: mahmud-ai-os
+title:
+  de: Mahmud AI OS
+  en: Mahmud AI OS
+draft: true
+category: automation
+featured: false
+order: 24
+badge: ◐ IN ENTWICKLUNG
+studio: ''
+tag: ''
+summary:
+  de: 'KI-gestütztes Multi-Agent-System, in Entwicklung: spezialisierte KI-Agenten bearbeiten Software-, Content- und Automatisierungsprojekte, mit Regeln für sicheren Werkzeugeinsatz und menschlichen Freigaben bei sensiblen Entscheidungen.'
+  en: 'AI multi-agent system, in development: specialised AI agents work on software, content and automation projects, with rules for safe tool use and human approval for sensitive decisions.'
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack: []
+liveUrl: null
+demoStatus: comingSoon
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

@@ -18,6 +18,12 @@ export const LABEL_KEYS = [
   ["navExperience", "Navigation: Erfahrung"],
   ["navContact", "Navigation: Kontakt"],
   ["letsTalk", "Button oben rechts"],
+  ["menuOpen", "Mobil: Menü öffnen (Screenreader)"],
+  ["menuClose", "Mobil: Menü schließen (Screenreader)"],
+  ["backToTop", "Button „Nach oben“"],
+  ["viewDetails", "Projektkarte: Hinweis „Details ansehen“"],
+  ["otherTools", "Was ich mache: „Weitere Tools“"],
+  ["serviceProject", "Was ich mache: Link zum Projekt"],
   ["letsCollab", "Hero-Button"],
   ["workTitle", "Überschrift Projekte"],
   ["allProjects", "Button „Alle Projekte“"],
@@ -77,12 +83,22 @@ export const CATEGORIES = [
 const timelineItem = (label: string) =>
   fields.array(
     fields.object({
-      co: fields.text({ label: "Firma / Schule" }),
+      co: i18n("Firma / Schule"),
+      icon: fields.select({
+        label: "Icon in der Zeitleiste",
+        options: [
+          { label: "Code (IT)", value: "code" },
+          { label: "Arbeit", value: "work" },
+          { label: "Studium", value: "study" },
+          { label: "Sprache", value: "language" },
+        ],
+        defaultValue: "work",
+      }),
       role: i18n("Rolle"),
       date: i18n("Zeitraum"),
       note: i18n("Zusatz (optional)", { multiline: true }),
     }),
-    { label, itemLabel: (props) => props.fields.co.value || "Eintrag" },
+    { label, itemLabel: (props) => props.fields.co.fields.de.value || "Eintrag" },
   );
 
 export default config({
@@ -92,7 +108,7 @@ export default config({
   ui: {
     brand: { name: "Portfolio CMS" },
     navigation: {
-      Startseite: ["site", "about", "workingStyle", "services", "resume"],
+      Startseite: ["site", "services", "resume"],
       Projekte: ["projects"],
       Texte: ["labels"],
       Rechtliches: ["impressum", "datenschutz"],
@@ -135,6 +151,14 @@ export default config({
         availability: i18n("Verfügbarkeit", {
           description: "Erscheint im Badge oben, im Badge bei Kontakt und am Anfang des Kontakt-Texts.",
         }),
+        cv: fields.file({
+          label: "Lebenslauf (PDF)",
+          directory: "public/cv",
+          publicPath: "/cv/",
+          description:
+            "Web-Version ohne Wohnadresse und Geburtsdatum. Ohne Datei wird kein Download-Button angezeigt. Die Datei wird nicht von Suchmaschinen indexiert.",
+        }),
+        cvLabel: i18n("Button-Text Lebenslauf"),
         contactEmail: fields.text({ label: "E-Mail" }),
         contactPhone: fields.text({ label: "Telefon" }),
         contactLocation: i18n("Ort"),
@@ -158,10 +182,37 @@ export default config({
             n: fields.text({ label: "Nummer" }),
             title: i18n("Titel"),
             desc: i18n("Beschreibung", { multiline: true }),
-            tag: fields.text({ label: "Stichworte" }),
+            icon: fields.select({
+              label: "Animiertes Icon",
+              options: [
+                { label: "Web (Browser mit Code)", value: "web" },
+                { label: "Automatisierung (Sync-Pfeile)", value: "automation" },
+                { label: "Interne Tools (Klemmbrett)", value: "tools" },
+                { label: "Server & Sicherheit (Schild)", value: "server" },
+                { label: "KI (Funken)", value: "ai" },
+              ],
+              defaultValue: "web",
+            }),
+            tools: fields.array(fields.text({ label: "Tool" }), {
+              label: "Tools",
+              description: "Bekannte Namen bekommen ein Logo (z. B. Next.js, React, Node.js, n8n, Make, Zapier, Docker, Linux).",
+              itemLabel: (props) => props.value,
+            }),
+            project: fields.relationship({
+              label: "Projekt (Link)",
+              collection: "projects",
+              description: "Verlinkt die Projektseite. Leer lassen, wenn unten ein externer Link steht.",
+            }),
+            linkUrl: fields.url({ label: "Externer Link (statt Projekt)" }),
+            linkTitle: fields.text({ label: "Name des externen Links", description: "z. B. der Name des GitHub-Repositorys" }),
           }),
           { label: "Leistungen", itemLabel: (props) => props.fields.title.fields.de.value || "Leistung" },
         ),
+        otherTools: fields.array(fields.text({ label: "Tool" }), {
+          label: "Weitere Tools",
+          description: "Tools, die zu keiner Leistung passen; erscheinen als Zeile unter den Leistungen.",
+          itemLabel: (props) => props.value,
+        }),
       },
     }),
     resume: singleton({
@@ -176,49 +227,6 @@ export default config({
           label: "Sprachen",
           itemLabel: (props) => props.fields.de.value || "Sprache",
         }),
-      },
-    }),
-    about: singleton({
-      label: "Über mich",
-      path: "content/about",
-      format: { data: "yaml" },
-      schema: {
-        approved: fields.checkbox({
-          label: "Freigegeben",
-          description: "Erst wenn angehakt, erscheint der Abschnitt auf der Live-Seite. Lokal wird ein Entwurf mit Hinweis angezeigt.",
-        }),
-        title: i18n("Überschrift"),
-        text: i18n("Text", { multiline: true, description: "Leerzeile = neuer Absatz." }),
-        degreeLine: i18n("Abschluss-Zeile"),
-        cv: fields.file({
-          label: "Lebenslauf (PDF)",
-          directory: "public/cv",
-          publicPath: "/cv/",
-          description: "Ohne Datei wird kein Download-Button angezeigt. Die Datei wird nicht von Suchmaschinen indexiert.",
-        }),
-        cvLabel: i18n("Button-Text Lebenslauf"),
-      },
-    }),
-    workingStyle: singleton({
-      label: "So arbeite ich",
-      path: "content/working-style",
-      format: { data: "yaml" },
-      schema: {
-        approved: fields.checkbox({
-          label: "Freigegeben",
-          description: "Erst wenn angehakt, erscheint der Abschnitt auf der Live-Seite. Lokal wird ein Entwurf mit Hinweis angezeigt.",
-        }),
-        title: i18n("Überschrift"),
-        intro: i18n("Einleitung", { multiline: true }),
-        items: fields.array(
-          fields.object({
-            title: i18n("Punkt"),
-            text: i18n("Text", { multiline: true }),
-          }),
-          { label: "Punkte", itemLabel: (props) => props.fields.title.fields.de.value || "Punkt" },
-        ),
-        exampleLabel: i18n("Beispiel-Link: Text"),
-        exampleUrl: fields.url({ label: "Beispiel-Link: URL" }),
       },
     }),
     impressum: singleton({
@@ -254,12 +262,18 @@ export default config({
       path: "content/projects/*",
       slugField: "slug",
       format: { data: "yaml" },
-      columns: ["category", "featured", "order"],
+      columns: ["draft", "category", "featured", "order"],
       schema: {
         slug: fields.slug({
           name: { label: "Interner Name", description: "Bestimmt die URL: /de/projekte/<name>" },
         }),
         title: i18n("Titel"),
+        draft: fields.checkbox({
+          label: "Entwurf (nicht veröffentlicht)",
+          description:
+            "Entwürfe erscheinen nur lokal (mit Hinweis), nie auf der Live-Seite, in der Sitemap oder als Projektseite. Haken entfernen, wenn alle TODO-Felder ausgefüllt sind.",
+          defaultValue: false,
+        }),
         category: fields.select({
           label: "Kategorie",
           options: CATEGORIES.map((c) => ({ ...c })),

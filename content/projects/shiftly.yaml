@@ -1,0 +1,36 @@
+slug: shiftly
+title:
+  de: Shiftly
+  en: Shiftly
+draft: true
+category: web
+featured: false
+order: 23
+badge: ○ TODO
+studio: ''
+tag: ''
+summary:
+  de: 'Workforce-Management: Schichtplanung, Zeiterfassung und Mitarbeiterverwaltung.'
+  en: 'Workforce management: shift planning, time tracking and staff management.'
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack: []
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

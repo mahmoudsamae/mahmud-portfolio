@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/content";
 import { isFilled, projectsIndexHref, type PortfolioLang, type PortfolioStrings } from "@/lib/portfolio-content";
+import { DraftBadge } from "./draft-badge";
 import { Reveal } from "./reveal";
 import { youtubeId } from "@/lib/youtube";
 import { YouTubeEmbed } from "./youtube-embed";
@@ -11,8 +12,8 @@ const isSvg = (src: string) => src.toLowerCase().endsWith(".svg");
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="m-0 mb-5 font-space text-[clamp(26px,3.2vw,38px)] font-bold tracking-[-0.02em]">
-      <span className="text-[#b57cff]">/</span>
+    <h2 className="m-0 mb-5 flex items-center gap-3 font-space text-[clamp(26px,3.2vw,38px)] font-bold tracking-[-0.02em]">
+      <span aria-hidden className="h-[0.8em] w-[5px] flex-none rounded-full bg-gradient-to-b from-[#b57cff] to-[#4fd6c6]" />
       {children}
     </h2>
   );
@@ -91,6 +92,11 @@ export function ProjectDetail({
         </Link>
 
         <header className="mb-16">
+          {project.draft && (
+            <div>
+              <DraftBadge label={t.draftBadge} />
+            </div>
+          )}
           <span className="mb-5 inline-flex items-center gap-[9px] rounded-full border border-white/10 bg-white/[0.03] px-4 py-[7px] text-[12.5px] uppercase tracking-[0.08em] text-[#c9c7d2]">
             <span className="h-2 w-2 rounded-full bg-[#4fd6c6]" />
             {categoryLabel}

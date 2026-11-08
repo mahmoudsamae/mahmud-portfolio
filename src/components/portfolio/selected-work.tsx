@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { ArrowLink } from "./arrow-link";
 import { GhostText } from "./ghost-text";
+import { LottieIcon } from "./lottie-icon";
 import { Reveal } from "./reveal";
+import { TalkButton } from "./talk-button";
 import { WorkCard } from "./work-card";
 import { cn } from "@/lib/utils";
 import { projectsIndexHref, type ProjectCategory } from "@/lib/portfolio-content";
@@ -34,14 +36,14 @@ export function SelectedWork({ mode = "featured" }: { mode?: "featured" | "all" 
     <section
       id="work"
       data-screen-label="Selected Work"
-      className="relative overflow-hidden border-t border-white/5 px-6 py-[88px] sm:px-[44px]"
+      className="relative overflow-hidden px-6 py-[88px] sm:px-[44px]"
     >
       <GhostText className="left-1/2 top-6 text-[clamp(90px,17vw,270px)]">PROJECTS</GhostText>
 
       <div className="relative z-[1]">
         <Reveal className="mb-[34px] text-center">
           <Heading className="m-0 font-space text-[clamp(34px,5vw,64px)] font-bold tracking-[-0.03em]">
-            <span className="text-[#4fd6c6]">/</span>
+            <LottieIcon name="projects" className="mr-[0.22em] h-[0.95em] w-[0.95em] align-[-0.12em]" />
             {mode === "featured" ? t.workTitle : t.projectsPageTitle}
           </Heading>
         </Reveal>
@@ -67,18 +69,12 @@ export function SelectedWork({ mode = "featured" }: { mode?: "featured" | "all" 
               ))}
             </Reveal>
           ) : (
-            <Reveal>
-              <ArrowLink
-                href={projectsIndexHref(lang)}
-                className="bg-[#f2f0f7] px-[18px] py-[10px] text-sm text-[#0c0c11]"
-                iconSize={13}
-              >
-                {t.allProjects}
-              </ArrowLink>
+            <Reveal from="left">
+              <TalkButton href={projectsIndexHref(lang)}>{t.allProjects}</TalkButton>
             </Reveal>
           )}
           {githubHref && githubHref !== "#" && (
-            <Reveal>
+            <Reveal from="right">
               <ArrowLink
                 href={githubHref}
                 className="border border-white/[0.12] bg-white/[0.06] px-[18px] py-[10px] text-sm text-[#f2f0f7]"
