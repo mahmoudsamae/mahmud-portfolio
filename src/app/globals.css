@@ -327,6 +327,16 @@
   padding-top: 26px;
 }
 
+.pf-fld > input:hover,
+.pf-fld > textarea:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.pf-fld:hover > label {
+  color: #b9b7c4;
+}
+
 .pf-fld > input:focus,
 .pf-fld > textarea:focus {
   border-color: rgba(181, 124, 255, 0.7);
@@ -362,6 +372,30 @@
 
 .pf-sendbtn:active {
   transform: translateY(0);
+}
+
+.pf-sendbtn:focus-visible {
+  outline: 2px solid #f2f0f7;
+  outline-offset: 3px;
+}
+
+.pf-contact-link {
+  transition: color 0.3s ease;
+}
+
+.pf-contact-link > span:first-child {
+  transition:
+    transform 0.35s cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 0.35s ease;
+}
+
+.pf-contact-link:hover {
+  color: #fff;
+}
+
+.pf-contact-link:hover > span:first-child {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(181, 124, 255, 0.55);
 }
 
 body {

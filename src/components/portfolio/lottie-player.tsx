@@ -9,10 +9,13 @@ setWasmUrl("/lottie/dotlottie-player.wasm");
 
 export default function LottiePlayer({
   src,
+  loop,
   playing,
   stillAt,
 }: {
   src: string;
+  /** false: play once each time the icon comes into view and hold the last frame. */
+  loop: boolean;
   playing: boolean;
   /** Show this frame (0–1 of the animation) instead of playing; used for reduced motion. */
   stillAt: number | null;
@@ -36,7 +39,7 @@ export default function LottiePlayer({
   return (
     <DotLottieReact
       src={src}
-      loop
+      loop={loop}
       autoplay={false}
       dotLottieRefCallback={setPlayer}
       renderConfig={{ freezeOnOffscreen: true }}

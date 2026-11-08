@@ -1,3 +1,4 @@
+import { BackToTop } from "./back-to-top";
 import { BackgroundOrbs } from "./background-orbs";
 import { LangProvider } from "./lang-context";
 import { MotionProvider } from "./motion-provider";
@@ -42,6 +43,7 @@ export function SiteShell({
             {children}
             <SiteFooter />
           </main>
+          <BackToTop />
         </div>
       </MotionProvider>
     </LangProvider>

@@ -19,11 +19,11 @@ export function Contact() {
     >
       <div className="pf-contact-grid mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div>
-          <Reveal className="mb-6 inline-flex">
+          <Reveal from="left" className="mb-6 inline-flex">
             <AvailabilityBadge label={t.avail} />
           </Reveal>
 
-          <Reveal>
+          <Reveal from="left">
             <h2 className="m-0 mb-[18px] font-space text-[clamp(34px,4.6vw,62px)] font-bold leading-[1.02] tracking-[-0.03em]">
               {t.contactTitle}
             </h2>
@@ -36,7 +36,7 @@ export function Contact() {
           <Reveal className="mb-[26px] flex flex-col gap-[11px]">
             <a
               href={`mailto:${contactEmail}`}
-              className="inline-flex items-center gap-[11px] text-[15px] text-[#d6d4de] no-underline"
+              className="pf-contact-link inline-flex items-center gap-[11px] text-[15px] text-[#d6d4de] no-underline"
             >
               <span
                 className="inline-flex h-[34px] w-[34px] flex-none items-center justify-center rounded-[10px] border"
