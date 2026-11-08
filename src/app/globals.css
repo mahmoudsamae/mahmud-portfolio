@@ -247,22 +247,29 @@
 }
 
 @media (max-width: 820px) {
-  /* Endless decorative motion repaints large areas every frame; on phones the orbs and
-     the card borders keep their colors but stand still (Lighthouse mobile TBT). */
+  /* Endless decorative motion repaints large areas every frame; on phones the card borders
+     keep their colors but stand still, and the pulse dots stop (Lighthouse mobile TBT). */
   .pf-float-a,
   .pf-float-b,
-  .pf-flow-border {
+  .pf-flow-border,
+  .pf-pulse-dot {
     animation: none;
+  }
+  /* Intro animations: on phones the page and the hero appear at once. Scaling the whole
+     card and fading the hero photo cost frames and push back Largest Contentful Paint. */
+  .pf-card-in,
+  .pf-line-in,
+  .pf-rise-in,
+  .pf-photo-in,
+  .pf-pop-in {
+    animation: none;
+  }
+  /* The page card's 140px shadow is a large blur area to paint on every scroll frame. */
+  .pf-shell {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   }
   .pf-hero-name {
     font-size: 14vw !important;
-  }
-  .pf-hide-sm {
-    display: none !important;
-  }
-  .pf-exp-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
   }
   .pf-contact-grid {
     grid-template-columns: 1fr !important;
