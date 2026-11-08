@@ -13,7 +13,7 @@ export function FloatingSkillBadge({
 }) {
   return (
     <div
-      className={cn("pf-pop-in pf-hide-sm absolute z-[3] hidden min-[1100px]:block", className)}
+      className={cn("pf-pop-in absolute z-[3] hidden min-[1280px]:block", className)}
       style={{ animationDelay: `${delay}s` }}
     >
       <div

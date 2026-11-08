@@ -35,7 +35,7 @@ export function SelectedWork({ mode = "featured" }: { mode?: "featured" | "all" 
     <section
       id="work"
       data-screen-label="Selected Work"
-      className="relative overflow-hidden border-t border-white/5 px-6 py-[88px] sm:px-[44px]"
+      className="relative overflow-hidden px-6 py-[88px] sm:px-[44px]"
     >
       <GhostText className="left-1/2 top-6 text-[clamp(90px,17vw,270px)]">PROJECTS</GhostText>
 
