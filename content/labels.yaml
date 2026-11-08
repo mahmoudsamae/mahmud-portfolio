@@ -13,6 +13,24 @@ navContact:
 letsTalk:
   de: Kontakt
   en: Let's Talk
+menuOpen:
+  de: Menü öffnen
+  en: Open menu
+menuClose:
+  de: Menü schließen
+  en: Close menu
+backToTop:
+  de: Nach oben
+  en: Back to top
+viewDetails:
+  de: Details ansehen
+  en: View details
+otherTools:
+  de: Weitere Tools
+  en: Other tools
+serviceProject:
+  de: Zum Projekt
+  en: See the project
 letsCollab:
   de: Kontakt aufnehmen
   en: Get in touch
