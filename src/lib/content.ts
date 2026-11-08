@@ -43,6 +43,9 @@ export type Project = Awaited<ReturnType<typeof getProjects>>[number];
 
 export const getProject = cache(async (slug: string) => (await getProjects()).find((p) => p.slug === slug) ?? null);
 
+const cardTags = (techStack: readonly string[], tag: string) =>
+  [...new Set((techStack.length ? techStack : tag.split("·")).map((s) => s.trim()).filter(Boolean))].slice(0, 3);
+
 const timeline = (e: { co: Localized; role: Localized; date: Localized; note: Localized }) => ({
   co: e.co,
   role: e.role,
@@ -95,6 +98,7 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     studio: p.studio,
     title: p.title,
     tag: p.tag,
+    tags: cardTags(p.techStack, p.tag),
     desc: p.summary,
     imageUrl: p.coverImage,
   }));

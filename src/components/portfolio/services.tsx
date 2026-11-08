@@ -21,8 +21,8 @@ export function Services() {
 
       <div className="relative z-[1] mx-auto max-w-[1000px]">
         <Reveal className="mb-10">
-          <h2 className="m-0 inline-flex items-center gap-[0.22em] font-space text-[clamp(34px,5vw,64px)] font-bold tracking-[-0.03em]">
-            <LottieIcon name="whatido" className="h-[0.95em] w-[0.95em]" />
+          <h2 className="m-0 font-space text-[clamp(34px,5vw,64px)] font-bold tracking-[-0.03em]">
+            <LottieIcon name="whatido" className="mr-[0.22em] h-[0.95em] w-[0.95em] align-[-0.12em]" />
             {t.serviceTitle}
           </h2>
         </Reveal>

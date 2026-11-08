@@ -24,6 +24,8 @@ export type WorkItem = {
   studio: string;
   title: Localized;
   tag: string;
+  /** Up to 3 unique technologies for the card (tech stack, else the short tech line). */
+  tags: string[];
   desc: Localized;
   imageUrl: string | null;
 };

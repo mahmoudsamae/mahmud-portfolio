@@ -171,9 +171,11 @@
     box-shadow 0.5s ease;
 }
 
-.pf-flow-border:hover {
+.pf-flow-border:hover,
+.pf-flow-border:focus-visible {
   animation-duration: 2.8s;
   transform: translateY(-6px);
+  box-shadow: 0 30px 70px -18px rgba(181, 124, 255, 0.55);
 }
 
 @keyframes pf-badge-float-a {
