@@ -2,6 +2,7 @@ experiences:
   - co:
       de: AZUR Camping Regensburg
       en: AZUR Camping Regensburg
+    icon: code
     role:
       de: Digitalisierung interner Abläufe durch eigene Softwarelösungen
       en: Digitising internal processes with self-built software
@@ -15,6 +16,7 @@ otherExperience:
   - co:
       de: AZUR Camping Regensburg
       en: AZUR Camping Regensburg
+    icon: work
     role:
       de: Rezeptionist / Front Office
       en: Receptionist / Front Office
@@ -27,6 +29,7 @@ otherExperience:
   - co:
       de: McDonald's
       en: McDonald's
+    icon: work
     role:
       de: Mitarbeiter im Drive-In / Allround-Mitarbeiter
       en: Drive-in / all-round crew member
@@ -39,6 +42,7 @@ otherExperience:
   - co:
       de: Golden Beach Hotel, Lattakia
       en: Golden Beach Hotel, Lattakia
+    icon: work
     role:
       de: Front Office Assistant (Teilzeit)
       en: Front Office Assistant (part-time)
@@ -52,6 +56,7 @@ education:
   - co:
       de: Tishreen-Universität
       en: Tishreen University
+    icon: study
     role:
       de: Bachelor in Angewandter Ingenieurwissenschaft (Computertechnik) · Jahrgangsbester
       en: Bachelor of Applied Engineering (Computer Engineering) · top of cohort
@@ -64,6 +69,7 @@ education:
   - co:
       de: Universität Regensburg
       en: University of Regensburg
+    icon: language
     role:
       de: Deutschprüfung C1 (in Vorbereitung)
       en: German C1 exam (in preparation)
@@ -76,6 +82,7 @@ education:
   - co:
       de: VHS Regensburg
       en: VHS Regensburg
+    icon: language
     role:
       de: Deutschsprachkurs B2
       en: German course · B2
@@ -88,6 +95,7 @@ education:
   - co:
       de: IFP Regensburg
       en: IFP Regensburg
+    icon: language
     role:
       de: Deutschsprachkurs B1
       en: German course · B1

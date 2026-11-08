@@ -42,8 +42,11 @@ export type ServiceItem = {
   link: { kind: "project"; slug: string; title: Localized } | { kind: "url"; href: string; title: string } | null;
 };
 
+export type TimelineIcon = "code" | "work" | "study" | "language";
+
 export type TimelineItem = {
   co: Localized;
+  icon: TimelineIcon;
   role: Localized;
   date: Localized;
   note: Localized;

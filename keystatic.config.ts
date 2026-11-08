@@ -84,6 +84,16 @@ const timelineItem = (label: string) =>
   fields.array(
     fields.object({
       co: i18n("Firma / Schule"),
+      icon: fields.select({
+        label: "Icon in der Zeitleiste",
+        options: [
+          { label: "Code (IT)", value: "code" },
+          { label: "Arbeit", value: "work" },
+          { label: "Studium", value: "study" },
+          { label: "Sprache", value: "language" },
+        ],
+        defaultValue: "work",
+      }),
       role: i18n("Rolle"),
       date: i18n("Zeitraum"),
       note: i18n("Zusatz (optional)", { multiline: true }),

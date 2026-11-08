@@ -10,6 +10,7 @@ import type {
   PortfolioStrings,
   ProjectCategory,
   ServiceIcon,
+  TimelineIcon,
   WorkItem,
 } from "./portfolio-content";
 
@@ -47,8 +48,9 @@ export const getProject = cache(async (slug: string) => (await getProjects()).fi
 const cardTags = (techStack: readonly string[], tag: string) =>
   [...new Set((techStack.length ? techStack : tag.split("·")).map((s) => s.trim()).filter(Boolean))].slice(0, 3);
 
-const timeline = (e: { co: Localized; role: Localized; date: Localized; note: Localized }) => ({
+const timeline = (e: { co: Localized; icon: string; role: Localized; date: Localized; note: Localized }) => ({
   co: e.co,
+  icon: e.icon as TimelineIcon,
   role: e.role,
   date: e.date,
   note: e.note,

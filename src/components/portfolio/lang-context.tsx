@@ -8,6 +8,7 @@ import type {
   PortfolioStrings,
   ServiceIcon,
   SocialItem,
+  TimelineIcon,
   TimelineItem,
   WorkItem,
 } from "@/lib/portfolio-content";
@@ -15,7 +16,7 @@ import type {
 type Localize<T, K extends keyof T> = Omit<T, K> & Record<K, string>;
 
 export type LocalizedWork = Localize<WorkItem, "title" | "desc">;
-export type LocalizedTimeline = { co: string; role: string; date: string; note: string };
+export type LocalizedTimeline = { co: string; icon: TimelineIcon; role: string; date: string; note: string };
 export type LocalizedService = {
   n: string;
   title: string;
@@ -66,6 +67,7 @@ export function LangProvider({
   const value = useMemo<LangContextValue>(() => {
     const localizeTimeline = (e: TimelineItem) => ({
       co: e.co[lang],
+      icon: e.icon,
       role: e.role[lang],
       date: e.date[lang],
       note: e.note[lang],
