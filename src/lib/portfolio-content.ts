@@ -30,11 +30,16 @@ export type WorkItem = {
   imageUrl: string | null;
 };
 
+export type ServiceIcon = "web" | "automation" | "tools" | "server" | "ai";
+
 export type ServiceItem = {
   n: string;
   title: Localized;
-  tag: string;
   desc: Localized;
+  icon: ServiceIcon;
+  tools: string[];
+  /** A project page (slug and title) or an external link; null when neither is set. */
+  link: { kind: "project"; slug: string; title: Localized } | { kind: "url"; href: string; title: string } | null;
 };
 
 export type TimelineItem = {
@@ -56,6 +61,7 @@ export type PortfolioContentConfig = {
   str: Record<PortfolioLang, PortfolioStrings>;
   works: WorkItem[];
   services: ServiceItem[];
+  otherTools: string[];
   experiences: TimelineItem[];
   otherExperience: TimelineItem[];
   education: TimelineItem[];

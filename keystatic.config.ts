@@ -172,10 +172,37 @@ export default config({
             n: fields.text({ label: "Nummer" }),
             title: i18n("Titel"),
             desc: i18n("Beschreibung", { multiline: true }),
-            tag: fields.text({ label: "Stichworte" }),
+            icon: fields.select({
+              label: "Animiertes Icon",
+              options: [
+                { label: "Web (Browser mit Code)", value: "web" },
+                { label: "Automatisierung (Sync-Pfeile)", value: "automation" },
+                { label: "Interne Tools (Klemmbrett)", value: "tools" },
+                { label: "Server & Sicherheit (Schild)", value: "server" },
+                { label: "KI (Funken)", value: "ai" },
+              ],
+              defaultValue: "web",
+            }),
+            tools: fields.array(fields.text({ label: "Tool" }), {
+              label: "Tools",
+              description: "Bekannte Namen bekommen ein Logo (z. B. Next.js, React, Node.js, n8n, Make, Zapier, Docker, Linux).",
+              itemLabel: (props) => props.value,
+            }),
+            project: fields.relationship({
+              label: "Projekt (Link)",
+              collection: "projects",
+              description: "Verlinkt die Projektseite. Leer lassen, wenn unten ein externer Link steht.",
+            }),
+            linkUrl: fields.url({ label: "Externer Link (statt Projekt)" }),
+            linkTitle: fields.text({ label: "Name des externen Links", description: "z. B. der Name des GitHub-Repositorys" }),
           }),
           { label: "Leistungen", itemLabel: (props) => props.fields.title.fields.de.value || "Leistung" },
         ),
+        otherTools: fields.array(fields.text({ label: "Tool" }), {
+          label: "Weitere Tools",
+          description: "Tools, die zu keiner Leistung passen; erscheinen als Zeile unter den Leistungen.",
+          itemLabel: (props) => props.value,
+        }),
       },
     }),
     resume: singleton({

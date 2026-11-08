@@ -9,6 +9,7 @@ import type {
   PortfolioLang,
   PortfolioStrings,
   ProjectCategory,
+  ServiceIcon,
   WorkItem,
 } from "./portfolio-content";
 
@@ -110,7 +111,22 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     contactLocation: site.contactLocation as Localized,
     str: { de: strings("de"), en: strings("en") },
     works,
-    services: services.items.map((s) => ({ ...s, title: s.title as Localized, desc: s.desc as Localized })),
+    services: services.items.map((s) => {
+      const project = s.project ? projects.find((p) => p.slug === s.project) : undefined;
+      return {
+        n: s.n,
+        title: s.title as Localized,
+        desc: s.desc as Localized,
+        icon: s.icon as ServiceIcon,
+        tools: [...s.tools],
+        link: project
+          ? { kind: "project" as const, slug: project.slug, title: project.title as Localized }
+          : s.linkUrl
+            ? { kind: "url" as const, href: s.linkUrl, title: s.linkTitle }
+            : null,
+      };
+    }),
+    otherTools: [...services.otherTools],
     experiences: resume.experiences.map(timeline),
     otherExperience: resume.otherExperience.map(timeline),
     education: resume.education.map(timeline),
