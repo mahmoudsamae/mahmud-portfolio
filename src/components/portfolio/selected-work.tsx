@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowLink } from "./arrow-link";
 import { GhostText } from "./ghost-text";
+import { LottieIcon } from "./lottie-icon";
 import { Reveal } from "./reveal";
 import { WorkCard } from "./work-card";
 import { cn } from "@/lib/utils";
@@ -40,8 +41,8 @@ export function SelectedWork({ mode = "featured" }: { mode?: "featured" | "all" 
 
       <div className="relative z-[1]">
         <Reveal className="mb-[34px] text-center">
-          <Heading className="m-0 font-space text-[clamp(34px,5vw,64px)] font-bold tracking-[-0.03em]">
-            <span className="text-[#4fd6c6]">/</span>
+          <Heading className="m-0 inline-flex items-center gap-[0.22em] font-space text-[clamp(34px,5vw,64px)] font-bold tracking-[-0.03em]">
+            <LottieIcon name="projects" className="h-[0.95em] w-[0.95em]" />
             {mode === "featured" ? t.workTitle : t.projectsPageTitle}
           </Heading>
         </Reveal>

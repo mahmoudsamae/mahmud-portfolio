@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# self-hosted lottie renderer, copied from node_modules before dev/build
+/public/lottie/dotlottie-player.wasm

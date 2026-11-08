@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { CircleAlert, Mail } from "lucide-react";
+import { LottieIcon } from "./lottie-icon";
 import { Reveal } from "./reveal";
 import { usePortfolioLang } from "./lang-context";
 
@@ -90,6 +91,7 @@ export function ContactForm() {
 
       {status === "idle" && (
         <form onSubmit={submit} className="relative z-[1] flex flex-col gap-[14px]">
+          <LottieIcon name="contact" className="h-14 w-14" />
           <h3 className="m-0 mb-1 font-space text-[22px] font-semibold tracking-[-0.01em]">{t.formTitle}</h3>
           <Field name="name" autoComplete="name" label={t.fName} value={form.name} onChange={updateField("name")} />
           <Field type="email" name="email" autoComplete="email" label={t.fEmail} value={form.email} onChange={updateField("email")} />

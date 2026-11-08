@@ -11,8 +11,8 @@ const isSvg = (src: string) => src.toLowerCase().endsWith(".svg");
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="m-0 mb-5 font-space text-[clamp(26px,3.2vw,38px)] font-bold tracking-[-0.02em]">
-      <span className="text-[#b57cff]">/</span>
+    <h2 className="m-0 mb-5 flex items-center gap-3 font-space text-[clamp(26px,3.2vw,38px)] font-bold tracking-[-0.02em]">
+      <span aria-hidden className="h-[0.8em] w-[5px] flex-none rounded-full bg-gradient-to-b from-[#b57cff] to-[#4fd6c6]" />
       {children}
     </h2>
   );

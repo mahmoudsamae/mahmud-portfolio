@@ -1,6 +1,7 @@
 "use client";
 
 import { GhostText } from "./ghost-text";
+import { LottieIcon } from "./lottie-icon";
 import { Reveal } from "./reveal";
 import { usePortfolioLang } from "./lang-context";
 
@@ -17,8 +18,8 @@ export function Experience() {
 
         <div className="relative z-[1]">
           <div className="mb-[30px] flex flex-wrap items-baseline justify-between gap-5">
-            <h2 className="m-0 font-space text-[clamp(32px,4.6vw,58px)] font-bold tracking-[-0.03em]">
-              <span className="text-[#4fd6c6]">/</span>
+            <h2 className="m-0 inline-flex items-center gap-[0.22em] font-space text-[clamp(32px,4.6vw,58px)] font-bold tracking-[-0.03em]">
+              <LottieIcon name="experience" className="h-[0.95em] w-[0.95em]" />
               {t.expTitle}
             </h2>
             <span className="text-[15px] text-[#9a98a6]">{t.expYears}</span>
