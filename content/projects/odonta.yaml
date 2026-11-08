@@ -1,0 +1,36 @@
+slug: odonta
+title:
+  de: ODONTA
+  en: ODONTA
+draft: true
+category: web
+featured: false
+order: 21
+badge: ○ TODO
+studio: ''
+tag: ''
+summary:
+  de: 'Digitale Lernplattform für Zahnmedizin: 3D-Anatomie, Prüfungen, klinische Fälle und rollenbasierter Zugang.'
+  en: 'Digital learning platform for dentistry: 3D anatomy, exams, clinical cases and role-based access.'
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack: []
+liveUrl: null
+demoStatus: none
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

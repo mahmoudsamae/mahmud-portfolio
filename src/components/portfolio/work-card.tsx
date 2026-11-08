@@ -56,6 +56,11 @@ export function WorkCard({
                 <StatusDot symbol={symbol} />
                 {badgeLabel}
               </span>
+              {work.draft && (
+                <span className="absolute right-3 top-3 z-[2] rounded-full border border-[#ffb86b]/50 bg-[rgba(30,20,10,.85)] px-3 py-[6px] text-[11px] font-semibold tracking-[0.06em] text-[#ffcf99]">
+                  DRAFT
+                </span>
+              )}
               <span className="relative block h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.06]">
                 {work.imageUrl ? (
                   <Image

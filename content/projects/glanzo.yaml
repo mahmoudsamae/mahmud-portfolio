@@ -1,0 +1,36 @@
+slug: glanzo
+title:
+  de: Glanzo
+  en: Glanzo
+draft: true
+category: web
+featured: false
+order: 20
+badge: ◐ LIVE DEMO
+studio: ''
+tag: ''
+summary:
+  de: 'Buchungs-SaaS für Barbershops und Beauty-Studios: Online-Buchungen, Kalender, Mitarbeiterrollen und Kundenportale.'
+  en: 'Booking SaaS for barbershops and beauty studios: online bookings, calendar, staff roles and customer portals.'
+coverImage: null
+problem:
+  de: TODO
+  en: TODO
+solution:
+  de: TODO
+  en: TODO
+note:
+  de: ''
+  en: ''
+architectureImage: null
+architectureAlt:
+  de: ''
+  en: ''
+results: []
+techStack: []
+liveUrl: https://glanzo-63fx.vercel.app
+demoStatus: live
+githubUrl: null
+docsUrl: null
+screenshots: []
+youtubeUrl: null

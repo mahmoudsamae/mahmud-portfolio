@@ -19,6 +19,8 @@ export type WorkItem = {
   slug: string;
   category: ProjectCategory;
   featured: boolean;
+  /** Unpublished CMS draft; only present when drafts are shown (local builds). */
+  draft: boolean;
   order: number;
   badge: string;
   studio: string;

@@ -31,6 +31,7 @@ async function required<T>(name: string, read: () => Promise<T | null>): Promise
 export const getProjects = cache(async () => {
   const entries = await reader.collections.projects.all();
   return entries
+    .filter(({ entry }) => !entry.draft || showDrafts)
     .map(({ slug, entry }) => ({
       ...entry,
       slug,
@@ -96,6 +97,7 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     slug: p.slug,
     category: p.category,
     featured: p.featured,
+    draft: p.draft,
     order: p.order,
     badge: p.badge,
     studio: p.studio,

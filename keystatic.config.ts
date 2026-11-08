@@ -262,12 +262,18 @@ export default config({
       path: "content/projects/*",
       slugField: "slug",
       format: { data: "yaml" },
-      columns: ["category", "featured", "order"],
+      columns: ["draft", "category", "featured", "order"],
       schema: {
         slug: fields.slug({
           name: { label: "Interner Name", description: "Bestimmt die URL: /de/projekte/<name>" },
         }),
         title: i18n("Titel"),
+        draft: fields.checkbox({
+          label: "Entwurf (nicht veröffentlicht)",
+          description:
+            "Entwürfe erscheinen nur lokal (mit Hinweis), nie auf der Live-Seite, in der Sitemap oder als Projektseite. Haken entfernen, wenn alle TODO-Felder ausgefüllt sind.",
+          defaultValue: false,
+        }),
         category: fields.select({
           label: "Kategorie",
           options: CATEGORIES.map((c) => ({ ...c })),
