@@ -8,12 +8,14 @@ import { pageMetadata } from "@/lib/seo";
 // German only: /en/datenschutz is a 404, and English pages link here directly.
 export async function generateMetadata(): Promise<Metadata> {
   const { title } = await getLegalPage("datenschutz");
-  return pageMetadata({
+  // Linked in the footer but kept out of search results.
+  const meta = pageMetadata({
     lang: "de",
     paths: { de: "/de/datenschutz" },
     title: `${title} | Mahmud Al Hussen`,
     description: `${title} der Website von Mahmud Al Hussen.`,
   });
+  return { ...meta, robots: { index: false, follow: true } };
 }
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {

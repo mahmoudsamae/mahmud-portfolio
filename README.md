@@ -19,7 +19,7 @@ Every save in the CMS writes files in the working tree; commit and push them lik
 | What | CMS section | Files |
 |---|---|---|
 | Title, hero text, stats, availability, contact, links | Hero, Verfügbarkeit & Kontakt | `content/site.yaml` |
-| "Was ich mache" | Leistungen | `content/services.yaml` |
+| "Kompetenzen" | Kompetenzen | `content/services.yaml` |
 | Experience, education, languages | Erfahrung, Ausbildung & Sprachen | `content/resume.yaml` |
 | Projects (one file each) | Projekte | `content/projects/*.yaml` |
 | Buttons, headings, form texts | Oberflächen-Texte | `content/labels.yaml` |

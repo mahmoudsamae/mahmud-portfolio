@@ -20,7 +20,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pair("/de", "/en"),
     ...pair(projectsIndexHref("de"), projectsIndexHref("en")),
     ...projects.flatMap((p) => pair(projectHref("de", p.slug), projectHref("en", p.slug))),
-    { url: url("/de/impressum") },
-    { url: url("/de/datenschutz") },
   ];
 }

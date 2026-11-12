@@ -14,7 +14,7 @@ function i18n(label: string, opts: { multiline?: boolean; description?: string }
 // Interface texts (buttons, headings, form). Key, admin label, multiline.
 export const LABEL_KEYS = [
   ["navWork", "Navigation: Projekte"],
-  ["navService", "Navigation: Leistungen"],
+  ["navService", "Navigation: Kompetenzen"],
   ["navExperience", "Navigation: Erfahrung"],
   ["navContact", "Navigation: Kontakt"],
   ["letsTalk", "Button oben rechts"],
@@ -22,8 +22,8 @@ export const LABEL_KEYS = [
   ["menuClose", "Mobil: Menü schließen (Screenreader)"],
   ["backToTop", "Button „Nach oben“"],
   ["viewDetails", "Projektkarte: Hinweis „Details ansehen“"],
-  ["otherTools", "Was ich mache: „Weitere Tools“"],
-  ["serviceProject", "Was ich mache: Link zum Projekt"],
+  ["otherTools", "Kompetenzen: „Weitere Tools“"],
+  ["serviceProject", "Kompetenzen: Link zum Projekt"],
   ["letsCollab", "Hero-Button"],
   ["workTitle", "Überschrift Projekte"],
   ["allProjects", "Button „Alle Projekte“"],
@@ -33,7 +33,7 @@ export const LABEL_KEYS = [
   ["catInUse", "Kategorie: Im Einsatz"],
   ["catWeb", "Kategorie: Web"],
   ["viewAll", "Button GitHub"],
-  ["serviceTitle", "Überschrift Leistungen"],
+  ["serviceTitle", "Überschrift Kompetenzen"],
   ["expTitle", "Überschrift Erfahrung"],
   ["otherExpTitle", "Überschrift „Weitere Berufserfahrung“"],
   ["expYears", "Ort unter Erfahrung"],
@@ -135,11 +135,11 @@ export default config({
           fields.object({
             kind: fields.select({
               label: "Wert",
-              description: "„Zählen“ rechnet den Wert aus den Projekten/Leistungen aus.",
+              description: "„Zählen“ rechnet den Wert aus den Projekten/Kompetenzen aus.",
               options: [
                 { label: "Fester Text", value: "text" },
                 { label: "Zählen: Projekte „Im Einsatz“", value: "projectsInUse" },
-                { label: "Zählen: Leistungen", value: "services" },
+                { label: "Zählen: Kompetenzen", value: "services" },
               ],
               defaultValue: "text",
             }),
@@ -173,7 +173,7 @@ export default config({
       },
     }),
     services: singleton({
-      label: "Leistungen („Was ich mache“)",
+      label: "Kompetenzen",
       path: "content/services",
       format: { data: "yaml" },
       schema: {
@@ -206,11 +206,11 @@ export default config({
             linkUrl: fields.url({ label: "Externer Link (statt Projekt)" }),
             linkTitle: fields.text({ label: "Name des externen Links", description: "z. B. der Name des GitHub-Repositorys" }),
           }),
-          { label: "Leistungen", itemLabel: (props) => props.fields.title.fields.de.value || "Leistung" },
+          { label: "Kompetenzen", itemLabel: (props) => props.fields.title.fields.de.value || "Kompetenz" },
         ),
         otherTools: fields.array(fields.text({ label: "Tool" }), {
           label: "Weitere Tools",
-          description: "Tools, die zu keiner Leistung passen; erscheinen als Zeile unter den Leistungen.",
+          description: "Tools, die zu keiner Kompetenz passen; erscheinen als Zeile unter den Kompetenzen.",
           itemLabel: (props) => props.value,
         }),
       },
