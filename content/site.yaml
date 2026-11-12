@@ -19,8 +19,8 @@ heroStats:
   - kind: services
     value: ''
     label:
-      de: Kernleistungen
-      en: Core Services
+      de: Kernkompetenzen
+      en: Core skills
   - kind: text
     value: Bachelor
     label:

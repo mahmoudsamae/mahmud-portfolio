@@ -2,8 +2,8 @@ navWork:
   de: Projekte
   en: Projects
 navService:
-  de: Leistungen
-  en: Services
+  de: Kompetenzen
+  en: Skills
 navExperience:
   de: Erfahrung
   en: Experience
@@ -12,7 +12,7 @@ navContact:
   en: Contact
 letsTalk:
   de: Kontakt
-  en: Let's Talk
+  en: Contact
 menuOpen:
   de: Menü öffnen
   en: Open menu
@@ -59,8 +59,8 @@ viewAll:
   de: Auf GitHub ansehen
   en: View on GitHub
 serviceTitle:
-  de: WAS ICH MACHE
-  en: WHAT I DO
+  de: KOMPETENZEN
+  en: SKILLS
 expTitle:
   de: ERFAHRUNG
   en: EXPERIENCE
@@ -77,8 +77,8 @@ langTitle:
   de: Sprachen
   en: Languages
 contactTitle:
-  de: LASS UNS ETWAS BAUEN.
-  en: LET'S BUILD SOMETHING.
+  de: LASS UNS SPRECHEN.
+  en: LET'S TALK.
 contactNote:
   de: Melde dich gern — ich antworte meist innerhalb eines Tages.
   en: Feel free to reach out — I usually reply within a day.
@@ -95,8 +95,8 @@ fSubject:
   de: Betreff
   en: Subject
 fMsg:
-  de: Erzähl mir von deinem Projekt…
-  en: Tell me about your project…
+  de: Deine Nachricht…
+  en: Your message…
 fSend:
   de: Nachricht senden
   en: Send message

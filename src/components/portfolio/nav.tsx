@@ -20,7 +20,7 @@ export function Nav() {
   const home = `/${lang}`;
   const links = [
     { href: `${home}#work`, label: t.navWork, count: works.length },
-    { href: `${home}#service`, label: t.navService, count: services.length },
+    { href: `${home}#skills`, label: t.navService, count: services.length },
     { href: `${home}#experience`, label: t.navExperience },
     { href: `${home}#contact`, label: t.navContact },
   ];

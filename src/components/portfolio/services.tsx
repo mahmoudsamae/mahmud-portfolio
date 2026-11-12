@@ -14,8 +14,8 @@ export function Services() {
 
   return (
     <section
-      id="service"
-      data-screen-label="Service"
+      id="skills"
+      data-screen-label="Skills"
       className="relative overflow-hidden border-t border-white/5 px-6 py-[88px] sm:px-[44px]"
     >
       <GhostText className="left-1/2 top-8 text-[clamp(90px,18vw,290px)]">SKILLS</GhostText>
