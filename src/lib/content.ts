@@ -106,6 +106,7 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     tags: cardTags(p.techStack, p.tag),
     desc: p.summary,
     imageUrl: p.coverImage,
+    liveUrl: p.demoStatus === "live" ? p.liveUrl : null,
   }));
 
   return {

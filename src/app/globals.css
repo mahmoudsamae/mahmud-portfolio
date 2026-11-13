@@ -172,7 +172,7 @@
 }
 
 .pf-flow-border:hover,
-.pf-flow-border:focus-visible {
+.pf-flow-border:has([data-card-link]:focus-visible) {
   animation-duration: 2.8s;
   transform: translateY(-6px);
   box-shadow: 0 30px 70px -18px rgba(181, 124, 255, 0.55);
