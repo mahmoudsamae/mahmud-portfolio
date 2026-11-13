@@ -30,6 +30,8 @@ export type WorkItem = {
   tags: string[];
   desc: Localized;
   imageUrl: string | null;
+  /** Live demo link for the card; only set while the demo is online. */
+  liveUrl: string | null;
 };
 
 export type ServiceIcon = "web" | "automation" | "tools" | "server" | "ai";

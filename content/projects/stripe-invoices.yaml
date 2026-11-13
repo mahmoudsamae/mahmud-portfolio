@@ -12,10 +12,13 @@ summary:
   de: >-
     Sieben n8n-Workflows machen aus Stripe-Zahlungen deutsche Rechnungen (E-Mail
     mit PDF) und eine Telegram-Nachricht. Keine doppelte Rechnung, kein
-    verlorenes Ereignis.
+    verlorenes Ereignis. Live testen: mit der Testkarte 4242 4242 4242 4242
+    bezahlen und die eigene Rechnung in Sekunden sehen.
   en: >-
     Seven n8n workflows turn Stripe payments into German invoices (email with
-    PDF) and a Telegram message. No double invoice, no lost event.
+    PDF) and a Telegram message. No double invoice, no lost event. Try it live:
+    pay with the test card 4242 4242 4242 4242 and see your own invoice within
+    seconds.
 coverImage: /images/projects/stripe-invoices/coverImage.png
 problem:
   de: >-
@@ -125,7 +128,8 @@ techStack:
   - Healthchecks.io
   - Stripe
   - PowerShell
-demoStatus: comingSoon
+liveUrl: https://invoice.mahmud-alhussen.de
+demoStatus: live
 githubUrl: https://github.com/mahmoudsamae/n8n-automation-platform
 docsUrl: >-
   https://github.com/mahmoudsamae/n8n-automation-platform/blob/main/docs/runbook.md
