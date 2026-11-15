@@ -99,7 +99,7 @@ export const getPortfolioContent = cache(async (): Promise<PortfolioContentConfi
     featured: p.featured,
     draft: p.draft,
     order: p.order,
-    badge: p.badge,
+    badge: { de: p.badge, en: p.badgeEn || p.badge },
     studio: p.studio,
     title: p.title,
     tag: p.tag,

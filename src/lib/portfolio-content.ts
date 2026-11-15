@@ -12,7 +12,7 @@ export type PortfolioStrings = Record<LabelKey, string> & {
   heroDesc: string;
 };
 
-export type ProjectCategory = "automation" | "im-einsatz" | "web";
+export type ProjectCategory = "automation" | "im-einsatz" | "web" | "design";
 export type DemoStatus = "live" | "offline" | "comingSoon" | "none";
 
 export type WorkItem = {
@@ -22,7 +22,7 @@ export type WorkItem = {
   /** Unpublished CMS draft; only present when drafts are shown (local builds). */
   draft: boolean;
   order: number;
-  badge: string;
+  badge: Localized;
   studio: string;
   title: Localized;
   tag: string;

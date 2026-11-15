@@ -75,6 +75,7 @@ export function ProjectDetail({
     automation: t.catAutomation,
     "im-einsatz": t.catInUse,
     web: t.catWeb,
+    design: t.catDesign,
   }[project.category];
   const results = project.results.filter((r) => isFilled(r.value));
   const screenshots = project.screenshots.filter((s) => s.image);
@@ -132,6 +133,13 @@ export function ProjectDetail({
             <Reveal>
               <SectionTitle>{t.projectSolution}</SectionTitle>
               <Paragraphs text={project.solution[lang]} />
+            </Reveal>
+          )}
+
+          {isFilled(project.process[lang]) && (
+            <Reveal>
+              <SectionTitle>{t.projectProcess}</SectionTitle>
+              <Paragraphs text={project.process[lang]} />
             </Reveal>
           )}
 
@@ -214,7 +222,7 @@ export function ProjectDetail({
                       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d12]">
                         <Image
                           src={s.image!}
-                          alt={s.caption[lang]}
+                          alt={isFilled(s.alt[lang]) ? s.alt[lang] : s.caption[lang]}
                           fill
                           sizes="(max-width: 768px) 100vw, 540px"
                           className="object-contain p-3"
