@@ -167,7 +167,7 @@ results:
     source: null
 techStack:
   - Claude (design & build)
-  - ChatGPT (image generation)
+  - ChatGPT
   - HTML/CSS/JavaScript
   - Print PDF (85 × 55 mm + 3 mm bleed)
 liveUrl: /demos/ratis/index.html
