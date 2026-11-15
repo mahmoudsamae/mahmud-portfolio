@@ -43,6 +43,7 @@ export function projectRoutes(routeLang: PortfolioLang) {
         paths: bothLangs((lang) => projectHref(lang, slug)),
         title: `${project.title[routeLang]} | Mahmud Al Hussen`,
         description: project.summary[routeLang],
+        image: project.ogImage,
       });
     },
 

@@ -55,6 +55,9 @@ catInUse:
 catWeb:
   de: Web
   en: Web
+catDesign:
+  de: Design & Branding
+  en: Design & Branding
 viewAll:
   de: Auf GitHub ansehen
   en: View on GitHub
@@ -118,6 +121,9 @@ projectProblem:
 projectSolution:
   de: Lösung
   en: Solution
+projectProcess:
+  de: Prozess
+  en: Process
 projectArchitecture:
   de: Architektur
   en: Architecture

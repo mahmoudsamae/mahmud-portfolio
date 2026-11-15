@@ -15,7 +15,7 @@ import type {
 
 type Localize<T, K extends keyof T> = Omit<T, K> & Record<K, string>;
 
-export type LocalizedWork = Localize<WorkItem, "title" | "desc">;
+export type LocalizedWork = Localize<WorkItem, "title" | "desc" | "badge">;
 export type LocalizedTimeline = { co: string; icon: TimelineIcon; role: string; date: string; note: string };
 export type LocalizedService = {
   n: string;
@@ -80,7 +80,7 @@ export function LangProvider({
       contactEmail: content.contactEmail,
       contactPhone: content.contactPhone,
       contactLocation: content.contactLocation[lang],
-      works: content.works.map((w) => ({ ...w, title: w.title[lang], desc: w.desc[lang] })),
+      works: content.works.map((w) => ({ ...w, title: w.title[lang], desc: w.desc[lang], badge: w.badge[lang] })),
       services: content.services.map((s) => ({
         ...s,
         title: s.title[lang],

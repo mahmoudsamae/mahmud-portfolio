@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ratis Camping – Willkommen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600&family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--glow:#FF8A2A;--ink:#FFF4E2;--bg:#07090C;--card:#0F151B;--line:#1E2832;--muted:#B9AE9C}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif}
+.wrap{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.hero{position:relative;height:340px;background:url(hero.jpg) 70% center/cover;display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,12,.15) 0%,rgba(7,9,12,.35) 55%,var(--bg) 100%)}
+.hero>*{position:relative;z-index:1}
+.lang{position:absolute;top:16px;right:16px;z-index:2;display:flex;gap:4px;background:rgba(7,9,12,.55);border:1px solid rgba(255,244,226,.18);border-radius:999px;padding:3px}
+.lang button{font:600 12px 'Sora',sans-serif;letter-spacing:1px;color:var(--ink);background:none;border:0;border-radius:999px;padding:8px 11px;cursor:pointer;min-height:36px}
+.lang button[aria-pressed="true"]{background:var(--glow);color:#0B1620}
+.brand{display:flex;align-items:flex-end;gap:12px}
+.word{display:flex;align-items:flex-end;font:300 40px/1 'Sora',sans-serif;letter-spacing:9px;text-shadow:0 0 6px var(--glow),0 0 18px rgba(255,138,42,.65),0 0 36px rgba(255,138,42,.4)}
+.glowsvg{filter:drop-shadow(0 0 4px var(--glow)) drop-shadow(0 0 12px rgba(255,138,42,.6));overflow:visible}
+.sub{font:600 11px 'Sora',sans-serif;letter-spacing:4px;margin-top:12px}
+.tag{font:300 15px 'Sora',sans-serif;color:var(--muted);margin:6px 0 0}
+main{padding:8px 20px 24px;display:flex;flex-direction:column;gap:12px}
+.btn{display:flex;align-items:center;gap:16px;width:100%;min-height:68px;padding:14px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font:600 17px 'Manrope',sans-serif;text-align:left;cursor:pointer}
+.btn:hover,.btn:focus-visible{border-color:var(--glow);box-shadow:0 0 0 1px var(--glow),0 0 18px rgba(255,138,42,.35);outline:none}
+.btn.primary{background:var(--glow);color:#0B1620;border-color:var(--glow);box-shadow:0 0 24px rgba(255,138,42,.45)}
+.btn small{display:block;font:500 13px 'Manrope',sans-serif;color:var(--muted);margin-top:2px}
+.btn.primary small{color:#3A2410}
+.ic{width:26px;height:26px;flex-shrink:0}
+.note{display:none;margin:-4px 2px 4px;padding:12px 14px;border-radius:12px;background:#1A140D;border:1px solid #5A3A1A;font-size:14px;line-height:1.5;color:#F3DFC2}
+.note.show{display:block}
+.info{margin-top:8px;padding:18px;border-radius:16px;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px;font-size:15px}
+.info div{display:flex;gap:12px;align-items:center}
+.info svg{width:18px;height:18px;flex-shrink:0}
+footer{margin-top:auto;padding:20px;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--muted)}
+footer a{color:var(--glow)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="lang" role="group" aria-label="Sprache">
+<button type="button" data-l="de" aria-pressed="true">DE</button>
+<button type="button" data-l="en" aria-pressed="false">EN</button>
+<button type="button" data-l="nl" aria-pressed="false">NL</button>
+</div>
+<div class="brand">
+<svg class="glowsvg" width="50" height="50" viewBox="0 0 100 100" role="img" aria-label="Ratis Camping Logo"><path d="M8 76 L27 40 L46 76" fill="none" stroke="#FFF4E2" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M52 76 V54 Q52 46 60 46 H84 Q92 46 92 54 V76" fill="none" stroke="#FFF4E2" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="62" y="54" width="12" height="9" rx="2" fill="#FF8A2A"/><path d="M4 84 H96" stroke="#FF8A2A" stroke-width="5" stroke-linecap="round"/><circle cx="64" cy="80" r="4.5" fill="#FFF4E2"/><circle cx="82" cy="80" r="4.5" fill="#FFF4E2"/></svg>
+<h1 class="word" style="margin:0" aria-label="Ratis">R<svg class="glowsvg" width="28" height="29" viewBox="0 0 24 24" aria-hidden="true" style="margin:0 9px 8px 0"><path d="M1 24 L12 0.8 L23 24" fill="none" stroke="#FFF4E2" stroke-width="1.9"/><path d="M8.6 24 L12 16.5 L15.4 24 Z" fill="#FF8A2A"/></svg>TIS</h1>
+</div>
+<div class="sub">CAMPING · REGENSBURG</div>
+<p class="tag" data-t="tag">Schlafen an der Donau.</p>
+</header>
+
+<main>
+<button type="button" class="btn primary" data-demo="review">
+<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>
+<span><span data-t="review">Bewerte uns</span><small data-t="reviewSub">Dein Feedback hilft anderen Gästen</small></span>
+</button>
+<div class="note" id="note-review" data-t="demo">Demo: Im echten Projekt öffnet dieser Button direkt die Google-Bewertung des Campingplatzes.</div>
+
+<button type="button" class="btn" data-demo="book">
+<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#FF8A2A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+<span><span data-t="book">Platz anfragen</span><small data-t="bookSub">Zelt, Wohnmobil oder Wohnwagen</small></span>
+</button>
+<div class="note" id="note-book" data-t="demo">Demo: Im echten Projekt öffnet sich hier das Buchungsformular oder eine E-Mail an die Rezeption.</div>
+
+<button type="button" class="btn" data-demo="route">
+<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#FF8A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+<span><span data-t="route">Route planen</span><small data-t="routeSub">Mit Google Maps zu uns</small></span>
+</button>
+<div class="note" id="note-route" data-t="demo">Demo: Im echten Projekt öffnet sich hier Google Maps direkt mit dem Standort des Campingplatzes.</div>
+
+
+<button type="button" class="btn" data-demo="mail">
+<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#FF8A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+<span><span data-t="mail">E-Mail schreiben</span><small data-t="mailSub">reservierung@ratis-camping.de</small></span>
+</button>
+<div class="note" id="note-mail" data-t="demo">Demo: Im echten Projekt öffnet sich hier dein E-Mail-Programm mit einer Nachricht an die Rezeption.</div>
+
+<section class="info" aria-label="Kontakt">
+<div><svg viewBox="0 0 24 24" fill="none" stroke="#FF8A2A" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Musterweg 1, 93047 Regensburg</span></div>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="#FF8A2A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-t="hours">Rezeption täglich 08:00 – 18:00 · ganzjährig</span></div>
+</section>
+</main>
+
+<footer>
+<span data-t="concept">Konzeptprojekt – kein echter Betrieb. Bildmaterial KI-generiert.</span><br>
+<span data-t="design">Design &amp; Umsetzung:</span> <a href="https://mahmud-alhussen.de">Mahmud Al Hussen</a>
+</footer>
+</div>
+<script>
+const T={
+de:{tag:"Schlafen an der Donau.",review:"Bewerte uns",reviewSub:"Dein Feedback hilft anderen Gästen",book:"Platz anfragen",bookSub:"Zelt, Wohnmobil oder Wohnwagen",route:"Route planen",routeSub:"Mit Google Maps zu uns",mail:"E-Mail schreiben",mailSub:"reservierung@ratis-camping.de",hours:"Rezeption täglich 08:00 – 18:00 · ganzjährig",concept:"Konzeptprojekt – kein echter Betrieb. Bildmaterial KI-generiert.",design:"Design & Umsetzung:",demo:{review:"Demo: Im echten Projekt öffnet dieser Button direkt die Google-Bewertung des Campingplatzes.",book:"Demo: Im echten Projekt öffnet sich hier das Buchungsformular oder eine E-Mail an die Rezeption.",route:"Demo: Im echten Projekt öffnet sich hier Google Maps direkt mit dem Standort des Campingplatzes.",mail:"Demo: Im echten Projekt öffnet sich hier dein E-Mail-Programm mit einer Nachricht an die Rezeption."}},
+en:{tag:"Sleep by the Danube.",review:"Rate your stay",reviewSub:"Your feedback helps other guests",book:"Request a pitch",bookSub:"Tent, motorhome or caravan",route:"Get directions",routeSub:"Find us with Google Maps",mail:"Send us an email",mailSub:"reservierung@ratis-camping.de",hours:"Reception daily 08:00 – 18:00 · open all year",concept:"Concept project – not a real business. Images AI-generated.",design:"Design & build:",demo:{review:"Demo: in the real project this button opens the campsite's Google review page.",book:"Demo: in the real project this opens the booking form or an email to reception.",route:"Demo: in the real project this opens Google Maps with the campsite's exact location.",mail:"Demo: in the real project this opens your email app with a message to reception."}},
+nl:{tag:"Slapen aan de Donau.",review:"Beoordeel ons",reviewSub:"Jouw mening helpt andere gasten",book:"Plaats aanvragen",bookSub:"Tent, camper of caravan",route:"Route plannen",routeSub:"Met Google Maps naar ons toe",mail:"Stuur ons een e-mail",mailSub:"reservierung@ratis-camping.de",hours:"Receptie dagelijks 08:00 – 18:00 · het hele jaar open",concept:"Conceptproject – geen echt bedrijf. Beelden AI-gegenereerd.",design:"Ontwerp & bouw:",demo:{review:"Demo: in het echte project opent deze knop de Google-beoordeling van de camping.",book:"Demo: in het echte project opent hier het boekingsformulier of een e-mail aan de receptie.",route:"Demo: in het echte project opent hier Google Maps met de exacte locatie van de camping.",mail:"Demo: in het echte project opent hier je e-mailprogramma met een bericht aan de receptie."}}
+};
+let cur="de";
+function apply(l){
+  cur=T[l]?l:"de";
+  document.documentElement.lang=cur;
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    const k=el.dataset.t;
+    if(k==="demo"){const id=el.id.replace("note-","");el.textContent=T[cur].demo[id];}
+    else el.textContent=T[cur][k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.l===cur)));
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>apply(b.dataset.l)));
+document.querySelectorAll("[data-demo]").forEach(b=>b.addEventListener("click",()=>{
+  const n=document.getElementById("note-"+b.dataset.demo);
+  n.classList.toggle("show");
+}));
+const nav=(navigator.language||"de").slice(0,2).toLowerCase();
+apply(T[nav]?nav:"de");
+</script>
+</body>
+</html>

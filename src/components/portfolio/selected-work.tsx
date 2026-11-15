@@ -27,6 +27,7 @@ export function SelectedWork({ mode = "featured" }: { mode?: "featured" | "all" 
     { key: "automation", label: t.catAutomation },
     { key: "im-einsatz", label: t.catInUse },
     { key: "web", label: t.catWeb },
+    { key: "design", label: t.catDesign },
   ];
 
   const shown = mode === "featured" ? works.filter((w) => w.featured).slice(0, HOMEPAGE_LIMIT) : works;

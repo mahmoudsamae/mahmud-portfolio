@@ -32,6 +32,7 @@ export const LABEL_KEYS = [
   ["catAutomation", "Kategorie: Automation"],
   ["catInUse", "Kategorie: Im Einsatz"],
   ["catWeb", "Kategorie: Web"],
+  ["catDesign", "Kategorie: Design & Branding"],
   ["viewAll", "Button GitHub"],
   ["serviceTitle", "Überschrift Kompetenzen"],
   ["expTitle", "Überschrift Erfahrung"],
@@ -53,6 +54,7 @@ export const LABEL_KEYS = [
   ["fErr", "Formular: Fehlermeldung"],
   ["projectProblem", "Projektseite: Problem"],
   ["projectSolution", "Projektseite: Lösung"],
+  ["projectProcess", "Projektseite: Prozess"],
   ["projectArchitecture", "Projektseite: Architektur"],
   ["projectResults", "Projektseite: Ergebnisse"],
   ["projectEvidence", "Projektseite: Link zum Beleg"],
@@ -78,6 +80,7 @@ export const CATEGORIES = [
   { label: "Automation", value: "automation" },
   { label: "Im Einsatz", value: "im-einsatz" },
   { label: "Web", value: "web" },
+  { label: "Design & Branding", value: "design" },
 ] as const;
 
 const timelineItem = (label: string) =>
@@ -285,6 +288,10 @@ export default config({
         }),
         order: fields.integer({ label: "Reihenfolge", description: "Kleinere Zahl = weiter vorne.", defaultValue: 10 }),
         badge: fields.text({ label: "Status-Badge auf der Karte", description: "z. B. „● LIVE · IN USE“" }),
+        badgeEn: fields.text({
+          label: "Status-Badge auf Englisch (optional)",
+          description: "Leer lassen, wenn das Badge in beiden Sprachen gleich ist.",
+        }),
         studio: fields.text({ label: "Kunde / Art (Karte)" }),
         tag: fields.text({ label: "Tech kurz (Karte)" }),
         summary: i18n("Kurzbeschreibung (Karte)", { multiline: true }),
@@ -293,8 +300,18 @@ export default config({
           directory: "public/images/projects",
           publicPath: "/images/projects/",
         }),
+        ogImage: fields.image({
+          label: "Vorschaubild für Social Media (optional)",
+          description: "1200 × 630 px, JPEG oder PNG. Leer = das allgemeine Vorschaubild der Seite.",
+          directory: "public/images/projects",
+          publicPath: "/images/projects/",
+        }),
         problem: i18n("Problem", { multiline: true }),
         solution: i18n("Lösung", { multiline: true }),
+        process: i18n("Prozess (optional)", {
+          multiline: true,
+          description: "Wie es zur Lösung kam, z. B. Briefing und Entwurfsrunden. Erscheint nach der Lösung.",
+        }),
         note: i18n("Hinweis (optional)", {
           multiline: true,
           description: "Ehrliche Einschränkungen, z. B. „läuft nur in der Sandbox“.",
@@ -338,6 +355,9 @@ export default config({
               publicPath: "/images/projects/",
             }),
             caption: i18n("Bildunterschrift"),
+            alt: i18n("Bildbeschreibung (Alt-Text, optional)", {
+              description: "Was auf dem Bild zu sehen ist. Leer = die Bildunterschrift.",
+            }),
           }),
           { label: "Screenshots", itemLabel: (props) => props.fields.caption.fields.de.value || "Screenshot" },
         ),
