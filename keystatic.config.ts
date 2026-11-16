@@ -105,9 +105,12 @@ const timelineItem = (label: string) =>
   );
 
 export default config({
-  // Local mode only for now. Production (GitHub mode) is set up after approval;
-  // until then the admin is disabled in production builds (see src/app/keystatic).
-  storage: { kind: "local" },
+  // Local mode edits files on disk during `next dev`; the deployed site commits to GitHub,
+  // which triggers a Vercel redeploy. No branchPrefix: saves go straight to master.
+  storage:
+    process.env.NODE_ENV === "development"
+      ? { kind: "local" }
+      : { kind: "github", repo: "mahmoudsamae/mahmud-portfolio" },
   ui: {
     brand: { name: "Portfolio CMS" },
     navigation: {
