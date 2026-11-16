@@ -2,8 +2,9 @@ slug: ratis-camping
 title:
   de: 'Ratis Camping: Marke, Visitenkarte & QR-Seite'
   en: 'Ratis Camping: brand, business card & QR page'
+draft: false
 category: design
-featured: false
+featured: true
 order: 7
 badge: ◐ KONZEPT
 badgeEn: ◐ CONCEPT
@@ -11,13 +12,13 @@ studio: Konzeptprojekt
 tag: Branding · Print · Web
 summary:
   de: >-
-    Name, Logo, druckfertige Visitenkarte und eine dreisprachige
-    QR-Landingpage für einen fiktiven Campingplatz an der Donau. Live
-    ausprobieren: die Seite, auf die der QR-Code der Karte führt.
+    Name, Logo, druckfertige Visitenkarte und eine dreisprachige QR-Landingpage
+    für einen fiktiven Campingplatz an der Donau. Live ausprobieren: die Seite,
+    auf die der QR-Code der Karte führt.
   en: >-
-    Name, logo, a print-ready business card and a three-language QR landing
-    page for a fictional campsite on the Danube. Try it live: the page the
-    card's QR code opens.
+    Name, logo, a print-ready business card and a three-language QR landing page
+    for a fictional campsite on the Danube. Try it live: the page the card's QR
+    code opens.
 coverImage: /images/projects/ratis-camping/coverImage.webp
 ogImage: /images/projects/ratis-camping/ogImage.jpg
 problem:
@@ -28,8 +29,8 @@ problem:
     Die Gäste sind gemischt (Deutschland, Niederlande, international), und es
     kommen nicht nur Zelte, sondern auch Wohnmobile und Wohnwagen.
   en: >-
-    A new campsite on the Danube needs its first business card, but has
-    nothing to put on it yet: no name, no logo, no colours.
+    A new campsite on the Danube needs its first business card, but has nothing
+    to put on it yet: no name, no logo, no colours.
 
     Its guests are a mix of German, Dutch and international visitors, and they
     arrive with motorhomes and caravans as well as tents.
@@ -54,46 +55,45 @@ solution:
     Name: Ratis, after Ratisbona, the Latin name of Regensburg. Short, easy to
     say in any language, and rooted in local history.
 
-    Wordmark: "RATIS", with the A drawn as a tent with a glowing door. Symbol:
-    a tent and a motorhome on one shared line, still legible at 18 px.
+    Wordmark: "RATIS", with the A drawn as a tent with a glowing door. Symbol: a
+    tent and a motorhome on one shared line, still legible at 18 px.
 
-    Business card: photo and logo on the front, contact details and a QR code
-    on the back. Less text, more impact: icons instead of labels, so the card
-    works without translation.
+    Business card: photo and logo on the front, contact details and a QR code on
+    the back. Less text, more impact: icons instead of labels, so the card works
+    without translation.
 
-    QR landing page: opens in German, English or Dutch depending on the
-    phone's language, with four clear actions: leave a review, request a
-    pitch, get directions, send an email. The QR code on the card really opens
-    the demo page.
+    QR landing page: opens in German, English or Dutch depending on the phone's
+    language, with four clear actions: leave a review, request a pitch, get
+    directions, send an email. The QR code on the card really opens the demo
+    page.
 
-    Print files: PDF with bleed, 300 dpi or more, all text inside the safe
-    area.
+    Print files: PDF with bleed, 300 dpi or more, all text inside the safe area.
 process:
   de: >-
     Briefing: ein strukturiertes Gespräch mit 23 Fragen, von den Kontaktdaten
     bis zum Budget. Zwei Antworten haben das ganze Design bestimmt. Ziel der
-    Karte sind mehr Google-Bewertungen und direkte Anfragen, deshalb ein
-    QR-Code statt mehr Text. Die Zielgruppe sind Zelt und Wohnmobil, deshalb
-    darf das Logo nicht nur „Zelt“ sagen. Wo der Kunde keine Antwort hatte
-    (Name, Stil, Druck), habe ich konkrete Optionen zur Auswahl gestellt,
-    statt offene Fragen zu wiederholen.
+    Karte sind mehr Google-Bewertungen und direkte Anfragen, deshalb ein QR-Code
+    statt mehr Text. Die Zielgruppe sind Zelt und Wohnmobil, deshalb darf das
+    Logo nicht nur „Zelt“ sagen. Wo der Kunde keine Antwort hatte (Name, Stil,
+    Druck), habe ich konkrete Optionen zur Auswahl gestellt, statt offene Fragen
+    zu wiederholen.
 
     Runde 1, Illustration: gezeichnete Donau-Szene. Feedback: zu verspielt,
     nicht professionell.
 
-    Runde 2, geometrisch in zwei Richtungen: klare Flächen, Schwarz und
-    Orange. Feedback: sauber, aber ohne Wirkung.
+    Runde 2, geometrisch in zwei Richtungen: klare Flächen, Schwarz und Orange.
+    Feedback: sauber, aber ohne Wirkung.
 
-    Runde 3, Fotolook: cinematische Nachtaufnahme an der Donau
-    (KI-generiert), Leuchteffekte in Orange. Der Durchbruch.
+    Runde 3, Fotolook: cinematische Nachtaufnahme an der Donau (KI-generiert),
+    Leuchteffekte in Orange. Der Durchbruch.
 
-    Runde 4, Logo-Suche: Ein Brückenbogen wurde verworfen, dann sechs
-    Bildmarken im Vergleich. Gewählt: Zelt & Wohnmobil in einer Linie, damit
-    sich jeder Gast angesprochen fühlt.
+    Runde 4, Logo-Suche: Ein Brückenbogen wurde verworfen, dann sechs Bildmarken
+    im Vergleich. Gewählt: Zelt & Wohnmobil in einer Linie, damit sich jeder
+    Gast angesprochen fühlt.
 
-    Gelernt: Wenn zwei Entwürfe hintereinander abgelehnt werden, liegt es
-    selten am Entwurf, sondern am fehlenden gemeinsamen Bild. Referenzbilder
-    vom Kunden haben das gelöst.
+    Gelernt: Wenn zwei Entwürfe hintereinander abgelehnt werden, liegt es selten
+    am Entwurf, sondern am fehlenden gemeinsamen Bild. Referenzbilder vom Kunden
+    haben das gelöst.
 
     Leuchten funktioniert auf dem Bildschirm, nicht auf Papier. Im Druck
     entsteht es durch Licht im Foto oder durch Veredelung (z. B. Spot-UV).
@@ -101,16 +101,15 @@ process:
     Ein Logo ist kein Foto: Die Bildmarke bleibt einfach und vektoriell, die
     „echte“ Wirkung kommt aus Mockups und Bildwelt.
   en: >-
-    Briefing: a structured conversation with 23 questions, from contact
-    details to budget. Two answers shaped the whole design. The card's job is
-    to bring in more Google reviews and direct enquiries, so it gets a QR code
-    instead of more text. Guests come with tents and motorhomes, so the logo
-    can't just say "tent". Where the client had no answer (name, style,
-    printing), I offered concrete options to choose from instead of repeating
-    open questions.
+    Briefing: a structured conversation with 23 questions, from contact details
+    to budget. Two answers shaped the whole design. The card's job is to bring
+    in more Google reviews and direct enquiries, so it gets a QR code instead of
+    more text. Guests come with tents and motorhomes, so the logo can't just say
+    "tent". Where the client had no answer (name, style, printing), I offered
+    concrete options to choose from instead of repeating open questions.
 
-    Round 1, illustration: a hand-drawn Danube scene. Feedback: too playful,
-    not professional enough.
+    Round 1, illustration: a hand-drawn Danube scene. Feedback: too playful, not
+    professional enough.
 
     Round 2, geometric, in two directions: clean shapes in black and orange.
     Feedback: tidy, but flat.
@@ -122,9 +121,9 @@ process:
     compared side by side. The pick: a tent and a motorhome on one line, so
     every guest feels addressed.
 
-    What I learned: when two drafts in a row are rejected, the drafts are
-    rarely the problem; the shared picture of the goal is missing. Reference
-    images from the client fixed that.
+    What I learned: when two drafts in a row are rejected, the drafts are rarely
+    the problem; the shared picture of the goal is missing. Reference images
+    from the client fixed that.
 
     Glow works on screen, not on paper. In print it has to come from light in
     the photo or from a finish such as spot UV.
@@ -140,31 +139,24 @@ note:
     Ratis Camping is a fictional concept project, not a real business. The
     photos and imagery are AI-generated. The address, phone number and domain
     are placeholders.
-architectureImage: null
-architectureAlt:
-  de: ''
-  en: ''
+architectureAlt: {}
 results:
   - value: '23'
     label:
       de: Briefing-Fragen, von den Kontaktdaten bis zum Budget
       en: briefing questions, from contact details to budget
-    source: null
   - value: '4'
     label:
       de: Entwurfsrunden bis zur finalen Lösung
       en: design rounds to the final solution
-    source: null
   - value: '6'
     label:
       de: Logo-Richtungen im direkten Vergleich
       en: logo directions compared side by side
-    source: null
   - value: '3'
     label:
       de: Sprachen auf der QR-Seite (DE, EN, NL), automatisch nach Handysprache
       en: languages on the QR page (DE, EN, NL), picked from the phone's language
-    source: null
 techStack:
   - Claude (design & build)
   - ChatGPT
@@ -172,8 +164,6 @@ techStack:
   - Print PDF (85 × 55 mm + 3 mm bleed)
 liveUrl: /demos/ratis/index.html
 demoStatus: live
-githubUrl: null
-docsUrl: null
 screenshots:
   - image: /images/projects/ratis-camping/screenshots/0/image.webp
     caption:
@@ -199,8 +189,8 @@ screenshots:
         Regensburg“ und der Satz „Schlafen an der Donau.“
       en: >-
         Front of the business card: the Danube at night with Regensburg
-        Cathedral and a glowing tent, the logo "RATIS Camping · Regensburg"
-        and the line "Schlafen an der Donau." (Sleep by the Danube.)
+        Cathedral and a glowing tent, the logo "RATIS Camping · Regensburg" and
+        the line "Schlafen an der Donau." (Sleep by the Danube.)
   - image: /images/projects/ratis-camping/screenshots/2/image.webp
     caption:
       de: Rückseite mit QR-Code
@@ -212,22 +202,21 @@ screenshots:
         QR-Code.
       en: >-
         Back of the business card on a dark background: logo, address, phone,
-        email, website and opening hours with orange icons, and a QR code on
-        the right.
+        email, website and opening hours with orange icons, and a QR code on the
+        right.
   - image: /images/projects/ratis-camping/screenshots/3/image.webp
     caption:
       de: QR-Landingpage, Deutsch, mit Demo-Hinweis
       en: QR landing page, German, with the demo notice
     alt:
       de: >-
-        Handyansicht der QR-Landingpage auf Deutsch: Logo über einem
-        Nachtfoto, darunter die Buttons Bewerte uns, Platz anfragen, Route
-        planen und E-Mail schreiben; unter „Bewerte uns“ ist der Demo-Hinweis
-        aufgeklappt.
+        Handyansicht der QR-Landingpage auf Deutsch: Logo über einem Nachtfoto,
+        darunter die Buttons Bewerte uns, Platz anfragen, Route planen und
+        E-Mail schreiben; unter „Bewerte uns“ ist der Demo-Hinweis aufgeklappt.
       en: >-
         Phone view of the QR landing page in German: the logo over a night
-        photo, then buttons to review, request a pitch, get directions and
-        send an email; the demo notice is open below the review button.
+        photo, then buttons to review, request a pitch, get directions and send
+        an email; the demo notice is open below the review button.
   - image: /images/projects/ratis-camping/screenshots/4/image.webp
     caption:
       de: QR-Landingpage, Englisch
@@ -238,7 +227,6 @@ screenshots:
         aktiv, Logo über einem Nachtfoto, darunter die Buttons Rate your stay,
         Request a pitch, Get directions und Send us an email.
       en: >-
-        Phone view of the QR landing page in English: language switch set to
-        EN, the logo over a night photo, then buttons Rate your stay, Request
-        a pitch, Get directions and Send us an email.
-youtubeUrl: null
+        Phone view of the QR landing page in English: language switch set to EN,
+        the logo over a night photo, then buttons Rate your stay, Request a
+        pitch, Get directions and Send us an email.
