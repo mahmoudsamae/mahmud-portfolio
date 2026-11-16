@@ -2,15 +2,20 @@ slug: gaeste-bestellsystem
 title:
   de: Gäste-Bestellsystem
   en: Gäste-Bestellsystem
+draft: false
 category: im-einsatz
-featured: true
+featured: false
 order: 2
 badge: ● LIVE · IN USE
 studio: AZUR Camping
 tag: Next.js · Node.js
 summary:
-  en: Digital breakfast ordering for AZUR Camping — used daily by the reception team.
-  de: Digitale Frühstücksbestellung für AZUR Camping — täglich vom Rezeptionsteam genutzt.
+  de: >-
+    Digitale Frühstücksbestellung für AZUR Camping — täglich vom Rezeptionsteam
+    genutzt.
+  en: >-
+    Digital breakfast ordering for AZUR Camping — used daily by the reception
+    team.
 coverImage: /images/projects/gaeste-bestellsystem/coverImage.png
 problem:
   de: TODO
@@ -18,20 +23,12 @@ problem:
 solution:
   de: TODO
   en: TODO
-note:
-  de: ''
-  en: ''
-architectureImage: null
-architectureAlt:
-  de: ''
-  en: ''
+process: {}
+note: {}
+architectureAlt: {}
 results: []
 techStack:
   - Next.js
   - Node.js
-liveUrl: null
 demoStatus: none
-githubUrl: null
-docsUrl: null
 screenshots: []
-youtubeUrl: null
